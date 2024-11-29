@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import '@/globals.css';
 import { MswComponent } from '@/mocks/msw.component';
 import QueryProviders from '@/utils/queryProvider';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -26,6 +27,7 @@ const RootLayout = async ({
       <body className={`${pretendard.variable} antialiased`}>
         <MswComponent />
         <QueryProviders>{children}</QueryProviders>
+        <SpeedInsights />
       </body>
     </html>
   );
