@@ -1,11 +1,14 @@
-import TemplateComponent from '@/components/template/TemplateComponent';
+import HeroBackgroundImage from '@/components/main/HeroBackgroundImage';
+import HeroSection from '@/components/main/HeroSection';
+import WeeklyPopular from '@/components/main/WeeklyPopular';
+import travelList from '@/mocks/travel/travelList.json';
 
 export default function Home() {
   return (
     <div className="">
-      <div>test ver2</div>
-      <div>auto-push & deploy test</div>
-      <TemplateComponent />
+      <HeroBackgroundImage />
+      <HeroSection />
+      <WeeklyPopular travelList={travelList} />
     </div>
   );
 }
