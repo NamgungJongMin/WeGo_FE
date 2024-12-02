@@ -29,12 +29,12 @@ const TemplateComponent = () => {
   };
 
   return (
-    <div className="container mt-10 mx-auto flex flex-col items-center justify-center gap-4">
+    <div className="container mx-auto mt-10 flex flex-col items-center justify-center gap-4">
       <input
         type="text"
         value={inputValue}
         onChange={handleChange}
-        className=" border-2 border-black"
+        className="border-2 border-black"
       />
 
       <ButtonTemplate
