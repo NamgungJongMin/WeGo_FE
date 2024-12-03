@@ -5,7 +5,7 @@ import PwClose from '@/assets/pw_close.svg';
 import { useState } from 'react';
 
 const PasswordInputVariants = cva(
-  'mt-[6px] rounded-md border border-[#e0e0e2] p-2 mx-auto outline-none h-11 text-xs focus:border-[#222] p-4',
+  'mt-[6px] rounded-md border border-[#e0e0e2] p-2 mx-auto outline-none h-[46px] text-xs focus:border-[#222] p-4',
   {
     variants: {
       size: {

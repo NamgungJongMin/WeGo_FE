@@ -16,9 +16,9 @@ const validate = ({ name, value, password }: ValidateOptions): boolean => {
     case 'passwordConfirm':
       return password ? value === password : false;
     case 'name':
-      return value.length >= 2 && value.length <= 10;
+      return REGEX.name.test(value);
     case 'nickname':
-      return value.length >= 2 && value.length <= 10;
+      return REGEX.nickname.test(value);
     case 'contact':
       return REGEX.contact.test(value);
     case 'birthDate':

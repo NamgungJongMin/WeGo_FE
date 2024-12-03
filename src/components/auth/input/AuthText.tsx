@@ -16,11 +16,13 @@ interface Props {
   name: keyof TextInputType;
   value: string;
   isValid: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
   size?: 'default' | 'withButton';
+  important?: boolean;
   className?: string;
   classNameCondition?: Record<string, boolean>;
   children?: React.ReactNode;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const AuthText = memo(
@@ -29,7 +31,9 @@ const AuthText = memo(
     name,
     value,
     isValid,
+    disabled,
     size = 'default',
+    important,
     className,
     classNameCondition,
     children,
@@ -42,12 +46,14 @@ const AuthText = memo(
           className={`text-sm ${name === 'emailCode' && 'sr-only'}`}
         >
           {AUTH_LABEL[name]}
+          {important && <span className="ml-[2px] text-[#4a8af8]">*</span>}
         </label>
 
         <div className="flex justify-between">
           <TextInput
             type={type}
             name={name}
+            disabled={disabled}
             maxLength={name === 'emailCode' || name === 'birthDate' ? 6 : 25}
             placeholder={AUTH_PLACEHOLDER[name]}
             value={value}
@@ -66,13 +72,13 @@ const AuthText = memo(
 
         <p
           className={cn('absolute bottom-0 text-xs', {
-            'text-red-500': value && !isValid,
-            'text-blue-500': name === 'emailCode' && isValid,
+            'text-[#EC524B]': name !== 'emailCode' && value && !isValid,
           })}
         >
-          {value && !isValid
+          {name !== 'emailCode' && value && !isValid
             ? AUTH_ERROR_MESSAGE[name]
-            : name === 'emailCode' && isValid && AUTH_SUCCESS_MESSAGE[name]}
+            : null}
+          {name === 'emailCode' && isValid && AUTH_SUCCESS_MESSAGE[name]}
         </p>
       </div>
     );

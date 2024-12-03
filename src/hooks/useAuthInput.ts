@@ -24,6 +24,8 @@ export const useAuthInput = ({ name, password }: Props) => {
   return {
     value,
     isValid,
+    setValue,
+    setIsValid,
     handleChange,
   };
 };

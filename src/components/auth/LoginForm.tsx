@@ -2,6 +2,7 @@
 
 import AuthTextInput from '@/components/auth/input/AuthText';
 import { useAuthInput } from '@/hooks/useAuthInput';
+import { Button } from '@/components/common/button/Button';
 import AuthPasswordInput from './input/AuthPassword';
 
 const LoginForm = () => {
@@ -9,7 +10,7 @@ const LoginForm = () => {
   const password = useAuthInput({ name: 'password' });
 
   return (
-    <form className="w-full">
+    <form className="mb-4 w-full">
       <AuthTextInput
         type="email"
         name="email"
@@ -25,6 +26,8 @@ const LoginForm = () => {
         isValid={password.isValid}
         onChange={password.handleChange}
       />
+
+      <Button label="로그인" className="mt-[180px]" />
     </form>
   );
 };

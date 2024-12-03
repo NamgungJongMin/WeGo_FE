@@ -1,56 +1,108 @@
-import { useCallback, memo, useState } from 'react';
+import { useCallback, memo, useState, useEffect } from 'react';
 
 import { useAuthInput } from '@/hooks/useAuthInput';
+import { Button } from '@/components/common/button/Button';
+import formatTimeToMMSS from '@/utils/formatTimeToMMSS';
+import { AUTH_SUCCESS_MESSAGE } from '@/constants/auth';
 import AuthText from './AuthText';
 
-// TODO: 추후 button 컴포넌트로 대체
-const EmailVerifyButton = memo(({ onClick }: { onClick: () => void }) => (
-  <button
-    type="button"
-    className="mt-[6px] h-11 w-[101px] rounded-[4px] bg-black text-sm text-white"
-    onClick={onClick}
-  >
-    인증
-  </button>
-));
-
-EmailVerifyButton.displayName = 'EmailVerifyButton';
-
 const AuthEmailSert = memo(() => {
+  const [due, setDue] = useState(10);
   const [viewEmailCode, setViewEmailCode] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   const email = useAuthInput({ name: 'email' });
   const emailCode = useAuthInput({ name: 'emailCode' });
 
+  useEffect(() => {
+    if (!viewEmailCode || due === 0) return () => {};
+
+    const timer = setInterval(() => {
+      if (due <= 0) {
+        clearInterval(timer);
+        return;
+      }
+
+      setDue((time) => time - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [due, viewEmailCode]);
+
   const handleVerifyClick = useCallback(() => {
-    setViewEmailCode(true);
+    // TODO: 인증 요청 로직 추가
+    if (!viewEmailCode) {
+      setViewEmailCode(true);
+    }
+
+    setDue(300);
+    emailCode.setIsValid(false);
+    emailCode.setValue('');
+  }, [emailCode, viewEmailCode]);
+
+  const handleConfirmClick = useCallback(() => {
+    // TODO: 인증 확인 로직 추가
+
+    setIsVerified(true);
   }, []);
 
   return (
-    <>
+    <div className="relative">
       <AuthText
         type="email"
         name="email"
         value={email.value}
+        disabled={viewEmailCode}
         isValid={email.isValid}
+        important
         onChange={email.handleChange}
         className="mb-6"
         size="withButton"
       >
-        <EmailVerifyButton onClick={handleVerifyClick} />
+        <Button
+          label={viewEmailCode ? '재전송' : '인증'}
+          handler={handleVerifyClick}
+          size="addon"
+          disabled={!email.isValid || isVerified}
+          className="mt-[6px]"
+        />
       </AuthText>
 
       <AuthText
-        type="email"
+        type="text"
         name="emailCode"
         value={emailCode.value}
-        isValid={emailCode.isValid}
+        disabled={due === 0 || isVerified}
+        isValid={isVerified}
         onChange={emailCode.handleChange}
         className="-mt-3 mb-6"
+        size="withButton"
         classNameCondition={{
           hidden: !viewEmailCode,
+          'border-[#4A8AF8] focus:border-[#4A8AF8]': emailCode.isValid,
         }}
-      />
-    </>
+      >
+        <Button
+          label="확인"
+          handler={handleConfirmClick}
+          size="addon"
+          disabled={!emailCode.isValid || due === 0 || isVerified}
+          className="-mt-[12px]"
+          classNameCondition={{ hidden: !viewEmailCode }}
+        />
+      </AuthText>
+
+      {viewEmailCode && !isVerified && (
+        <span className="absolute bottom-0 text-xs text-[#ED672C]">
+          {due > 0 ? formatTimeToMMSS(due) : '인증 시간이 초과되었습니다.'}
+        </span>
+      )}
+
+      {isVerified && (
+        <span className="absolute bottom-0 text-xs text-[#4A8AF8]">
+          {AUTH_SUCCESS_MESSAGE.emailCode}
+        </span>
+      )}
+    </div>
   );
 });
 
