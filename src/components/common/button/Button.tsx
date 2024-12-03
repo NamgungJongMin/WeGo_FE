@@ -2,12 +2,12 @@ import cn from '@/utils/cn';
 import { cva, VariantProps } from 'class-variance-authority';
 
 const ButtonVariants = cva(
-  'rounded disabled:border disabled:border-[#E0E0E2] disabled:bg-[#F7F7F8] disabled:text-[#878A92]',
+  'rounded disabled:border disabled:border-line-normal disabled:bg-background-alternative disabled:text-label-alternative',
   {
     variants: {
       fill: {
-        default: 'bg-[#222222] text-white',
-        white: 'bg-white border border-[#E0E0E2]',
+        default: 'bg-label-normal text-white',
+        white: 'bg-white border border-line-strong',
       },
       size: {
         default: 'w-[335px] h-[52px]',

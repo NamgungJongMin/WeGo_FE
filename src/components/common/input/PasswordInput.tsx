@@ -5,7 +5,7 @@ import PwClose from '@/assets/pw_close.svg';
 import { useState } from 'react';
 
 const PasswordInputVariants = cva(
-  'mt-[6px] rounded-md border border-[#e0e0e2] p-2 mx-auto outline-none h-[46px] text-xs focus:border-[#222] p-4',
+  'mt-[6px] rounded-md border border-line-normal p-2 mx-auto outline-none h-[46px] text-xs focus:border-label-normal p-4',
   {
     variants: {
       size: {
@@ -62,9 +62,9 @@ const PasswordInput = ({
         onClick={clickButton}
       >
         {isOpen ? (
-          <PwClose width={20} height={20} />
-        ) : (
           <PwOpen width={20} height={20} />
+        ) : (
+          <PwClose width={20} height={20} />
         )}
       </button>
     </div>

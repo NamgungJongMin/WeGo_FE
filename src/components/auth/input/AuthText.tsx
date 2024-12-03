@@ -61,8 +61,11 @@ const AuthText = memo(
             className={className}
             classNameCondition={{
               ...classNameCondition,
-              'border-[#222]': isValid,
-              'border-red-500 focus:border-red-500': Boolean(value) && !isValid,
+              'border-line-strong': isValid,
+              'disabled:border-status-infomative':
+                name === 'emailCode' && isValid,
+              'border-status-error focus:border-status-error':
+                Boolean(value) && !isValid,
               'mx-0': Boolean(children),
             }}
             onChange={onChange}
@@ -72,7 +75,7 @@ const AuthText = memo(
 
         <p
           className={cn('absolute bottom-0 text-xs', {
-            'text-[#EC524B]': name !== 'emailCode' && value && !isValid,
+            'text-status-error': name !== 'emailCode' && value && !isValid,
           })}
         >
           {name !== 'emailCode' && value && !isValid

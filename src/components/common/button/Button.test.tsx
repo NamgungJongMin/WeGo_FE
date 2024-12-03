@@ -26,14 +26,14 @@ describe('Button 컴포넌트', () => {
 
     const button = screen.getByText('비활성화 버튼');
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('disabled:bg-[#F7F7F8]');
+    expect(button).toHaveClass('disabled:bg-background-alternative');
   });
 
   it('variant 스타일이 정상적으로 적용되어야 한다', () => {
     render(<Button label="white 버튼" fill="white" />);
 
     const button = screen.getByText('white 버튼');
-    expect(button).toHaveClass('bg-white', 'border', 'border-[#E0E0E2]');
+    expect(button).toHaveClass('bg-white', 'border', 'border-line-strong');
   });
 
   it('size variant가 정상적으로 적용되어야 한다', () => {

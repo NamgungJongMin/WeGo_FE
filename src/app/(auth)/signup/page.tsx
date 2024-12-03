@@ -12,8 +12,8 @@ const Signup = () => {
       </div>
 
       <div className="mb-[50px] mt-6 flex justify-center text-sm">
-        <span className="text-[#9199A5]">이미 회원이신가요?</span>
-        <Link href="/login" className="ml-[6px] text-[#2563EB] underline">
+        <span className="text-gray-400">이미 회원이신가요?</span>
+        <Link href="/login" className="ml-[6px] text-primary-normal underline">
           로그인
         </Link>
       </div>

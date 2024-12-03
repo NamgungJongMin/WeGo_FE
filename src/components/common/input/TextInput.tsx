@@ -2,7 +2,7 @@ import cn from '@/utils/cn';
 import { cva, VariantProps } from 'class-variance-authority';
 
 const TextInputVariants = cva(
-  'mt-[6px] rounded-md border border-[#e0e0e2] p-2 mx-auto outline-none h-[46px] text-xs focus:border-[#222] disabled:border-[#e0e0e2] disabled:bg-[#f7f7f8] p-4',
+  'mt-[6px] rounded-md border border-line-normal p-2 mx-auto outline-none h-[46px] text-xs focus:border-line-strong disabled:border-line-normal disabled:bg-interaction-disable p-4',
   {
     variants: {
       size: {

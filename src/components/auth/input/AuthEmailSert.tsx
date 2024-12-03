@@ -78,7 +78,8 @@ const AuthEmailSert = memo(() => {
         size="withButton"
         classNameCondition={{
           hidden: !viewEmailCode,
-          'border-[#4A8AF8] focus:border-[#4A8AF8]': emailCode.isValid,
+          'border-status-infomative focus:border-status-infomative':
+            emailCode.isValid,
         }}
       >
         <Button
@@ -92,13 +93,13 @@ const AuthEmailSert = memo(() => {
       </AuthText>
 
       {viewEmailCode && !isVerified && (
-        <span className="absolute bottom-0 text-xs text-[#ED672C]">
+        <span className="absolute bottom-0 text-xs text-status-error">
           {due > 0 ? formatTimeToMMSS(due) : '인증 시간이 초과되었습니다.'}
         </span>
       )}
 
       {isVerified && (
-        <span className="absolute bottom-0 text-xs text-[#4A8AF8]">
+        <span className="absolute bottom-0 text-xs text-status-infomative">
           {AUTH_SUCCESS_MESSAGE.emailCode}
         </span>
       )}

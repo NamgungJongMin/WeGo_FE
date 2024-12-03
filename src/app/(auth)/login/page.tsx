@@ -20,13 +20,16 @@ const Login = () => {
           </Link>
 
           <div className="mt-6 flex justify-center divide-x text-sm">
-            <Link href="/find-id" className="pr-2.5 text-[#878A92]">
+            <Link href="/find-id" className="pr-2.5 text-label-alternative">
               아이디 찾기
             </Link>
-            <Link href="/find-password" className="px-2.5 text-[#878A92]">
+            <Link
+              href="/find-password"
+              className="px-2.5 text-label-alternative"
+            >
               비밀번호 찾기
             </Link>
-            <Link href="/" className="pl-2.5 text-[#2563EB] underline">
+            <Link href="/" className="pl-2.5 text-primary-normal underline">
               둘러보기
             </Link>
           </div>

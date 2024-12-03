@@ -24,7 +24,9 @@ const AuthPassword = memo(
       <div className="relative">
         <label htmlFor={name}>
           {AUTH_LABEL[name]}
-          {important && <span className="ml-[2px] text-[#4a8af8]">*</span>}
+          {important && (
+            <span className="ml-[2px] text-status-infomative">*</span>
+          )}
         </label>
 
         <PasswordInput
@@ -34,8 +36,9 @@ const AuthPassword = memo(
           onChange={onChange}
           className="mb-6"
           classNameCondition={{
-            'border-[#222]': isValid,
-            'border-red-500 focus:border-red-500': Boolean(value) && !isValid,
+            'border-label-normal': isValid,
+            'border-status-error focus:border-status-error':
+              Boolean(value) && !isValid,
           }}
         />
 
