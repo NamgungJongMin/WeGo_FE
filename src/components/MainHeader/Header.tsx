@@ -10,7 +10,7 @@ const MainHeader = () => {
   const pathname = usePathname();
   if (pathname === '/') {
     return (
-      <header className="fixed flex h-[60px] w-full items-center justify-between px-5 py-[14px]">
+      <header className="fixed z-10 flex h-[60px] w-full items-center justify-between px-5 py-[14px]">
         <Link href="/">
           <Logo width={80} height={32} />
         </Link>
