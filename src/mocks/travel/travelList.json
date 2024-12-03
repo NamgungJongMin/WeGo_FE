@@ -5,7 +5,7 @@
     "travelName": "부여로 떠나는 다함께 시골투어",
     "travelLocation": "충남 부여",
     "maxParticipant": 6,
-    "currentParticipant": 5,
+    "currentParticipant": 1,
     "startDate": "12/03"
   },
   {
@@ -14,7 +14,7 @@
     "travelName": "도쿄에서 즐기는 미식여행",
     "travelLocation": "도쿄시",
     "maxParticipant": 12,
-    "currentParticipant": 10,
+    "currentParticipant": 11,
     "startDate": "12/06"
   },
   {
@@ -32,7 +32,7 @@
     "travelName": "도쿄에서 즐기는 미식여행",
     "travelLocation": "도쿄시",
     "maxParticipant": 12,
-    "currentParticipant": 10,
+    "currentParticipant": 12,
     "startDate": "12/06"
   }
 ]
