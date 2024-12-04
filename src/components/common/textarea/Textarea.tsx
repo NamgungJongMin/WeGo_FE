@@ -7,9 +7,9 @@ const TextareaVariants = cva(
     variants: {
       size: {
         default:
-          'w-[335px] h-[160px] border-[#222222] placeholder-shown:border-[#e0e0e2] focus:border-[#222222]',
+          'w-[335px] h-[160px] border-line-strong placeholder-shown:border-line-normal focus:border-line-strong',
         small:
-          'w-[295px] h-[90px] border-[#C2C4C7] placeholder-shown:border-[#F7F7F8] focus:border-[#46474C]',
+          'w-[295px] h-[90px] border-label-assistive placeholder-shown:border-background-alternative focus:border-label-neutral',
       },
     },
     defaultVariants: {
