@@ -16,15 +16,15 @@ interface Props {
 const ReviewListSection = ({ reviewList }: Props) => {
   return (
     <section className="flex flex-col justify-start gap-5 bg-black py-10 pl-5">
-      <div>
-        <div className="text-2xl font-extrabold text-white">
+      <header>
+        <h2 className="pb-[6px] text-2xl font-extrabold text-white">
           여행리뷰 모아보기
-        </div>
-        <div className="text-[#878A92]">
+        </h2>
+        <p className="text-label-alternative">
           다양한 여행모임 후기들을 한눈에 확인해요!
-        </div>
-      </div>
-      <div className="flex overflow-hidden">
+        </p>
+      </header>
+      <main className="flex overflow-hidden">
         <Swiper
           slidesPerView="auto"
           spaceBetween={16}
@@ -35,7 +35,6 @@ const ReviewListSection = ({ reviewList }: Props) => {
           {reviewList.map((review) => (
             <SwiperSlide key={review.reviewId} style={{ width: '180px' }}>
               <ReviewCard
-                key={review.reviewId}
                 reviewId={review.reviewId}
                 nickname={review.nickname}
                 reviewImage={review.reviewImage}
@@ -43,12 +42,21 @@ const ReviewListSection = ({ reviewList }: Props) => {
             </SwiperSlide>
           ))}
           <SwiperSlide style={{ width: '120px' }}>
-            <Link href="/" className="flex h-full items-center p-5">
-              <AddCircle width={36} height={36} className="text-[#ffffff]" />
+            <Link
+              href="/"
+              aria-label="더 많은 리뷰 보기"
+              className="flex h-full items-center p-5"
+            >
+              <AddCircle
+                width={36}
+                height={36}
+                aria-hidden="true"
+                className="text-primary-white"
+              />
             </Link>
           </SwiperSlide>
         </Swiper>
-      </div>
+      </main>
     </section>
   );
 };

@@ -1,9 +1,8 @@
 import { Travel } from '@/@types/travel';
 import { formatStartDate, getWeekNumber } from '@/utils/dateChageKr';
 import { useMemo } from 'react';
-import Link from 'next/link';
-import Plus from '@/assets/plus.svg';
 import TravelCard from '../card/TravelCard';
+import WeeklyHeader from './WeeklyHeader';
 
 interface Props {
   travelList: Travel[];
@@ -22,37 +21,19 @@ function WeeklyPopular({ travelList }: Props) {
 
   return (
     <section className="flex flex-col justify-center gap-6 px-10 py-[50px]">
-      <div className="flex flex-col gap-[6px]">
-        <div className="flex justify-between">
-          <div className="text-2xl font-extrabold text-[#222222]">
-            이번주 인기 여행모임
-          </div>
-          <Link
-            href="/"
-            className="flex h-5 items-center justify-center gap-0.5 text-[#222222]"
-          >
-            <div className="text-xs font-semibold">MORE</div>
-            <Plus width={14} height={14} />
-          </Link>
-        </div>
-        <div className="text-sm font-medium text-[#878A92]">
-          {month}월 {week}주차 조회수가 가장 많은 여행 모임을 알려드려요!
-        </div>
-      </div>
+      <WeeklyHeader month={month} week={week} />
       {startDateFormatted.map((travel) => (
-        <Link href="/" key={travel.travelId}>
-          <TravelCard
-            key={travel.travelId}
-            travelId={travel.travelId}
-            isDomestic={travel.isDomestic}
-            travelName={travel.travelName}
-            travelLocation={travel.travelLocation}
-            maxParticipant={travel.maxParticipant}
-            currentParticipant={travel.currentParticipant}
-            startDate={travel.startDate}
-            formattedStartDate={travel.formattedStartDate}
-          />
-        </Link>
+        <TravelCard
+          key={travel.travelId}
+          travelId={travel.travelId}
+          isDomestic={travel.isDomestic}
+          travelName={travel.travelName}
+          travelLocation={travel.travelLocation}
+          maxParticipant={travel.maxParticipant}
+          currentParticipant={travel.currentParticipant}
+          startDate={travel.startDate}
+          formattedStartDate={travel.formattedStartDate}
+        />
       ))}
     </section>
   );

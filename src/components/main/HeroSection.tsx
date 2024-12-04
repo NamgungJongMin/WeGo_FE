@@ -8,7 +8,11 @@ import { Autoplay } from 'swiper/modules';
 import { useState } from 'react';
 import Link from 'next/link';
 
-const slideData = ['/hero1.png', '/hero2.png', '/hero3.png'];
+const slideData = [
+  { id: 1, src: '/hero1.png', link: '/' },
+  { id: 2, src: '/hero2.png', link: '/' },
+  { id: 3, src: '/hero3.png', link: '/' },
+];
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -17,10 +21,10 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative flex h-[440px] w-full items-center justify-center pt-20">
+    <section className="relative flex h-[440px] w-full pt-20">
       <div className="absolute inset-0 z-0 h-[484px] w-full overflow-hidden">
         <Image
-          src={slideData[currentSlide] || '/hero1.png'}
+          src={slideData[currentSlide]?.src || '/hero1.png'}
           alt="배경효과 이미지"
           width={1000}
           height={1000}
@@ -42,19 +46,19 @@ const HeroSection = () => {
         onSlideChange={handleSlideChange}
         style={{ width: '350px' }}
       >
-        {slideData.map((src) => (
-          <SwiperSlide key={src}>
-            <div className="relative z-10 flex items-center justify-center">
-              <Link href="/">
-                <Image
-                  src={src}
-                  alt="여행 모임 홍보 이미지"
-                  width={335}
-                  height={360}
-                  className="rounded-lg"
-                />
-              </Link>
-            </div>
+        {slideData.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            <Link
+              href={slide.link}
+              className="relative z-10 flex items-center justify-center rounded-lg"
+            >
+              <Image
+                src={slide.src}
+                alt="여행 모임 홍보 이미지"
+                width={335}
+                height={360}
+              />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

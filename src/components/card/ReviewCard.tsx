@@ -12,12 +12,14 @@ const ReviewCard = ({ reviewId, nickname, reviewImage }: Review) => {
             width={180}
             height={240}
             className="h-full w-full rounded object-cover"
-            alt={`${nickname}의 여행 후기`}
+            alt={`${nickname}의 여행 후기 사진`}
           />
         </Link>
       </div>
       <Link href="/">
-        <div className="inline-block pt-[10px] text-[#4A8AF8]">@{nickname}</div>
+        <div className="inline-block pt-[10px] text-status-infomative">
+          @{nickname}
+        </div>
       </Link>
     </article>
   );
