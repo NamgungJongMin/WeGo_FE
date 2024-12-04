@@ -1,9 +1,9 @@
 'use client';
 
-import AuthTextInput from '@/components/auth/input/AuthText';
-import { useAuthInput } from '@/hooks/useAuthInput';
+import AuthText from '@/components/auth/input/AuthText';
+import useAuthInput from '@/hooks/useAuthInput';
 import { Button } from '@/components/common/button/Button';
-import AuthPasswordInput from './input/AuthPassword';
+import AuthPassword from './input/AuthPassword';
 
 const LoginForm = () => {
   const email = useAuthInput({ name: 'email' });
@@ -11,7 +11,7 @@ const LoginForm = () => {
 
   return (
     <form className="mb-4 w-full">
-      <AuthTextInput
+      <AuthText
         type="email"
         name="email"
         value={email.value}
@@ -20,7 +20,7 @@ const LoginForm = () => {
         className="mb-6"
       />
 
-      <AuthPasswordInput
+      <AuthPassword
         name="password"
         value={password.value}
         isValid={password.isValid}

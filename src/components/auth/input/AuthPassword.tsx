@@ -13,7 +13,7 @@ import { memo } from 'react';
 interface Props {
   name: keyof PasswordInputType;
   value: string;
-  isValid: boolean;
+  isValid: boolean | null;
   important?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -36,18 +36,18 @@ const AuthPassword = memo(
           onChange={onChange}
           className="mb-6"
           classNameCondition={{
-            'border-label-normal': isValid,
+            'border-label-normal': isValid === true,
             'border-status-error focus:border-status-error':
-              Boolean(value) && !isValid,
+              Boolean(value) && isValid === false,
           }}
         />
 
         <p
           className={cn('absolute bottom-0 text-xs', {
-            'text-red-500': value && !isValid,
+            'text-red-500': value && isValid === false,
           })}
         >
-          {value && !isValid ? AUTH_ERROR_MESSAGE[name] : ''}
+          {value && isValid === false ? AUTH_ERROR_MESSAGE[name] : ''}
         </p>
       </div>
     );

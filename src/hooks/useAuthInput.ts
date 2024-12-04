@@ -1,25 +1,47 @@
-import { useCallback, useState } from 'react';
-import type { TextInput, PasswordInput } from '@/@types/auth';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import validate from '@/utils/validateAuthInput';
+import { debounce } from 'lodash';
+import { PasswordInput, TextInput } from '@/@types/auth';
 
 interface Props {
   name: keyof TextInput | keyof PasswordInput;
   password?: string;
 }
 
-export const useAuthInput = ({ name, password }: Props) => {
+const useAuthInput = ({ name, password }: Props) => {
   const [value, setValue] = useState('');
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState<boolean | null>(null);
+
+  const debouncedValidate = useMemo(
+    () =>
+      debounce((newValue: string) => {
+        if (!newValue) {
+          setIsValid(null);
+          return;
+        }
+
+        const validationResult = validate({ name, value: newValue, password });
+
+        setIsValid(validationResult);
+      }, 300),
+    [name, password],
+  );
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
 
       setValue(newValue);
-      setIsValid(validate({ name, value: newValue, password }));
+      debouncedValidate(newValue);
     },
-    [name, password],
+    [debouncedValidate],
   );
+
+  useEffect(() => {
+    return () => {
+      debouncedValidate.cancel();
+    };
+  }, [debouncedValidate]);
 
   return {
     value,
@@ -29,3 +51,5 @@ export const useAuthInput = ({ name, password }: Props) => {
     handleChange,
   };
 };
+
+export default useAuthInput;

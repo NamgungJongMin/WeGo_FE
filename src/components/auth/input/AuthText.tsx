@@ -15,7 +15,7 @@ interface Props {
   type: 'text' | 'email' | 'tel' | 'number';
   name: keyof TextInputType;
   value: string;
-  isValid: boolean;
+  isValid: boolean | null;
   disabled?: boolean;
   size?: 'default' | 'withButton';
   important?: boolean;
@@ -61,11 +61,11 @@ const AuthText = memo(
             className={className}
             classNameCondition={{
               ...classNameCondition,
-              'border-line-strong': isValid,
+              'border-line-strong': isValid === true,
               'disabled:border-status-infomative':
-                name === 'emailCode' && isValid,
+                name === 'emailCode' && isValid === true,
               'border-status-error focus:border-status-error':
-                Boolean(value) && !isValid,
+                Boolean(value) && isValid === false,
               'mx-0': Boolean(children),
             }}
             onChange={onChange}
@@ -75,10 +75,11 @@ const AuthText = memo(
 
         <p
           className={cn('absolute bottom-0 text-xs', {
-            'text-status-error': name !== 'emailCode' && value && !isValid,
+            'text-status-error':
+              name !== 'emailCode' && value && isValid === false,
           })}
         >
-          {name !== 'emailCode' && value && !isValid
+          {name !== 'emailCode' && value && isValid === false
             ? AUTH_ERROR_MESSAGE[name]
             : null}
           {name === 'emailCode' && isValid && AUTH_SUCCESS_MESSAGE[name]}

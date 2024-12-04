@@ -1,7 +1,7 @@
 'use client';
 
 import AuthText from '@/components/auth/input/AuthText';
-import { useAuthInput } from '@/hooks/useAuthInput';
+import useAuthInput from '@/hooks/useAuthInput';
 import { Button } from '@/components/common/button/Button';
 import AuthPassword from './input/AuthPassword';
 import AuthEmailSert from './input/AuthEmailSert';

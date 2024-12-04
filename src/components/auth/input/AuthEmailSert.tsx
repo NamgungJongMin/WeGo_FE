@@ -1,6 +1,6 @@
 import { useCallback, memo, useState, useEffect } from 'react';
 
-import { useAuthInput } from '@/hooks/useAuthInput';
+import useAuthInput from '@/hooks/useAuthInput';
 import { Button } from '@/components/common/button/Button';
 import formatTimeToMMSS from '@/utils/formatTimeToMMSS';
 import { AUTH_SUCCESS_MESSAGE } from '@/constants/auth';
@@ -79,7 +79,7 @@ const AuthEmailSert = memo(() => {
         classNameCondition={{
           hidden: !viewEmailCode,
           'border-status-infomative focus:border-status-infomative':
-            emailCode.isValid,
+            emailCode.isValid === false,
         }}
       >
         <Button
