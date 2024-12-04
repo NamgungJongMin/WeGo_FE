@@ -1,0 +1,7 @@
+[
+  { "reviewId": 1, "nickname": "id_tyrr", "reviewImage": "/test1.png" },
+  { "reviewId": 2, "nickname": "한국사람", "reviewImage": "/test2.png" },
+  { "reviewId": 3, "nickname": "여름이 좋아", "reviewImage": "/test3.png" },
+  { "reviewId": 4, "nickname": "@id_tyrr", "reviewImage": "/test1.png" },
+  { "reviewId": 5, "nickname": "@id_tyrr", "reviewImage": "/test4.jpg" }
+]
