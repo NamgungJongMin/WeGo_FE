@@ -1,8 +1,11 @@
 import Textarea from '@/components/common/textarea/Textarea';
+import cn from '@/utils/cn';
+import { VariantProps } from 'class-variance-authority';
+import { LabelVariants } from '@/components/inputwithlabel/TextInputWithLabel';
 
-interface Props {
-  label: string | React.ReactNode;
-  srOnly?: boolean;
+interface Props extends VariantProps<typeof LabelVariants> {
+  label: string;
+  state?: 'default' | 'srOnly' | 'required';
   name: string;
   value: string;
   placeholder?: string;
@@ -15,7 +18,7 @@ interface Props {
 
 const TextareaWithLabel = ({
   label,
-  srOnly,
+  state,
   name,
   value,
   placeholder,
@@ -29,7 +32,7 @@ const TextareaWithLabel = ({
     <div className="flex w-fit flex-col gap-1.5">
       <label
         htmlFor={name}
-        className={`${srOnly && 'sr-only'} w-fit cursor-pointer text-sm text-label-normal`}
+        className={cn(LabelVariants({ state, className }), classNameCondition)}
       >
         {label}
       </label>

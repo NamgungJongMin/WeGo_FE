@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import TextInputWithLabel from './TextInputWithLabel';
+import { TextInputWithLabel } from './TextInputWithLabel';
 
 describe('TextInputWithLabel 컴포넌트', () => {
   it('label이 정상적으로 렌더링되어야 한다', () => {
@@ -21,20 +21,32 @@ describe('TextInputWithLabel 컴포넌트', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('srOnly가 true일 경우 label에 sr-only 클래스가 적용되어야 한다', () => {
+  it('state에 따라 레이블의 클래스가 정해져야 한다', () => {
     render(
       <TextInputWithLabel
-        label="Username"
-        srOnly
-        name="username"
+        label="srOnly"
+        state="srOnly"
+        name="srOnly"
+        type="text"
+        value=""
+        onChange={() => {}}
+      />,
+    );
+    render(
+      <TextInputWithLabel
+        label="required"
+        state="required"
+        name="required"
         type="text"
         value=""
         onChange={() => {}}
       />,
     );
 
-    const hiddenLabel = screen.getByText('Username');
-    expect(hiddenLabel).toHaveClass('sr-only');
+    const srOnlyLabel = screen.getByText('srOnly');
+    const requiredLabel = screen.getByText('required');
+    expect(srOnlyLabel).toHaveClass('sr-only');
+    expect(requiredLabel).toHaveClass("after:content-['*']");
   });
 
   it('children이 전달되면 아이콘이 렌더링되어야 한다', () => {

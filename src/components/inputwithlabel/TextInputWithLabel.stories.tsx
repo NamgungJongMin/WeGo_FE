@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Location from '@/assets/input_location.svg';
-import TextInputWithLabel from './TextInputWithLabel';
+import { TextInputWithLabel } from './TextInputWithLabel';
 
 const meta = {
-  title: 'Components/Common/TextInputWithLabel',
+  title: 'Components/InputWithLabel/TextInputWithLabel',
   component: TextInputWithLabel,
   parameters: {
     layout: 'centered',
@@ -51,8 +51,20 @@ export const WithIcon: Story = {
 export const HiddenLabel: Story = {
   args: {
     label: 'HiddenLabel',
-    srOnly: true,
+    state: 'srOnly',
     name: 'HiddenLabel',
+    type: 'text',
+    value: '',
+    placeholder: '내용을 입력해주세요',
+    size: 'default',
+  },
+};
+
+export const RequiredLabel: Story = {
+  args: {
+    label: 'HiddenLabel',
+    state: 'required',
+    name: 'RequiredLabel',
     type: 'text',
     value: '',
     placeholder: '내용을 입력해주세요',

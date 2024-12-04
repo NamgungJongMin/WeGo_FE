@@ -1,9 +1,22 @@
-import React from 'react';
 import TextInput from '@/components/common/input/TextInput';
+import cn from '@/utils/cn';
+import { cva, VariantProps } from 'class-variance-authority';
 
-interface Props {
-  label: string | React.ReactNode;
-  srOnly?: boolean;
+const LabelVariants = cva('text-label-normal w-fit cursor-pointer text-sm', {
+  variants: {
+    state: {
+      default: '',
+      srOnly: 'sr-only',
+      required: "after:text-status-infomative after:ml-0.5 after:content-['*']",
+    },
+  },
+  defaultVariants: {
+    state: 'default',
+  },
+});
+interface Props extends VariantProps<typeof LabelVariants> {
+  label: string;
+  state?: 'default' | 'srOnly' | 'required';
   name: string;
   type: string;
   value: string;
@@ -13,12 +26,13 @@ interface Props {
   className?: string;
   classNameCondition?: Record<string, boolean>;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
 }
 
 const TextInputWithLabel = ({
   label,
-  srOnly,
+  state,
   name,
   type,
   value,
@@ -28,13 +42,14 @@ const TextInputWithLabel = ({
   className,
   classNameCondition,
   onChange,
+  onKeyDown,
   children,
 }: Props) => {
   return (
     <div className="flex w-fit flex-col gap-1.5">
       <label
         htmlFor={name}
-        className={`${srOnly && 'sr-only'} w-fit cursor-pointer text-sm text-label-normal`}
+        className={cn(LabelVariants({ state, className }), classNameCondition)}
       >
         {label}
       </label>
@@ -52,6 +67,7 @@ const TextInputWithLabel = ({
             'peer pl-[38px]': !!children,
           }}
           onChange={onChange}
+          onKeyDown={onKeyDown}
         />
         <div className="absolute bottom-3.5 left-4 h-[18px] w-[18px] peer-placeholder-shown:text-label-alternative peer-focus:text-label-normal">
           {children}
@@ -61,4 +77,4 @@ const TextInputWithLabel = ({
   );
 };
 
-export default TextInputWithLabel;
+export { TextInputWithLabel, LabelVariants };
