@@ -23,6 +23,7 @@ interface Props extends VariantProps<typeof TextInputVariants> {
   className?: string;
   classNameCondition?: Record<string, boolean>;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const TextInput = ({
@@ -36,9 +37,11 @@ const TextInput = ({
   className,
   classNameCondition,
   onChange,
+  onKeyDown,
 }: Props) => {
   return (
     <input
+      id={name}
       type={type}
       name={name}
       value={value}
@@ -49,6 +52,7 @@ const TextInput = ({
       autoComplete="off"
       className={cn(TextInputVariants({ size, className }), classNameCondition)}
       onChange={onChange}
+      onKeyDown={onKeyDown}
     />
   );
 };

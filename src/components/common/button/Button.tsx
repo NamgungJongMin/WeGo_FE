@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import cn from '@/utils/cn';
 import { cva, VariantProps } from 'class-variance-authority';
 
@@ -32,31 +33,37 @@ interface Props extends VariantProps<typeof ButtonVariants> {
   disabled?: boolean;
 }
 
-const Button = ({
-  fill,
-  size,
-  label,
-  disabled,
-  children,
-  className,
-  classNameCondition,
-  handler,
-}: Props) => {
-  return (
-    <button
-      type="button"
-      disabled={disabled}
-      className={cn(
-        ButtonVariants({ fill, size }),
-        className,
-        classNameCondition,
-      )}
-      onClick={handler}
-    >
-      {label && label}
-      {children && children}
-    </button>
-  );
-};
-
+const Button = forwardRef<HTMLButtonElement, Props>(
+  (
+    {
+      fill,
+      size,
+      label,
+      disabled,
+      children,
+      className,
+      classNameCondition,
+      handler,
+    },
+    ref,
+  ) => {
+    return (
+      <button
+        ref={ref}
+        type="button"
+        disabled={disabled}
+        className={cn(
+          ButtonVariants({ fill, size }),
+          className,
+          classNameCondition,
+        )}
+        onClick={handler}
+      >
+        {label && label}
+        {children && children}
+      </button>
+    );
+  },
+);
+Button.displayName = 'Button';
 export { Button, ButtonVariants };
