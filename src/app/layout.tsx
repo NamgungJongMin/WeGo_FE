@@ -5,6 +5,7 @@ import { MswComponent } from '@/mocks/msw.component';
 import QueryProviders from '@/utils/queryProvider';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import MainHeader from '@/components/MainHeader/Header';
+import MainNavigation from '@/components/nav/MainNavigation';
 
 const pretendard = localFont({
   src: '../assets/fonts/PretendardVariable.woff2',
@@ -30,6 +31,7 @@ const RootLayout = async ({
         <QueryProviders>
           <MainHeader />
           {children}
+          <MainNavigation />
         </QueryProviders>
         <SpeedInsights />
       </body>
