@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 export default {
   content: [
@@ -52,5 +53,112 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addComponents }) => {
+      addComponents({
+        // title
+        '.title-1-eb': {
+          fontSize: '32px',
+          lineHeight: '40px',
+          fontWeight: '800',
+        },
+        '.title-1-b': {
+          fontSize: '32px',
+          lineHeight: '40px',
+          fontWeight: '700',
+        },
+        '.title-2-b': {
+          fontSize: '28px',
+          lineHeight: '36px',
+          fontWeight: '700',
+        },
+        '.title-3-eb': {
+          fontSize: '24px',
+          lineHeight: '32px',
+          fontWeight: '800',
+        },
+        '.title-4-b': {
+          fontSize: '20px',
+          lineHeight: '28px',
+          fontWeight: '700',
+        },
+        '.title-5-b': {
+          fontSize: '18px',
+          lineHeight: '26px',
+          fontWeight: '700',
+        },
+        '.title-5-sb': {
+          fontSize: '18px',
+          lineHeight: '26px',
+          fontWeight: '600',
+        },
+
+        // heading
+        '.heading-1-b': {
+          fontSize: '16px',
+          lineHeight: '24px',
+          fontWeight: '700',
+        },
+        '.heading-1-sb': {
+          fontSize: '16px',
+          lineHeight: '24px',
+          fontWeight: '600',
+        },
+
+        // body
+        '.body-1-r': {
+          fontSize: '16px',
+          lineHeight: '24px',
+          fontWeight: '400',
+        },
+        '.body-1-m': {
+          fontSize: '16px',
+          lineHeight: '24px',
+          fontWeight: '500',
+        },
+        '.body-2-r': {
+          fontSize: '14px',
+          lineHeight: '22px',
+          fontWeight: '400',
+        },
+        '.body-2-sb': {
+          fontSize: '14px',
+          lineHeight: '22px',
+          fontWeight: '600',
+        },
+        '.body-2-b': {
+          fontSize: '14px',
+          lineHeight: '22px',
+          fontWeight: '700',
+        },
+        '.body-3-r': {
+          fontSize: '12px',
+          lineHeight: '18px',
+          fontWeight: '400',
+        },
+        '.body-3-m': {
+          fontSize: '12px',
+          lineHeight: '18px',
+          fontWeight: '500',
+        },
+        '.body-3-sb': {
+          fontSize: '12px',
+          lineHeight: '18px',
+          fontWeight: '600',
+        },
+
+        // caption
+        '.caption-1-r': {
+          fontSize: '10px',
+          lineHeight: '16px',
+          fontWeight: '400',
+        },
+        '.caption-1-sb': {
+          fontSize: '10px',
+          lineHeight: '16px',
+          fontWeight: '600',
+        },
+      });
+    }),
+  ],
 } satisfies Config;
