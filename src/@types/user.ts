@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   id: number;
   email: string;
   password: string;
@@ -14,4 +14,9 @@ interface User {
   ParticipationList: [];
 }
 
-export default User;
+export interface UserList {
+  profileImage: string;
+  nickname: string;
+  openTravelCount: number;
+  reviewCount: number;
+}

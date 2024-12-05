@@ -5,7 +5,7 @@ import AddCircle from '@/assets/add.svg';
 import { Review } from '@/@types/review';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
-import ReviewCard from '../card/ReviewCard';
+import ReviewCard from '@/components/card/ReviewCard';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -13,7 +13,7 @@ interface Props {
   reviewList: Review[];
 }
 
-const ReviewListSection = ({ reviewList }: Props) => {
+const WeeklyReview = ({ reviewList }: Props) => {
   return (
     <section className="flex flex-col justify-start gap-5 bg-black py-10 pl-5">
       <header>
@@ -61,4 +61,4 @@ const ReviewListSection = ({ reviewList }: Props) => {
   );
 };
 
-export default ReviewListSection;
+export default WeeklyReview;

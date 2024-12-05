@@ -1,14 +1,14 @@
 import { Travel } from '@/@types/travel';
 import { formatStartDate, getWeekNumber } from '@/utils/dateChageKr';
 import { useMemo } from 'react';
-import TravelCard from '../card/TravelCard';
+import TravelCard from '@/components/card/TravelCard';
 import WeeklyHeader from './WeeklyHeader';
 
 interface Props {
   travelList: Travel[];
 }
 
-function WeeklyPopular({ travelList }: Props) {
+const WeeklyPopular = ({ travelList }: Props) => {
   const startDateFormatted = useMemo(() => {
     return travelList.map((travel) => ({
       ...travel,
@@ -37,5 +37,5 @@ function WeeklyPopular({ travelList }: Props) {
       ))}
     </section>
   );
-}
+};
 export default WeeklyPopular;

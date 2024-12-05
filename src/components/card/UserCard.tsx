@@ -1,13 +1,13 @@
-import User from '@/@types/user';
+import { UserList } from '@/@types/user';
 import Image from 'next/image';
 import Link from 'next/link';
 
-type Props = {
-  openTravelCount: number;
-  reviewCount: number;
-} & Pick<User, 'nickname' | 'image'>;
-
-const UserCard = ({ nickname, image, openTravelCount, reviewCount }: Props) => {
+const UserCard = ({
+  nickname,
+  profileImage,
+  openTravelCount,
+  reviewCount,
+}: UserList) => {
   return (
     <Link
       href="/"
@@ -16,7 +16,7 @@ const UserCard = ({ nickname, image, openTravelCount, reviewCount }: Props) => {
     >
       <div className="h-16 w-16 overflow-hidden rounded-full">
         <Image
-          src={image}
+          src={profileImage}
           alt={`${nickname}의 프로필 사진`}
           width={64}
           height={64}

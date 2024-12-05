@@ -1,18 +1,22 @@
+import { Suspense } from 'react';
 import HeroSection from '@/components/main/HeroSection';
-import WeeklyPopular from '@/components/main/WeeklyPopular';
-import travelList from '@/mocks/travel/travelList.json';
-import ReviewListSection from '@/components/main/ReviewListSection';
-import reviewList from '@/mocks/review/reviewList.json';
-import userList from '@/mocks/user/popularUser.json';
-import UserPopular from '@/components/main/Userpopular';
+import WeeklyPopularContainer from '@/components/main/weeklyTravel/WeeklyPopularContainer';
+import WeeklyReviewContainer from '@/components/main/weeklyReview/WeeklyReviewContainer';
+import WeeklyUserContainer from '@/components/main/weeklyUser/WeeklyUserContainer';
 
 const Home = () => {
   return (
     <main>
       <HeroSection />
-      <WeeklyPopular travelList={travelList} />
-      <ReviewListSection reviewList={reviewList} />
-      <UserPopular userList={userList} />
+      <Suspense fallback="로딩중">
+        <WeeklyPopularContainer />
+      </Suspense>
+      <Suspense fallback="로딩중">
+        <WeeklyReviewContainer />
+      </Suspense>
+      <Suspense fallback="로딩중">
+        <WeeklyUserContainer />
+      </Suspense>
     </main>
   );
 };

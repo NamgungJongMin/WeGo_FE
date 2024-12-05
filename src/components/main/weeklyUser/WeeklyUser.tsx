@@ -1,19 +1,13 @@
 import Link from 'next/link';
 import Plus from '@/assets/plus.svg';
-import UserCard from '../card/UserCard';
+import { UserList } from '@/@types/user';
+import UserCard from '../../card/UserCard';
 
 interface Props {
-  profileImage: string;
-  nickname: string;
-  openTravelCount: number;
-  reviewCount: number;
+  userList: UserList[];
 }
 
-interface UserListProps {
-  userList: Props[];
-}
-
-const UserPopular = ({ userList }: UserListProps) => {
+const WeeklyUser = ({ userList }: Props) => {
   const currentMonth = new Date().getMonth() + 1;
   return (
     <section className="px-5 pb-32 pt-14">
@@ -39,7 +33,7 @@ const UserPopular = ({ userList }: UserListProps) => {
           <UserCard
             key={user.nickname}
             nickname={user.nickname}
-            image={user.profileImage}
+            profileImage={user.profileImage}
             openTravelCount={user.openTravelCount}
             reviewCount={user.reviewCount}
           />
@@ -48,4 +42,4 @@ const UserPopular = ({ userList }: UserListProps) => {
     </section>
   );
 };
-export default UserPopular;
+export default WeeklyUser;
