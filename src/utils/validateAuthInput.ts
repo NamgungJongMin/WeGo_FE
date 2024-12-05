@@ -1,11 +1,5 @@
-import type { TextInput, PasswordInput } from '@/@types/auth';
+import type { ValidateOptions } from '@/@types/auth';
 import { REGEX } from '@/constants/auth';
-
-interface ValidateOptions {
-  name: keyof TextInput | keyof PasswordInput;
-  value: string;
-  password?: string;
-}
 
 const validate = ({ name, value, password }: ValidateOptions): boolean => {
   switch (name) {

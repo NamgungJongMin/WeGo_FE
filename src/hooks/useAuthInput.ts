@@ -23,7 +23,7 @@ const useAuthInput = ({ name, password }: Props) => {
         const validationResult = validate({ name, value: newValue, password });
 
         setIsValid(validationResult);
-      }, 300),
+      }, 250),
     [name, password],
   );
 

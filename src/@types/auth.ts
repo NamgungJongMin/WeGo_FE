@@ -12,4 +12,10 @@ interface PasswordInput {
   passwordConfirm: string;
 }
 
-export type { TextInput, PasswordInput };
+interface ValidateOptions {
+  name: keyof TextInput | keyof PasswordInput;
+  value: string;
+  password?: string;
+}
+
+export type { TextInput, PasswordInput, ValidateOptions };

@@ -26,6 +26,7 @@ const ButtonVariants = cva(
 
 interface Props extends VariantProps<typeof ButtonVariants> {
   label?: string;
+  type?: 'submit';
   children?: React.ReactNode;
   className?: string;
   classNameCondition?: Record<string, boolean>;
@@ -39,6 +40,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       fill,
       size,
       label,
+      type,
       disabled,
       children,
       className,
@@ -50,7 +52,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        type="button"
+        type={type === 'submit' ? 'submit' : 'button'}
         disabled={disabled}
         className={cn(
           ButtonVariants({ fill, size }),

@@ -31,6 +31,15 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://api.we-go.world/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

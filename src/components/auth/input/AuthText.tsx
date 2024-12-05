@@ -65,7 +65,7 @@ const AuthText = memo(
               'disabled:border-status-infomative':
                 name === 'emailCode' && isValid === true,
               'border-status-error focus:border-status-error':
-                Boolean(value) && isValid === false,
+                name !== 'emailCode' && Boolean(value) && isValid === false,
               'mx-0': Boolean(children),
             }}
             onChange={onChange}
