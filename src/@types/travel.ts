@@ -6,4 +6,5 @@ export interface Travel {
   maxParticipant: number;
   currentParticipant: number;
   startDate: string;
+  formattedStartDate?: string;
 }
