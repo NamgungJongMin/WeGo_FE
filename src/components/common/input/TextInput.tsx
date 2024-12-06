@@ -8,6 +8,7 @@ const TextInputVariants = cva(
       size: {
         default: 'w-[335px]',
         withButton: 'w-[218px]',
+        halfButton: 'w-[164px]',
       },
     },
   },
@@ -19,11 +20,13 @@ interface Props extends VariantProps<typeof TextInputVariants> {
   value: string;
   disabled?: boolean;
   maxLength?: number;
+  readOnly?: boolean;
   placeholder?: string;
   className?: string;
   classNameCondition?: Record<string, boolean>;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
 }
 
 const TextInput = ({
@@ -32,12 +35,14 @@ const TextInput = ({
   value,
   disabled,
   maxLength,
+  readOnly,
   placeholder,
   size,
   className,
   classNameCondition,
   onChange,
   onKeyDown,
+  onClick,
 }: Props) => {
   return (
     <input
@@ -48,11 +53,13 @@ const TextInput = ({
       disabled={disabled}
       spellCheck="false"
       maxLength={maxLength}
+      readOnly={readOnly}
       placeholder={placeholder}
       autoComplete="off"
       className={cn(TextInputVariants({ size, className }), classNameCondition)}
       onChange={onChange}
       onKeyDown={onKeyDown}
+      onClick={onClick}
     />
   );
 };

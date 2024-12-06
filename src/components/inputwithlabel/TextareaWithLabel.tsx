@@ -13,6 +13,8 @@ interface Props extends VariantProps<typeof LabelVariants> {
   size?: 'default' | 'small';
   className?: string;
   classNameCondition?: Record<string, boolean>;
+  textareaClassName?: string;
+  textareaClassNameCondition?: Record<string, boolean>;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -26,6 +28,8 @@ const TextareaWithLabel = ({
   size,
   className,
   classNameCondition,
+  textareaClassName,
+  textareaClassNameCondition,
   onChange,
 }: Props) => {
   return (
@@ -42,8 +46,8 @@ const TextareaWithLabel = ({
         placeholder={placeholder}
         maxLength={maxLength}
         size={size}
-        className={className}
-        classNameCondition={classNameCondition}
+        className={textareaClassName}
+        classNameCondition={textareaClassNameCondition}
         onChange={onChange}
       />
     </div>
