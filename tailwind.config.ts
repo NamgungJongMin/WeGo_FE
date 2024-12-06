@@ -121,6 +121,11 @@ export default {
           lineHeight: '22px',
           fontWeight: '400',
         },
+        '.body-2-m': {
+          fontSize: '14px',
+          lineHeight: '22px',
+          fontWeight: '500',
+        },
         '.body-2-sb': {
           fontSize: '14px',
           lineHeight: '22px',
