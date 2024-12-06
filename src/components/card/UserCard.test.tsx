@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import mockUser from '@/mocks/user/popularUser.json';
+import mockUser from '@/mocks/data/user/userList.json';
 import { render, screen } from '@testing-library/react';
 import UserCard from './UserCard';
 

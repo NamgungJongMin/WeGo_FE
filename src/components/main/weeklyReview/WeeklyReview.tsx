@@ -2,18 +2,34 @@
 
 import Link from 'next/link';
 import AddCircle from '@/assets/add.svg';
-import { Review } from '@/@types/review';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import ReviewCard from '@/components/card/ReviewCard';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { fetchPopularReview } from '@/api/reviewApi';
+import { useQuery } from '@tanstack/react-query';
 
-interface Props {
-  reviewList: Review[];
-}
+const WeeklyReview = () => {
+  const {
+    data: reviewList,
+    isFetching,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['review', 'popular'],
+    queryFn: fetchPopularReview,
+  });
+  if (error && !isFetching) {
+    console.error('에러', { error });
+    return (
+      <div>
+        데이터를 불러오는 데 실패했습니다. 나중에 다시 시도해주세요.
+        <p>{error.message}</p>
+      </div>
+    );
+  }
 
-const WeeklyReview = ({ reviewList }: Props) => {
   return (
     <section className="flex flex-col justify-start gap-5 bg-black py-10 pl-5">
       <header>
@@ -25,6 +41,7 @@ const WeeklyReview = ({ reviewList }: Props) => {
         </p>
       </header>
       <main className="flex overflow-hidden">
+        {isLoading && <div>로딩중 WeeklyReview</div>}
         <Swiper
           slidesPerView="auto"
           spaceBetween={16}
@@ -32,15 +49,16 @@ const WeeklyReview = ({ reviewList }: Props) => {
           modules={[Pagination]}
           style={{ width: '375px' }}
         >
-          {reviewList.map((review) => (
-            <SwiperSlide key={review.reviewId} style={{ width: '180px' }}>
-              <ReviewCard
-                reviewId={review.reviewId}
-                nickname={review.nickname}
-                reviewImage={review.reviewImage}
-              />
-            </SwiperSlide>
-          ))}
+          {reviewList &&
+            reviewList.map((review) => (
+              <SwiperSlide key={review.reviewId} style={{ width: '180px' }}>
+                <ReviewCard
+                  reviewId={review.reviewId}
+                  nickname={review.nickname}
+                  reviewImage={review.reviewImage}
+                />
+              </SwiperSlide>
+            ))}
           <SwiperSlide style={{ width: '120px' }}>
             <Link
               href="/"

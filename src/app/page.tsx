@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import HeroSection from '@/components/main/HeroSection';
 import WeeklyPopularContainer from '@/components/main/weeklyTravel/WeeklyPopularContainer';
 import WeeklyReviewContainer from '@/components/main/weeklyReview/WeeklyReviewContainer';
@@ -8,15 +7,9 @@ const Home = () => {
   return (
     <main>
       <HeroSection />
-      <Suspense fallback="로딩중">
-        <WeeklyPopularContainer />
-      </Suspense>
-      <Suspense fallback="로딩중">
-        <WeeklyReviewContainer />
-      </Suspense>
-      <Suspense fallback="로딩중">
-        <WeeklyUserContainer />
-      </Suspense>
+      <WeeklyPopularContainer />
+      <WeeklyReviewContainer />
+      <WeeklyUserContainer />
     </main>
   );
 };

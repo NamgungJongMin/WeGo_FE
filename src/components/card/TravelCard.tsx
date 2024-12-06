@@ -18,7 +18,6 @@ const TravelCard = ({
     () => Math.round((currentParticipant / maxParticipant) * 100),
     [currentParticipant, maxParticipant],
   );
-  const progressbar = `w-${progressRate}%`;
   const iconAndText =
     "flex items-center gap-0.5 after:ml-[6px] after:text-line-normal after:content-['|']";
 
@@ -53,7 +52,8 @@ const TravelCard = ({
         </div>
         <div className="relative h-[6px] overflow-hidden rounded-[10px] bg-gray-200">
           <div
-            className={`absolute bottom-0 left-0 top-0 ${progressbar} rounded-full bg-primary-normal`}
+            className="absolute bottom-0 left-0 top-0 rounded-full bg-primary-normal"
+            style={{ width: `${progressRate}%` }}
           />
         </div>
       </div>
