@@ -66,7 +66,7 @@ const SignupForm = () => {
   }, [password.value, passwordConfirm]);
 
   return (
-    <form onSubmit={handleSignup} className="w-full">
+    <form onSubmit={handleSignup} className="w-full" data-testid="signup-form">
       <AuthEmailCertification
         email={email}
         emailCode={emailCode}

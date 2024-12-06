@@ -1,5 +1,5 @@
 import { http, HttpResponse, PathParams } from 'msw';
-import { FAKE_USER_EMAIL, FAKE_USER_PASSWORD } from '@/mocks/data/auth';
+import { FAKE_USER_EMAIL, FAKE_USER_PASSWORD } from '@/mocks/data/auth/auth';
 
 interface LoginRequestBody {
   email: string;

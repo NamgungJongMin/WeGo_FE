@@ -26,7 +26,7 @@ const checkMail = async ({ email, emailCode }: CheckMailRequestBody) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(email),
+    body: JSON.stringify({ email }),
   });
 
   if (!res.ok) {

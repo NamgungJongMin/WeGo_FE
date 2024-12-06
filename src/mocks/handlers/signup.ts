@@ -3,7 +3,7 @@ import {
   FAKE_EMAIL_CODE,
   FAKE_USER_EMAIL,
   FAKE_VERIFIED_TOKEN,
-} from '@/mocks/data/auth';
+} from '@/mocks/data/auth/auth';
 
 interface MailSendRequestBody {
   email: string;
@@ -45,35 +45,32 @@ const signup = [
   ),
 
   /* ------------------------------- 이메일 인증코드 확인 ------------------------------ */
-  http.post<PathParams>(
-    `/api/auth/mail-check?verifyNumber=${FAKE_EMAIL_CODE}`,
-    async ({ request }) => {
-      const url = new URL(request.url);
-      const emailCode = url.searchParams.get('verifyNumber');
+  http.post<PathParams>(`/api/auth/mail-check`, async ({ request }) => {
+    const url = new URL(request.url);
+    const emailCode = url.searchParams.get('verifyNumber');
 
-      // 이메일 인증코드 확인 실패
-      if (Number(emailCode) !== FAKE_EMAIL_CODE) {
-        return HttpResponse.json(
-          {
-            message: 'Invalid email code',
-            fakeCode: FAKE_EMAIL_CODE,
-          },
-          {
-            status: 400,
-          },
-        );
-      }
-
-      // 이메일 인증코드 확인 성공
+    // 이메일 인증코드 확인 실패
+    if (Number(emailCode) !== FAKE_EMAIL_CODE) {
       return HttpResponse.json(
         {
-          message: 'Email code verified',
-          verifiedToken: FAKE_VERIFIED_TOKEN,
+          message: 'Invalid email code',
+          fakeCode: FAKE_EMAIL_CODE,
         },
-        { status: 200 },
+        {
+          status: 400,
+        },
       );
-    },
-  ),
+    }
+
+    // 이메일 인증코드 확인 성공
+    return HttpResponse.json(
+      {
+        message: 'Email code verified',
+        verifiedToken: FAKE_VERIFIED_TOKEN,
+      },
+      { status: 200 },
+    );
+  }),
 
   /* -------------------------------- 회원 가입 요청 -------------------------------- */
   http.post<SignupRequestBody, PathParams>(
