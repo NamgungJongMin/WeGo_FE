@@ -2,10 +2,14 @@ import { QueryError } from '@/@types/query';
 import { checkMail } from '@/api/auth/signupApi';
 import { useMutation } from '@tanstack/react-query';
 
-const useCheckMail = (onSuccessCallback: (token: string) => void) => {
+const useCheckMail = (
+  onSuccessCallback: (token: string) => void,
+  onErrorCallback: () => void,
+) => {
   return useMutation({
     mutationFn: checkMail,
     onError: (error: QueryError) => {
+      onErrorCallback();
       switch (error.status) {
         case 400:
           // 400 에러 핸들링

@@ -32,7 +32,6 @@ const LoginForm = () => {
         value={email.value}
         isValid={email.isValid}
         onChange={email.handleChange}
-        className="mb-6"
       />
 
       <AuthPassword

@@ -21,7 +21,7 @@ interface Props {
 const AuthPassword = memo(
   ({ name, value, isValid, important, onChange }: Props) => {
     return (
-      <div className="relative">
+      <div className="relative mb-6">
         <label htmlFor={name}>
           {AUTH_LABEL[name]}
           {important && (
@@ -34,7 +34,6 @@ const AuthPassword = memo(
           value={value}
           placeholder={AUTH_PLACEHOLDER[name]}
           onChange={onChange}
-          className="mb-6"
           classNameCondition={{
             'border-label-normal': isValid === true,
             'border-status-error focus:border-status-error':
@@ -43,7 +42,7 @@ const AuthPassword = memo(
         />
 
         <p
-          className={cn('absolute bottom-0 text-xs', {
+          className={cn('mt-1 text-xs', {
             'text-red-500': value && isValid === false,
           })}
         >

@@ -11,13 +11,14 @@ const AUTH_LABEL = {
 
 const AUTH_ERROR_MESSAGE = {
   email: '올바른 이메일 형식을 입력해주세요.',
+  emailSend: '이미 가입된 이메일 입니다.',
   password: '영문, 숫자를 포함한 8-15자리를 입력해주세요',
   passwordConfirm: '비밀번호가 일치하지 않습니다',
   name: '이름을 올바르게 입력해주세요.',
   nickname: '2-10자 사이로 입력해주세요',
   birthDate: '올바른 생년월일을 입력해주세요',
   contact: '올바른 연락처 번호를 입력해주세요',
-  emailCode: '인증번호 6자리를 입력해주세요.',
+  emailCode: '이메일 인증이 실패 하였습니다.',
 } as const;
 
 const REGEX = {

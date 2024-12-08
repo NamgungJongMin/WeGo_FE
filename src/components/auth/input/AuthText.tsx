@@ -5,7 +5,6 @@ import {
   AUTH_LABEL,
   AUTH_ERROR_MESSAGE,
   AUTH_PLACEHOLDER,
-  AUTH_SUCCESS_MESSAGE,
 } from '@/constants/auth';
 import TextInput from '@/components/common/input/TextInput';
 import type { TextInput as TextInputType } from '@/@types/auth';
@@ -19,6 +18,7 @@ interface Props {
   disabled?: boolean;
   size?: 'default' | 'withButton';
   important?: boolean;
+  successMailSend?: boolean | null;
   className?: string;
   classNameCondition?: Record<string, boolean>;
   children?: React.ReactNode;
@@ -34,13 +34,18 @@ const AuthText = memo(
     disabled,
     size = 'default',
     important,
+    successMailSend,
     className,
     classNameCondition,
     children,
     onChange,
   }: Props) => {
     return (
-      <div className="relative">
+      <div
+        className={cn('relative mb-6', {
+          'mb-0': name === 'emailCode' || successMailSend !== undefined,
+        })}
+      >
         <label
           htmlFor={name}
           className={`text-sm ${name === 'emailCode' && 'sr-only'}`}
@@ -65,7 +70,8 @@ const AuthText = memo(
               'disabled:border-status-infomative':
                 name === 'emailCode' && isValid === true,
               'border-status-error focus:border-status-error':
-                name !== 'emailCode' && Boolean(value) && isValid === false,
+                successMailSend === false ||
+                (Boolean(value) && isValid !== null && isValid === false),
               'mx-0': Boolean(children),
             }}
             onChange={onChange}
@@ -74,15 +80,13 @@ const AuthText = memo(
         </div>
 
         <p
-          className={cn('absolute bottom-0 text-xs', {
-            'text-status-error':
-              name !== 'emailCode' && value && isValid === false,
+          className={cn('mt-1 text-xs', {
+            'text-status-error': successMailSend === false || isValid === false,
           })}
         >
-          {name !== 'emailCode' && value && isValid === false
+          {name !== 'emailCode' && isValid === false && value
             ? AUTH_ERROR_MESSAGE[name]
             : null}
-          {name === 'emailCode' && isValid && AUTH_SUCCESS_MESSAGE[name]}
         </p>
       </div>
     );

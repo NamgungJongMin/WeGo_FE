@@ -2,7 +2,6 @@ import { useCallback, memo, useState, useEffect } from 'react';
 
 import { Button } from '@/components/common/button/Button';
 import formatTimeToMMSS from '@/utils/formatTimeToMMSS';
-import { AUTH_SUCCESS_MESSAGE } from '@/constants/auth';
 import useSendMail from '@/queries/auth/useSendMail';
 import useCheckMail from '@/queries/auth/useCheckMail';
 import AuthText from './AuthText';
@@ -18,8 +17,8 @@ interface PropsState {
 interface Props {
   email: PropsState;
   emailCode: PropsState;
-  isEmailCertified: boolean;
-  setIsEmailCertified: (isEmailCertified: boolean) => void;
+  isEmailCertified: boolean | null;
+  setIsEmailCertified: (isEmailCertified: boolean | null) => void;
   setCertifiedToken: (certifiedToken: string) => void;
 }
 
@@ -31,22 +30,34 @@ const AuthEmailCertification = memo(
     setIsEmailCertified,
     setCertifiedToken,
   }: Props) => {
-    const [due, setDue] = useState(0);
-    const [viewEmailCode, setViewEmailCode] = useState(false);
+    const [due, setDue] = useState(300);
+    const [successMailSend, setSuccessMailSend] = useState<boolean | null>(
+      null,
+    );
 
-    const { mutate: sendMail } = useSendMail(() => {
-      if (!viewEmailCode) {
-        setViewEmailCode(true);
-      }
-      setDue(300);
-      emailCode.setIsValid(false);
-      emailCode.setValue('');
-    });
+    const { mutate: sendMail } = useSendMail(
+      () => {
+        if (!successMailSend) {
+          setSuccessMailSend(true);
+        }
+        setDue(300);
+        emailCode.setIsValid(false);
+        emailCode.setValue('');
+      },
+      () => {
+        setSuccessMailSend(false);
+      },
+    );
 
-    const { mutate: checkMail } = useCheckMail((token: string) => {
-      setIsEmailCertified(true);
-      setCertifiedToken(token);
-    });
+    const { mutate: checkMail } = useCheckMail(
+      (token: string) => {
+        setIsEmailCertified(true);
+        setCertifiedToken(token);
+      },
+      () => {
+        setIsEmailCertified(false);
+      },
+    );
 
     const handleVerifyClick = useCallback(() => {
       sendMail({ email: email.value });
@@ -60,7 +71,8 @@ const AuthEmailCertification = memo(
     }, [email.value, emailCode.value, checkMail]);
 
     useEffect(() => {
-      if (!viewEmailCode || due === 0) return () => {};
+      if (!successMailSend || Boolean(isEmailCertified) || due === 0)
+        return () => {};
 
       const timer = setInterval(() => {
         if (due <= 0) {
@@ -71,26 +83,26 @@ const AuthEmailCertification = memo(
       }, 1000);
 
       return () => clearInterval(timer);
-    }, [due, viewEmailCode]);
+    }, [due, isEmailCertified, successMailSend]);
 
     return (
-      <div className="relative">
+      <div className="relative mb-6">
         <AuthText
           type="email"
           name="email"
           value={email.value}
-          disabled={viewEmailCode}
+          disabled={Boolean(successMailSend)}
           isValid={email.isValid}
+          successMailSend={successMailSend}
           important
           onChange={email.handleChange}
-          className="mb-6"
           size="withButton"
         >
           <Button
-            label={viewEmailCode ? '재전송' : '인증'}
+            label={successMailSend ? '재전송' : '인증'}
             handler={handleVerifyClick}
             size="addon"
-            disabled={!email.isValid || isEmailCertified}
+            disabled={!email.isValid || Boolean(isEmailCertified)}
             className="mt-[6px]"
           />
         </AuthText>
@@ -99,36 +111,32 @@ const AuthEmailCertification = memo(
           type="text"
           name="emailCode"
           value={emailCode.value}
-          disabled={due === 0 || isEmailCertified}
-          isValid={isEmailCertified}
+          disabled={due === 0 || Boolean(isEmailCertified)}
+          isValid={due === 0 ? false : isEmailCertified}
           onChange={emailCode.handleChange}
-          className="-mt-3 mb-6"
+          className=""
           size="withButton"
           classNameCondition={{
-            hidden: !viewEmailCode,
+            hidden: !successMailSend,
           }}
         >
+          {successMailSend && !isEmailCertified && (
+            <span className="absolute left-[170px] top-[21px] text-xs text-status-error">
+              {formatTimeToMMSS(due)}
+            </span>
+          )}
+
           <Button
             label="확인"
             handler={handleConfirmClick}
             size="addon"
-            disabled={!emailCode.isValid || due === 0 || isEmailCertified}
-            className="-mt-[12px]"
-            classNameCondition={{ hidden: !viewEmailCode }}
+            disabled={
+              !emailCode.isValid || due === 0 || Boolean(isEmailCertified)
+            }
+            className="mt-[6px]"
+            classNameCondition={{ hidden: !successMailSend }}
           />
         </AuthText>
-
-        {viewEmailCode && !isEmailCertified && (
-          <span className="absolute bottom-0 text-xs text-status-error">
-            {due > 0 ? formatTimeToMMSS(due) : '인증 시간이 초과되었습니다.'}
-          </span>
-        )}
-
-        {isEmailCertified && (
-          <span className="absolute bottom-0 text-xs text-status-infomative">
-            {AUTH_SUCCESS_MESSAGE.emailCode}
-          </span>
-        )}
       </div>
     );
   },

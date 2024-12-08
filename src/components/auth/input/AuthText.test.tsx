@@ -82,22 +82,6 @@ describe('AuthText', () => {
     ).toBeInTheDocument();
   });
 
-  it('이메일 인증 성공 시 성공 메시지가 표시되어야 한다', () => {
-    render(
-      <AuthText
-        type="text"
-        name="emailCode"
-        value="123456"
-        isValid
-        onChange={() => {}}
-      />,
-    );
-
-    expect(
-      screen.getByText('이메일 인증이 완료되었습니다.'),
-    ).toBeInTheDocument();
-  });
-
   it('disabled 상태가 정상적으로 적용되어야 한다', () => {
     render(
       <AuthText

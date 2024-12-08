@@ -2,11 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { server } from '@/mocks/server';
-import {
-  AUTH_LABEL,
-  AUTH_PLACEHOLDER,
-  AUTH_SUCCESS_MESSAGE,
-} from '@/constants/auth';
+import { AUTH_LABEL, AUTH_PLACEHOLDER } from '@/constants/auth';
 import { useState } from 'react';
 import { FAKE_EMAIL_CODE } from '@/mocks/data/auth/auth';
 import AuthEmailCertification from './AuthEmailCertification';
@@ -153,36 +149,6 @@ describe('AuthEmailCertification', () => {
     });
   });
 
-  it('인증 완료 후 성공 메시지가 표시되어야 한다', async () => {
-    renderWithClient(
-      <AuthEmailCertification
-        email={{
-          value: 'test@example.com',
-          isValid: true,
-          setValue: jest.fn(),
-          setIsValid: jest.fn(),
-          handleChange: jest.fn(),
-        }}
-        emailCode={{
-          value: '123456',
-          isValid: true,
-          setValue: jest.fn(),
-          setIsValid: jest.fn(),
-          handleChange: jest.fn(),
-        }}
-        isEmailCertified
-        setIsEmailCertified={jest.fn()}
-        setCertifiedToken={jest.fn()}
-      />,
-    );
-
-    expect(
-      screen.getByText(AUTH_SUCCESS_MESSAGE.emailCode, {
-        selector: 'span.text-status-infomative',
-      }),
-    ).toBeInTheDocument();
-  });
-
   // TODO: 디자이너 작업 후 추가할 테스트
 
   // it('인증 시간 초과 시 메시지가 표시되어야 한다', async () => {
@@ -228,7 +194,9 @@ describe('AuthEmailCertification', () => {
 
   it('이메일 인증 완료 시 입력 필드들이 비활성화되어야 한다', async () => {
     const TestComponent = () => {
-      const [isEmailCertified, setIsEmailCertified] = useState(false);
+      const [isEmailCertified, setIsEmailCertified] = useState<boolean | null>(
+        false,
+      );
 
       return (
         <AuthEmailCertification

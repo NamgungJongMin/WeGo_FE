@@ -2,10 +2,14 @@ import { QueryError } from '@/@types/query';
 import { sendMail } from '@/api/auth/signupApi';
 import { useMutation } from '@tanstack/react-query';
 
-const useSendMail = (onSuccessCallback: () => void) => {
+const useSendMail = (
+  onSuccessCallback: () => void,
+  onErrorCallback: () => void,
+) => {
   return useMutation({
     mutationFn: sendMail,
     onError: (error: QueryError) => {
+      onErrorCallback();
       switch (error.status) {
         default:
         // default 에러 핸들링
