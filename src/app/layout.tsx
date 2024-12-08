@@ -6,6 +6,7 @@ import QueryProviders from '@/utils/queryProvider';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import MainHeader from '@/components/header/MainHeader';
 import MainNavigation from '@/components/nav/MainNavigation';
+import ZustandProvider from '@/providers/ZustandProvider';
 
 const pretendard = localFont({
   src: '../assets/fonts/PretendardVariable.woff2',
@@ -30,9 +31,11 @@ const RootLayout = async ({
       <body className={`${pretendard.variable} antialiased`}>
         <MswComponent />
         <QueryProviders>
-          <MainHeader />
-          {children}
-          <MainNavigation />
+          <ZustandProvider>
+            <MainHeader />
+            {children}
+            <MainNavigation />
+          </ZustandProvider>
         </QueryProviders>
         <SpeedInsights />
       </body>

@@ -1,5 +1,10 @@
 import { TextInput } from '@/@types/auth';
 
+interface SignupError extends Error {
+  status?: number;
+  message: string;
+}
+
 /* -------------------------------- 인증 이메일 전송 ------------------------------- */
 type MailSendRequestBody = Pick<TextInput, 'email'>;
 
@@ -13,8 +18,13 @@ const sendMail = async (credentials: MailSendRequestBody) => {
   });
 
   if (!res.ok) {
-    throw new Error(`Server error: ${res.status}`);
+    const error = new Error('Send Mail failed') as SignupError;
+    error.status = res.status;
+    error.message = `Server error: ${res.status}`;
+    throw error;
   }
+
+  res.json();
 };
 
 /* ------------------------------- 이메일 인증코드 확인 ------------------------------ */
@@ -30,7 +40,10 @@ const checkMail = async ({ email, emailCode }: CheckMailRequestBody) => {
   });
 
   if (!res.ok) {
-    throw new Error(`Server error: ${res.status}`);
+    const error = new Error('Check Mail failed') as SignupError;
+    error.status = res.status;
+    error.message = `Server error: ${res.status}`;
+    throw error;
   }
 
   return res.json();
@@ -57,7 +70,10 @@ const signup = async (credentials: SignupRequestBody) => {
   });
 
   if (!res.ok) {
-    throw new Error(`Server error: ${res.status}`);
+    const error = new Error('Signup failed') as SignupError;
+    error.status = res.status;
+    error.message = `Server error: ${res.status}`;
+    throw error;
   }
 
   return res.json();

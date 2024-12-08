@@ -2,6 +2,11 @@ import { User } from '@/@types/user';
 
 type LoginRequestBody = Pick<User, 'email' | 'password'>;
 
+interface LoginError extends Error {
+  status?: number;
+  message: string;
+}
+
 const login = async (credentials: LoginRequestBody) => {
   const res = await fetch('/api/auth/sign-in', {
     method: 'POST',
@@ -12,8 +17,13 @@ const login = async (credentials: LoginRequestBody) => {
   });
 
   if (!res.ok) {
-    throw new Error(`Server error: ${res.status}`);
+    const error = new Error('Login failed') as LoginError;
+    error.status = res.status;
+    error.message = `Server error: ${res.status}`;
+    throw error;
   }
+
+  return res.json();
 };
 
 export default login;
