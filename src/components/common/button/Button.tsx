@@ -15,6 +15,7 @@ const ButtonVariants = cva(
         addon: 'w-[101px] h-[46px]',
         modal_sm: 'w-[90px] h-[38px]',
         modal_md: 'w-[202px] h-[38px]',
+        half: 'w-[160px] h-[52px]',
       },
     },
     defaultVariants: {
