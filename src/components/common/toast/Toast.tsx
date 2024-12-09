@@ -14,7 +14,7 @@ const Toast = () => {
         <div
           key={toast.id}
           className={cn(
-            'min-w-[320px] rounded-lg px-4 py-3 shadow-lg transition-all duration-300',
+            'min-w-[320px] animate-slide-down rounded-lg px-4 py-3 shadow-lg transition-all duration-300',
             {
               'bg-red-100 text-status-error': toast.type === 'error',
               'bg-blue-100 text-status-success': toast.type === 'success',

@@ -6,6 +6,7 @@ import { Button } from '@/components/common/button/Button';
 import { useEffect, useState } from 'react';
 import validate from '@/utils/validateAuthInput';
 import useSignup from '@/queries/auth/useSignup';
+import useSendMail from '@/queries/auth/useSendMail';
 import AuthPassword from './input/AuthPassword';
 import AuthEmailCertification from './input/AuthEmailCertification';
 
@@ -14,6 +15,9 @@ const SignupForm = () => {
     null,
   );
   const [certifiedToken, setCertifiedToken] = useState('');
+  const [due, setDue] = useState(300);
+  const [successMailSend, setSuccessMailSend] = useState<boolean | null>(null);
+
   const email = useAuthInput({ name: 'email' });
   const emailCode = useAuthInput({ name: 'emailCode' });
   const password = useAuthInput({ name: 'password' });
@@ -25,6 +29,21 @@ const SignupForm = () => {
   const nickname = useAuthInput({ name: 'nickname' });
   const birthDate = useAuthInput({ name: 'birthDate' });
   const contact = useAuthInput({ name: 'contact' });
+
+  const { mutate: sendMail } = useSendMail(
+    () => {
+      if (!successMailSend) {
+        setSuccessMailSend(true);
+      }
+      setDue(300);
+      emailCode.setIsValid(false);
+      emailCode.setValue('');
+    },
+    () => {
+      setSuccessMailSend(false);
+    },
+  );
+
   const { mutate: signup } = useSignup();
 
   const isFormValid = () => {
@@ -73,6 +92,10 @@ const SignupForm = () => {
         email={email}
         emailCode={emailCode}
         isEmailCertified={isEmailCertified}
+        due={due}
+        setDue={setDue}
+        successMailSend={successMailSend}
+        sendMail={sendMail}
         setIsEmailCertified={setIsEmailCertified}
         setCertifiedToken={setCertifiedToken}
       />

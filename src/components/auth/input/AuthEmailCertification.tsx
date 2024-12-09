@@ -1,9 +1,8 @@
-import { useCallback, memo, useState, useEffect } from 'react';
+import { useCallback, memo, useEffect } from 'react';
 
 import { Button } from '@/components/common/button/Button';
 import formatTimeToMMSS from '@/utils/formatTimeToMMSS';
-import useSendMail from '@/queries/auth/useSendMail';
-import useCheckMail from '@/queries/auth/useCheckMail';
+import useCheckCode from '@/queries/auth/useCheckCode';
 import AuthText from './AuthText';
 
 interface PropsState {
@@ -18,8 +17,12 @@ interface Props {
   email: PropsState;
   emailCode: PropsState;
   isEmailCertified: boolean | null;
+  due: number;
+  setDue: React.Dispatch<React.SetStateAction<number>>;
+  successMailSend: boolean | null;
+  sendMail: (credentials: { email: string }) => void;
   setIsEmailCertified: (isEmailCertified: boolean | null) => void;
-  setCertifiedToken: (certifiedToken: string) => void;
+  setCertifiedToken: (token: string) => void;
 }
 
 const AuthEmailCertification = memo(
@@ -27,29 +30,14 @@ const AuthEmailCertification = memo(
     email,
     emailCode,
     isEmailCertified,
+    due,
+    setDue,
+    successMailSend,
+    sendMail,
     setIsEmailCertified,
     setCertifiedToken,
   }: Props) => {
-    const [due, setDue] = useState(300);
-    const [successMailSend, setSuccessMailSend] = useState<boolean | null>(
-      null,
-    );
-
-    const { mutate: sendMail } = useSendMail(
-      () => {
-        if (!successMailSend) {
-          setSuccessMailSend(true);
-        }
-        setDue(300);
-        emailCode.setIsValid(false);
-        emailCode.setValue('');
-      },
-      () => {
-        setSuccessMailSend(false);
-      },
-    );
-
-    const { mutate: checkMail } = useCheckMail(
+    const { mutate: checkCode } = useCheckCode(
       (token: string) => {
         setIsEmailCertified(true);
         setCertifiedToken(token);
@@ -64,11 +52,11 @@ const AuthEmailCertification = memo(
     }, [email.value, sendMail]);
 
     const handleConfirmClick = useCallback(() => {
-      checkMail({
+      checkCode({
         email: email.value,
         emailCode: Number(emailCode.value),
       });
-    }, [email.value, emailCode.value, checkMail]);
+    }, [email.value, emailCode.value, checkCode]);
 
     useEffect(() => {
       if (!successMailSend || Boolean(isEmailCertified) || due === 0)
@@ -83,7 +71,7 @@ const AuthEmailCertification = memo(
       }, 1000);
 
       return () => clearInterval(timer);
-    }, [due, isEmailCertified, successMailSend]);
+    }, [due, setDue, isEmailCertified, successMailSend]);
 
     return (
       <div className="relative mb-6">

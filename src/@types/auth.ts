@@ -8,7 +8,9 @@ interface TextInput {
 }
 
 interface PasswordInput {
+  currentPassword: string;
   password: string;
+  newPassword: string;
   passwordConfirm: string;
 }
 

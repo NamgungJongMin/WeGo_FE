@@ -9,6 +9,10 @@ const validate = ({ name, value, password }: ValidateOptions): boolean => {
       return REGEX.password.test(value);
     case 'passwordConfirm':
       return password ? value === password : false;
+    case 'currentPassword':
+      return REGEX.currentPassword.test(value);
+    case 'newPassword':
+      return REGEX.newPassword.test(value);
     case 'name':
       return REGEX.name.test(value);
     case 'nickname':

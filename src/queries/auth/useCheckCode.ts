@@ -1,16 +1,16 @@
 import { QueryError } from '@/@types/query';
-import { checkMail } from '@/api/auth/signupApi';
+import { checkCode } from '@/api/auth/verifyEmailApi';
 import { useMutation } from '@tanstack/react-query';
 import useToast from '@/hooks/useToast';
 
-const useCheckMail = (
+const useCheckCode = (
   onSuccessCallback: (token: string) => void,
   onErrorCallback: () => void,
 ) => {
   const { showToast } = useToast();
 
   return useMutation({
-    mutationFn: checkMail,
+    mutationFn: checkCode,
     onError: (error: QueryError) => {
       onErrorCallback();
       switch (error.status) {
@@ -28,4 +28,4 @@ const useCheckMail = (
   });
 };
 
-export default useCheckMail;
+export default useCheckCode;

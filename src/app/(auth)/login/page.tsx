@@ -24,7 +24,7 @@ const Login = () => {
               아이디 찾기
             </Link>
             <Link
-              href="/find-password"
+              href="/findPassword"
               className="px-2.5 text-label-alternative"
             >
               비밀번호 찾기

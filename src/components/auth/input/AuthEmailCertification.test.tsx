@@ -47,6 +47,10 @@ describe('AuthEmailCertification', () => {
           handleChange: jest.fn(),
         }}
         isEmailCertified={false}
+        due={300}
+        setDue={jest.fn()}
+        successMailSend={null}
+        sendMail={jest.fn()}
         setIsEmailCertified={jest.fn()}
         setCertifiedToken={jest.fn()}
       />,
@@ -77,6 +81,10 @@ describe('AuthEmailCertification', () => {
           handleChange: jest.fn(),
         }}
         isEmailCertified={false}
+        due={300}
+        setDue={jest.fn()}
+        successMailSend={null}
+        sendMail={jest.fn()}
         setIsEmailCertified={jest.fn()}
         setCertifiedToken={jest.fn()}
       />,
@@ -103,6 +111,10 @@ describe('AuthEmailCertification', () => {
           handleChange: jest.fn(),
         }}
         isEmailCertified={false}
+        due={300}
+        setDue={jest.fn()}
+        successMailSend={null}
+        sendMail={jest.fn()}
         setIsEmailCertified={jest.fn()}
         setCertifiedToken={jest.fn()}
       />,
@@ -136,61 +148,21 @@ describe('AuthEmailCertification', () => {
           handleChange: jest.fn(),
         }}
         isEmailCertified={false}
+        due={300}
+        setDue={jest.fn()}
+        successMailSend
+        sendMail={jest.fn()}
         setIsEmailCertified={jest.fn()}
         setCertifiedToken={jest.fn()}
       />,
     );
 
-    const verifyButton = screen.getByRole('button', { name: '인증' });
-    fireEvent.click(verifyButton);
+    const timer = await screen.findByText(/\d{2}:\d{2}/);
 
     await waitFor(() => {
-      expect(screen.getByText('05:00')).toBeInTheDocument();
+      expect(timer).toBeInTheDocument();
     });
   });
-
-  // TODO: 디자이너 작업 후 추가할 테스트
-
-  // it('인증 시간 초과 시 메시지가 표시되어야 한다', async () => {
-  //   renderWithClient(
-  //     <AuthEmailCertification
-  //       email={{
-  //         value: 'test@example.com',
-  //         isValid: true,
-  //         setValue: jest.fn(),
-  //         setIsValid: jest.fn(),
-  //         handleChange: jest.fn(),
-  //       }}
-  //       emailCode={{
-  //         value: '',
-  //         isValid: null,
-  //         setValue: jest.fn(),
-  //         setIsValid: jest.fn(),
-  //         handleChange: jest.fn(),
-  //       }}
-  //       isEmailCertified={false}
-  //       setIsEmailCertified={jest.fn()}
-  //       setCertifiedToken={jest.fn()}
-  //     />,
-  //   );
-
-  //   const verifyButton = screen.getByRole('button', { name: '인증' });
-  //   fireEvent.click(verifyButton);
-
-  //   await waitFor(() => {
-  //     const codeInput = screen.getByPlaceholderText(AUTH_PLACEHOLDER.emailCode);
-  //     expect(codeInput).toBeInTheDocument();
-  //   });
-
-  //   // 타이머가 만료되면 메시지가 변경어야 함
-  //   jest.advanceTimersByTime(300000); // 5분 경과
-
-  //   await waitFor(() => {
-  //     expect(
-  //       screen.getByText('인증 시간이 초과되었습니다.'),
-  //     ).toBeInTheDocument();
-  //   });
-  // });
 
   it('이메일 인증 완료 시 입력 필드들이 비활성화되어야 한다', async () => {
     const TestComponent = () => {
@@ -215,15 +187,16 @@ describe('AuthEmailCertification', () => {
             handleChange: jest.fn(),
           }}
           isEmailCertified={isEmailCertified}
+          due={300}
+          setDue={jest.fn()}
+          successMailSend
+          sendMail={jest.fn()}
           setIsEmailCertified={setIsEmailCertified}
           setCertifiedToken={jest.fn()}
         />
       );
     };
     renderWithClient(<TestComponent />);
-
-    const verifyButton = screen.getByRole('button', { name: '인증' });
-    fireEvent.click(verifyButton);
 
     await waitFor(() => {
       const codeInput = screen.getByPlaceholderText(AUTH_PLACEHOLDER.emailCode);
@@ -244,7 +217,6 @@ describe('AuthEmailCertification', () => {
 
       expect(emailInput).toBeDisabled();
       expect(codeInput).toBeDisabled();
-      expect(verifyButton).toBeDisabled();
       expect(confirmButton).toBeDisabled();
     });
   });
@@ -267,18 +239,17 @@ describe('AuthEmailCertification', () => {
           handleChange: jest.fn(),
         }}
         isEmailCertified={false}
+        due={300}
+        setDue={jest.fn()}
+        successMailSend
+        sendMail={jest.fn()}
         setIsEmailCertified={jest.fn()}
         setCertifiedToken={jest.fn()}
       />,
     );
 
-    const verifyButton = screen.getByRole('button', { name: '인증' });
-    fireEvent.click(verifyButton);
-
-    await waitFor(() => {
-      const resendButton = screen.getByRole('button', { name: '재전송' });
-      fireEvent.click(resendButton);
-    });
+    const resendButton = screen.getByRole('button', { name: '재전송' });
+    fireEvent.click(resendButton);
 
     await waitFor(() => {
       expect(screen.getByText('05:00')).toBeInTheDocument();

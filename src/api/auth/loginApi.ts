@@ -10,6 +10,7 @@ interface LoginError extends Error {
 const login = async (credentials: LoginRequestBody) => {
   const res = await fetch('/api/auth/sign-in', {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
     },

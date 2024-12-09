@@ -22,11 +22,11 @@ interface SignupRequestBody {
 const signup = [
   /* -------------------------------- 인증 이메일 전송 ------------------------------- */
   http.post<MailSendRequestBody, PathParams>(
-    '/api/auth/mail-send',
+    '/api/auth/sign-up/emails',
     async ({ request }) => {
       const { email } = await request.json();
 
-      // 이메일 중복 체크 실패
+      // 이메일 중복 체크 실패 (이미 가입된 이메일)
       if (email === FAKE_USER_EMAIL) {
         return HttpResponse.json(
           { message: 'Email already exists' },
@@ -45,7 +45,7 @@ const signup = [
   ),
 
   /* ------------------------------- 이메일 인증코드 확인 ------------------------------ */
-  http.post<PathParams>(`/api/auth/mail-check`, async ({ request }) => {
+  http.post<PathParams>(`/api/auth/emails/verify`, async ({ request }) => {
     const url = new URL(request.url);
     const emailCode = url.searchParams.get('verifyNumber');
 
@@ -54,7 +54,6 @@ const signup = [
       return HttpResponse.json(
         {
           message: 'Invalid email code',
-          fakeCode: FAKE_EMAIL_CODE,
         },
         {
           status: 400,
