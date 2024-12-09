@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Close from '@/assets/close_20px.svg';
 import Left from '@/assets/left.svg';
 import Right from '@/assets/right.svg';
-import TimePicker from '@/components/timepicker/TimePicker';
+import TimePicker from '@/components/createTrip/timepicker/TimePicker';
 
 interface Props {
   currentDate: Date;

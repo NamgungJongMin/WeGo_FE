@@ -40,7 +40,9 @@ const Textarea = ({
   onChange,
 }: Props) => {
   return (
-    <div className="relative inline-block">
+    <div
+      className={`relative inline-block ${size === 'default' ? 'h-[160px]' : 'h-[90px]'}`}
+    >
       <textarea
         id={name}
         name={name}

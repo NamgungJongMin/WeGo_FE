@@ -4,7 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import ImageUploadButton from './ImageUploadButton';
 import ImagePreview from './ImagePreview';
 
-const ImageUploader = () => {
+interface Props {
+  size?: 'default' | 'small';
+}
+
+const ImageUploader = ({ size }: Props) => {
   const [image, setImage] = useState<string | null>(null);
   const objectUrlRef = useRef<string | null>(null);
 
@@ -55,10 +59,14 @@ const ImageUploader = () => {
           >
             편집
           </span>
-          <ImagePreview src={image} />
+          <ImagePreview src={image} size={size} />
         </>
       ) : (
-        <ImageUploadButton id={id} onImageChange={handleImageChange} />
+        <ImageUploadButton
+          id={id}
+          onImageChange={handleImageChange}
+          size={size}
+        />
       )}
     </div>
   );
