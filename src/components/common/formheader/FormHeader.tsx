@@ -2,12 +2,15 @@
 
 import { useRouter } from 'next/navigation';
 import Back from '@/assets/back.svg';
+import Setting from '@/assets/icon/setting_32px.svg';
+import cn from '@/utils/cn';
 
 interface Props {
   title: string;
+  isConfigButton?: boolean;
 }
 
-const FormHeader = ({ title }: Props) => {
+const FormHeader = ({ title, isConfigButton }: Props) => {
   const router = useRouter();
 
   return (
@@ -22,9 +25,26 @@ const FormHeader = ({ title }: Props) => {
       >
         <Back width={32} height={32} aria-hidden="true" />
       </button>
-      <h1 className="-ml-8 flex-1 text-center text-lg font-semibold">
+
+      <h1
+        className={cn('flex-1 text-center text-lg font-semibold', {
+          '-ml-8': !isConfigButton,
+        })}
+      >
         {title}
       </h1>
+
+      {isConfigButton && (
+        <button
+          type="button"
+          onClick={() => {
+            router.push('/userSetting');
+          }}
+          className="text-sm text-gray-500"
+        >
+          <Setting width={32} height={32} aria-hidden="true" />
+        </button>
+      )}
     </header>
   );
 };

@@ -7,6 +7,7 @@ import validate from '@/utils/validateAuthInput';
 import { Button } from '@/components/common/button/Button';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useResetAuthPassword } from '@/queries/auth/useResetPassword';
+import FormHeader from '@/components/common/formheader/FormHeader';
 
 const AuthPasswordPage = () => {
   const router = useRouter();
@@ -55,31 +56,39 @@ const AuthPasswordPage = () => {
   }, [password.value, passwordConfirm]);
 
   return (
-    <div className="mx-auto mt-6 flex max-w-[335px] justify-center">
-      <form onSubmit={handleSubmit} className="w-full">
-        <AuthPassword
-          name="password"
-          value={password.value}
-          isValid={password.isValid}
-          important
-          onChange={password.handleChange}
-        />
+    <div>
+      <FormHeader title="비밀번호 변경" />
 
-        <AuthPassword
-          name="passwordConfirm"
-          value={passwordConfirm.value}
-          isValid={passwordConfirm.isValid}
-          important
-          onChange={passwordConfirm.handleChange}
-        />
+      <h1 className="title-5-sb mx-auto mt-10 max-w-[335px]">
+        새로운 비밀번호를 입력해주세요.
+      </h1>
 
-        <Button
-          label="완료"
-          type="submit"
-          className="mt-[296px]"
-          disabled={!isFormValid()}
-        />
-      </form>
+      <div className="mx-auto mt-6 flex max-w-[335px] justify-center">
+        <form onSubmit={handleSubmit} className="w-full">
+          <AuthPassword
+            name="password"
+            value={password.value}
+            isValid={password.isValid}
+            important
+            onChange={password.handleChange}
+          />
+
+          <AuthPassword
+            name="passwordConfirm"
+            value={passwordConfirm.value}
+            isValid={passwordConfirm.isValid}
+            important
+            onChange={passwordConfirm.handleChange}
+          />
+
+          <Button
+            label="완료"
+            type="submit"
+            className="mt-[296px]"
+            disabled={!isFormValid()}
+          />
+        </form>
+      </div>
     </div>
   );
 };

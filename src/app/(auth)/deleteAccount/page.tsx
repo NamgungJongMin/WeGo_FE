@@ -19,7 +19,7 @@ const DeleteAccountPage = () => {
 
   return (
     <div>
-      <FormHeader title="계정 탈퇴" />
+      <FormHeader title="계정 탈퇴" isConfigButton />
 
       <h1 className="title-5-sb mx-auto mt-10 max-w-[335px]">
         계정을 탈퇴하기 위해 비밀번호가 필요해요.

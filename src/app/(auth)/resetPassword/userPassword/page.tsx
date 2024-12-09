@@ -2,6 +2,7 @@
 
 import AuthPassword from '@/components/auth/input/AuthPassword';
 import { Button } from '@/components/common/button/Button';
+import FormHeader from '@/components/common/formheader/FormHeader';
 import useAuthInput from '@/hooks/useAuthInput';
 import { useResetUserPassword } from '@/queries/auth/useResetPassword';
 
@@ -31,39 +32,47 @@ const UserPassword = () => {
   };
 
   return (
-    <div className="mx-auto mt-6 flex max-w-[335px] justify-center">
-      <form onSubmit={handleSubmit} className="w-full">
-        <AuthPassword
-          name="currentPassword"
-          value={currentPassword.value}
-          isValid={currentPassword.isValid}
-          important
-          onChange={currentPassword.handleChange}
-        />
+    <div>
+      <FormHeader title="비밀번호 변경" isConfigButton />
 
-        <AuthPassword
-          name="newPassword"
-          value={newPassword.value}
-          isValid={newPassword.isValid}
-          important
-          onChange={newPassword.handleChange}
-        />
+      <h1 className="title-5-sb mx-auto mt-10 max-w-[335px]">
+        새로운 비밀번호를 입력해주세요.
+      </h1>
 
-        <AuthPassword
-          name="passwordConfirm"
-          value={passwordConfirm.value}
-          isValid={passwordConfirm.isValid}
-          important
-          onChange={passwordConfirm.handleChange}
-        />
+      <div className="mx-auto mt-6 flex max-w-[335px] justify-center">
+        <form onSubmit={handleSubmit} className="w-full">
+          <AuthPassword
+            name="currentPassword"
+            value={currentPassword.value}
+            isValid={currentPassword.isValid}
+            important
+            onChange={currentPassword.handleChange}
+          />
 
-        <Button
-          label="완료"
-          type="submit"
-          className="mt-[176px]"
-          disabled={!isFormValid()}
-        />
-      </form>
+          <AuthPassword
+            name="newPassword"
+            value={newPassword.value}
+            isValid={newPassword.isValid}
+            important
+            onChange={newPassword.handleChange}
+          />
+
+          <AuthPassword
+            name="passwordConfirm"
+            value={passwordConfirm.value}
+            isValid={passwordConfirm.isValid}
+            important
+            onChange={passwordConfirm.handleChange}
+          />
+
+          <Button
+            label="완료"
+            type="submit"
+            className="mt-[176px]"
+            disabled={!isFormValid()}
+          />
+        </form>
+      </div>
     </div>
   );
 };
