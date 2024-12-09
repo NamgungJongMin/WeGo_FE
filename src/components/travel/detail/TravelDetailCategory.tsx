@@ -5,7 +5,7 @@ import { useState } from 'react';
 import SelectTravelDetail from './SelectTravelDetail';
 import SelectTravelItinerary from './SelectTravelItinerary';
 import TravelButtons from './TravelButtons';
-import SelectTravelReview from './SelectTravelReview';
+import SelectTravelReviewContainer from './SelectTravelReviewContainer';
 
 type Props = Pick<
   TravelDetail,
@@ -78,7 +78,7 @@ const TravelDetailCategory = ({
             startAt={startAt}
           />
         )}
-        {category === 2 && <SelectTravelReview />}
+        {category === 2 && <SelectTravelReviewContainer />}
         {(category === 1 || category === 0) && (
           <TravelButtons organizer={organizer?.id} participant={participant} />
         )}

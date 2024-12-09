@@ -7,15 +7,23 @@ import resetPassword from './auth/resetPassword';
 import findPassword from './auth/findPassword';
 import deleteAccount from './auth/deleteAccount';
 import editProfile from './user/editProfile';
+import travelDetail from './travel/travelDetail';
+import travelDetailReview from './review/travelDetailReview';
 
 export const handlers = [
+  // auth
   login,
   ...signup,
+  // 메인
   ...popularTravel,
   ...popularReview,
   ...popularUser,
+  // 회원 정보 수정
   ...resetPassword,
   findPassword,
   ...deleteAccount,
   editProfile,
+  // 여행[id]
+  ...travelDetail,
+  ...travelDetailReview,
 ];
