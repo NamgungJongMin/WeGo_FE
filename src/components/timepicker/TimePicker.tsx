@@ -21,6 +21,7 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   onSelect: (firstTime: string, secondTime: string) => void;
+  isValid?: (firstTime: string, secondTime: string) => boolean;
 }
 
 const TimePicker = ({
@@ -29,12 +30,17 @@ const TimePicker = ({
   isOpen,
   onClose,
   onSelect,
+  isValid,
 }: Props) => {
   const [firstTime, setFirstTime] = useState('');
   const [secondTime, setSecondTime] = useState('');
 
   const handlePickerButton = () => {
-    onSelect(firstTime, secondTime);
+    if (isValid && !isValid(firstTime, secondTime)) {
+      return; // 유효하지 않은 경우 버튼 동작 중단
+    }
+
+    onSelect(firstTime, secondTime); // 유효한 경우 선택된 값 전달
     onClose();
   };
 
@@ -72,7 +78,11 @@ const TimePicker = ({
               onSlide={(time: string) => setSecondTime(time)}
             />
           </div>
-          <Button handler={handlePickerButton} className="mt-10">
+          <Button
+            handler={handlePickerButton}
+            className="mt-10"
+            disabled={isValid && !isValid(firstTime, secondTime)}
+          >
             선택
           </Button>
         </DialogPanel>
