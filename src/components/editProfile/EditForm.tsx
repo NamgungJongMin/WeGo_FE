@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react';
 import { Button } from '@/components/common/button/Button';
 import { useRouter } from 'next/navigation';
+import useEditProfile from '@/queries/user/useEditProfile';
 import Nickname from './input/Nickname';
 import ProfileImage from './input/ProfileEmage';
 import IntroductionInput from './input/Introduction';
@@ -22,6 +23,8 @@ const EditForm = () => {
     introduction: '',
   });
   const [previewImage, setPreviewImage] = useState('');
+
+  const { mutate: editProfile } = useEditProfile();
 
   const isValid = () => {
     return !formData.image && !formData.nickname && !formData.introduction;
@@ -56,18 +59,8 @@ const EditForm = () => {
     if (formData.introduction) {
       formDataToSend.append('introduction', formData.introduction);
     }
-    // api 호출
-    // try {
-    //   const response = await fetch('/api/profile', {
-    //     method: 'PUT',
-    //     body: formDataToSend,
-    //   });
-    //   if (response.ok) {
-    //     // 성공 처리
-    //   }
-    // } catch (error) {
-    //   // 에러 처리
-    // }
+
+    editProfile(formDataToSend);
   };
 
   return (

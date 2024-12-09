@@ -37,7 +37,7 @@ const resetPassword = [
   http.put<ResetAuthSignupRequestBody, PathParams>(
     '/api/users/password',
     async ({ request, cookies }) => {
-      const token = cookies.accessToken;
+      const token = cookies['access-token'];
       const { currentPassword, newPassword } = await request.json();
 
       if (token && newPassword && currentPassword === FAKE_USER_PASSWORD) {

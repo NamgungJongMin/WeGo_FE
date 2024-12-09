@@ -6,6 +6,7 @@ import popularUser from './user/popularUser';
 import resetPassword from './auth/resetPassword';
 import findPassword from './auth/findPassword';
 import deleteAccount from './auth/deleteAccount';
+import editProfile from './user/editProfile';
 
 export const handlers = [
   login,
@@ -16,4 +17,5 @@ export const handlers = [
   ...resetPassword,
   findPassword,
   ...deleteAccount,
+  editProfile,
 ];
