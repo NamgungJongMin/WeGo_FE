@@ -30,3 +30,20 @@ export const getWeekNumber = (dateFrom = new Date()) => {
   const offset = weekDay === 0 ? 0 : 7 - weekDay;
   return Math.floor((offset + currentDate) / 7) + 1;
 };
+
+// 2024.12.03 -> 12.03(화) 변환
+export const formatDateToShortWithDay = (
+  dateString: string,
+  offsetDays?: number,
+): string => {
+  const date = new Date(dateString);
+  if (offsetDays) {
+    date.setDate(date.getDate() + offsetDays);
+  }
+  const option: Intl.DateTimeFormatOptions = { weekday: 'short' };
+  const dayName = new Intl.DateTimeFormat('ko-KR', option).format(date);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${month}.${day}(${dayName})`;
+};

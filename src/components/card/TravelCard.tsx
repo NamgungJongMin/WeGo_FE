@@ -4,6 +4,8 @@ import Multiple from '@/assets/multiple.svg';
 import { Travel } from '@/@types/travel';
 import { useMemo } from 'react';
 import Link from 'next/link';
+import DomesticTag from '../common/tag/DomesticTag';
+import ProgressBar from '../common/ProgressBar';
 
 const TravelCard = ({
   // travelId,
@@ -34,9 +36,7 @@ const TravelCard = ({
       </div>
       <div className="flex w-full flex-col justify-between">
         <div className="flex flex-col gap-1">
-          <div className="w-fit rounded-[20px] bg-blue-100 px-[6px] py-[3px] text-[10px] font-semibold text-primary-normal">
-            {isDomestic ? '해외여행' : '국내여행'}
-          </div>
+          <DomesticTag isDomestic={isDomestic} />
           <h3 className="line-clamp-2 font-bold">{travelName}</h3>
         </div>
         <div className="flex items-center gap-[6px] text-xs font-semibold text-label-alternative">
@@ -50,12 +50,7 @@ const TravelCard = ({
           </div>
           <div className="">{formattedStartDate}</div>
         </div>
-        <div className="relative h-[6px] overflow-hidden rounded-[10px] bg-gray-200">
-          <div
-            className="absolute bottom-0 left-0 top-0 rounded-full bg-primary-normal"
-            style={{ width: `${progressRate}%` }}
-          />
-        </div>
+        <ProgressBar progressRate={progressRate} />
       </div>
     </Link>
   );

@@ -1,0 +1,87 @@
+{
+  "travelId": 1,
+  "name": "12월에 떠나는 겨울여행",
+  "description": "12월의 겨울 낭만을 즐기고 싶은 분들 계신가요?함께 국내 겨울 여행지를 돌아다니고 싶습니다!춥지만, 마음만은 따듯한 겨울 여행 함께해요 :)다양한 사람들이 모여서 함께 하고 싶어요!",
+  "image": "/test3.png",
+  "expectedTripCost": 250000,
+  "currentTravelMateCount": 6,
+  "minTravelMateCount": 2,
+  "maxTravelMateCount": 10,
+  "hashTags": "#겨울여행#액티비티",
+  "isDomestic": true,
+  "travelLocation": "강원도",
+  "departureLocation": "서울역",
+  "startAt": "2024.12.03",
+  "endAt": "2024.12.06",
+  "registrationEnd": "2024.11.31",
+  "tripDuration": 3,
+  "travelPlan": [
+    {
+      "tripDay": 1,
+      "tripOrderNumber": 1,
+      "destination": "대관령 양떼목장",
+      "description": "강원도의 상징 눈의...강원도의 상징 눈의 계절이면 생각나는대관령 양떼목장 풍경만 봐도 힐링 ",
+      "image": "/test4.jpg"
+    },
+    {
+      "tripDay": 1,
+      "tripOrderNumber": 2,
+      "destination": "강원도 감자빵",
+      "description": "강원도의 상징 눈의...",
+      "image": "/test3.png"
+    },
+    {
+      "tripDay": 2,
+      "tripOrderNumber": 1,
+      "destination": "안목해변",
+      "description": "낭만있는 겨울바다를 즐겨요!",
+      "image": "/test.png"
+    },
+    {
+      "tripDay": 2,
+      "tripOrderNumber": 2,
+      "destination": "어부횟집",
+      "description": "바다를 보면 회를 먹는건...",
+      "image": "/test2.png"
+    },
+    {
+      "tripDay": 3,
+      "tripOrderNumber": 1,
+      "destination": "어부횟집",
+      "description": "바다를 보면 회를 먹는건...",
+      "image": "/test2.png"
+    }
+  ],
+  "participant": [
+    {
+      "id": 3,
+      "nickname": "녹차라떼 아이스",
+      "role": "ORGANIZER",
+      "profileImage": "/user.jpg"
+    },
+    {
+      "id": 4,
+      "nickname": "참가중인 다른 유저 1",
+      "role": "ATTENDEE",
+      "profileImage": ""
+    },
+    {
+      "id": 5,
+      "nickname": "아이스",
+      "role": "ATTENDEE",
+      "profileImage": "/user.jpg"
+    },
+    {
+      "id": 6,
+      "nickname": "아이스",
+      "role": "ATTENDEE",
+      "profileImage": "/test4.jpg"
+    },
+    {
+      "id": 7,
+      "nickname": "아이스",
+      "role": "ATTENDEE",
+      "profileImage": "/test4.jpg"
+    }
+  ]
+}

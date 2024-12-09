@@ -51,7 +51,9 @@ export default {
       fontFamily: {
         pretendard: ['var(--font-pretendard)', 'sans-serif'],
       },
-
+      boxShadow: {
+        custom: '0px 0px 5px 0px rgba(0, 0, 0, 0.16)',
+      },
       keyframes: {
         'fade-in': {
           '0%': { opacity: '0' },

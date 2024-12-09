@@ -3,12 +3,13 @@ import cn from '@/utils/cn';
 import { cva, VariantProps } from 'class-variance-authority';
 
 const ButtonVariants = cva(
-  'rounded disabled:border disabled:border-line-normal disabled:bg-background-alternative disabled:text-label-alternative',
+  'body-1-m rounded disabled:border disabled:border-line-normal disabled:bg-background-alternative disabled:text-label-alternative',
   {
     variants: {
       fill: {
         default: 'bg-label-normal text-white',
         white: 'bg-white border border-line-strong',
+        blue: 'bg-primary-normal text-white',
       },
       size: {
         default: 'w-[335px] h-[52px]',

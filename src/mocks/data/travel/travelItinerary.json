@@ -1,0 +1,30 @@
+[
+  {
+    "tripDay": 1,
+    "tripOrderNumber": 1,
+    "destination": "대관령 야예목장",
+    "description": "강원도의 상징 눈의...",
+    "image": "/test4.jpg"
+  },
+  {
+    "tripDay": 1,
+    "tripOrderNumber": 2,
+    "destination": "강원도 감자빵",
+    "description": "강원도의 상징 눈의...",
+    "image": "/test3.png"
+  },
+  {
+    "tripDay": 2,
+    "tripOrderNumber": 1,
+    "destination": "안목해변",
+    "description": "낭만있는 겨울바다를 즐겨요!",
+    "image": "/test.png"
+  },
+  {
+    "tripDay": 2,
+    "tripOrderNumber": 2,
+    "destination": "어부횟집",
+    "description": "바다를 보면 회를 먹는건...",
+    "image": "/test2.png"
+  }
+]

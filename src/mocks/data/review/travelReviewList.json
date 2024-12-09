@@ -1,0 +1,42 @@
+[
+  {
+    "reviewId": 10,
+    "nickname": "여행지기",
+    "reviewImage": "/test1.png",
+    "content": "정선의 겨울은 너무 아름다웠어요! 특히 눈 내린 풍경이 인상 깊었습니다.",
+    "score": 5,
+    "travelLocation": "강원도 정선"
+  },
+  {
+    "reviewId": 11,
+    "nickname": "didid",
+    "reviewImage": "/test2.png",
+    "content": "따듯한 모임이였습니다! 다들 한번 체험 해 보셨으면 좋겠어요.",
+    "score": 4,
+    "travelLocation": "강원도 춘천"
+  },
+  {
+    "reviewId": 12,
+    "nickname": "유저2",
+    "reviewImage": "/test3.png",
+    "content": "바다를 바라보며 여유를 만끽할 수 있었던 여행이었습니다.",
+    "score": 3,
+    "travelLocation": "강원도 속초"
+  },
+  {
+    "reviewId": 13,
+    "nickname": "유저3",
+    "reviewImage": "/test1.png",
+    "content": "겨울 스포츠를 즐기기에 최적의 장소였습니다. 다음에도 꼭 오고 싶어요.",
+    "score": 5,
+    "travelLocation": "강원도 평창"
+  },
+  {
+    "reviewId": 14,
+    "nickname": "유저4",
+    "reviewImage": "/test4.jpg",
+    "content": "친구들과 함께한 여행! 눈 덮인 산이 정말 장관이었어요.",
+    "score": 4,
+    "travelLocation": "강원도 태백"
+  }
+]
