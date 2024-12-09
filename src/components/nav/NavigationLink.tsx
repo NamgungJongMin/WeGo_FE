@@ -7,7 +7,7 @@ interface Props {
   label: string;
   isActive: boolean;
 }
-const linkCss = 'flex flex-col items-center text-[10px]';
+const linkCss = 'caption-1-r flex flex-col items-center';
 const iconCss = 'flex h-9 w-9 items-center justify-center';
 
 const NavLink = ({ href, icon, label, isActive }: Props) => (

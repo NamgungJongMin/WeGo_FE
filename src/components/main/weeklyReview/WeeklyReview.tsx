@@ -33,10 +33,8 @@ const WeeklyReview = () => {
   return (
     <section className="flex flex-col justify-start gap-5 bg-black py-10 pl-5">
       <header>
-        <h2 className="pb-[6px] text-2xl font-extrabold text-white">
-          여행리뷰 모아보기
-        </h2>
-        <p className="text-label-alternative">
+        <h2 className="title-3-eb pb-1.5 text-white">여행리뷰 모아보기</h2>
+        <p className="body-2-m text-label-alternative">
           다양한 여행모임 후기들을 한눈에 확인해요!
         </p>
       </header>

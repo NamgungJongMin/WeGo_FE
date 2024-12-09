@@ -29,9 +29,9 @@ const WeeklyUser = () => {
     );
   }
   return (
-    <section className="px-5 pb-32 pt-14">
+    <section className="px-5 pb-32 pt-12">
       <header className="flex justify-between">
-        <h2 className="text-2xl font-extrabold text-label-normal">
+        <h2 className="title-3-eb text-label-normal">
           {currentMonth}월의 여행지기
         </h2>
         <Link
@@ -43,7 +43,7 @@ const WeeklyUser = () => {
           <Plus width={14} height={14} aria-hidden="true" />
         </Link>
       </header>
-      <p className="pb-6 pt-1 text-sm font-medium text-label-alternative">
+      <p className="body-2-m pb-6 pt-1 text-label-alternative">
         이번달 리뷰가 많은 여행지기들을 소개해 드려요!
       </p>
 
