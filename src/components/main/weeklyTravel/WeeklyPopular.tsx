@@ -39,7 +39,7 @@ const WeeklyPopular = () => {
     );
   }
   return (
-    <section className="flex flex-col justify-center gap-6 px-10 py-[50px]">
+    <section className="flex flex-col justify-center gap-6 px-5 py-[50px]">
       <WeeklyHeader month={month} week={week} />
       {isLoading && <div>로딩중 WeeklyPopular</div>}
       {startDateFormatted.map((travel) => (

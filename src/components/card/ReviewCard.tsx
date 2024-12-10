@@ -2,7 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Review } from '@/@types/review';
 
-const ReviewCard = ({ reviewId, nickname, reviewImage }: Review) => {
+const ReviewCard = ({
+  reviewId,
+  nickname,
+  reviewImage,
+}: Omit<Review, 'score' | 'content'>) => {
   return (
     <article>
       <div className="h-[272px] w-[180px]">

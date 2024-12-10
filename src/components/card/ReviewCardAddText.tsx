@@ -23,7 +23,7 @@ const ReviewCardAddText = ({
         <div className="flex items-center justify-between">
           <span className="heading-1-b">{nickname}</span>
           <span className="body-2-m flex items-center gap-0.5 text-label-alternative">
-            <StartIcon />
+            <StartIcon className="text-primary-normal" />
             {score}
           </span>
         </div>

@@ -5,7 +5,7 @@ interface Props {
   href: string;
   icon: React.ReactNode;
   label: string;
-  isActive: boolean;
+  isActive?: boolean;
 }
 const linkCss = 'caption-1-r flex flex-col items-center';
 const iconCss = 'flex h-9 w-9 items-center justify-center';

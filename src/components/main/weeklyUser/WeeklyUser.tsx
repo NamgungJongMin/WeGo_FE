@@ -1,9 +1,8 @@
 'use client';
 
-import Link from 'next/link';
-import Plus from '@/assets/plus.svg';
 import { useQuery } from '@tanstack/react-query';
 import { fetchPopularUser } from '@/api/userApi';
+import MoreButton from '@/components/common/button/MoreButton';
 import UserCard from '../../card/UserCard';
 
 const WeeklyUser = () => {
@@ -34,17 +33,10 @@ const WeeklyUser = () => {
         <h2 className="title-3-eb text-label-normal">
           {currentMonth}월의 여행지기
         </h2>
-        <Link
-          href="/"
-          aria-label="더 많은 여행지기 보기"
-          className="flex items-center justify-center gap-0.5 text-label-normal"
-        >
-          <span className="text-xs font-semibold">MORE</span>
-          <Plus width={14} height={14} aria-hidden="true" />
-        </Link>
+        <MoreButton href="/" aria="더 많은 여행지기 보기" />
       </header>
       <p className="body-2-m pb-6 pt-1 text-label-alternative">
-        이번달 리뷰가 많은 여행지기들을 소개해 드려요!
+        이번 달 리뷰가 많은 여행지기들을 소개해 드려요!
       </p>
 
       <main className="flex justify-center gap-4">

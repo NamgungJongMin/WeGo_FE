@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Location from '@/assets/location.svg';
-import Multiple from '@/assets/multiple.svg';
+import ProfileICon from '@/assets/profile.svg';
 import { Travel } from '@/@types/travel';
 import { useMemo } from 'react';
 import Link from 'next/link';
@@ -39,13 +39,13 @@ const TravelCard = ({
           <DomesticTag isDomestic={isDomestic} />
           <h3 className="line-clamp-2 font-bold">{travelName}</h3>
         </div>
-        <div className="flex items-center gap-[6px] text-xs font-semibold text-label-alternative">
+        <div className="flex items-center gap-[6px] text-xs font-semibold text-gray-500">
           <div className={iconAndText}>
             <Location />
             {travelLocation}
           </div>
           <div className={iconAndText}>
-            <Multiple />
+            <ProfileICon />
             {`${currentParticipant}/${maxParticipant}`}
           </div>
           <div className="">{formattedStartDate}</div>

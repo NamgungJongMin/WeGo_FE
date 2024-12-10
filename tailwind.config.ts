@@ -104,6 +104,11 @@ export default {
           lineHeight: '28px',
           fontWeight: '700',
         },
+        '.title-4-sb': {
+          fontSize: '20px',
+          lineHeight: '28px',
+          fontWeight: '600',
+        },
         '.title-5-b': {
           fontSize: '18px',
           lineHeight: '26px',

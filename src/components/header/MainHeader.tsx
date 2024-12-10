@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import Logo from '@/assets/logo.svg';
+import LogoBlue from '@/assets/logo_blue.svg';
+import LogoWhite from '@/assets/logo_white.svg';
 import Mypage from '@/assets/mypage.svg';
 import Write from '@/assets/write.svg';
 import { throttle } from 'lodash';
@@ -37,12 +38,25 @@ const MainHeader = () => {
         )}
       >
         <Link href="/">
-          <Logo
-            width={80}
-            height={32}
-            className={isScrolled ? 'text-label-normal' : 'text-primary-white'}
-            aria-label="WEGO 로고"
-          />
+          {isScrolled ? (
+            <LogoBlue
+              width={80}
+              height={32}
+              className={
+                isScrolled ? 'text-label-normal' : 'text-primary-white'
+              }
+              aria-label="WEGO 로고"
+            />
+          ) : (
+            <LogoWhite
+              width={80}
+              height={32}
+              className={
+                isScrolled ? 'text-label-normal' : 'text-primary-white'
+              }
+              aria-label="WEGO 로고"
+            />
+          )}
         </Link>
         <div className="flex items-center gap-3">
           <Link href="/">
@@ -55,7 +69,7 @@ const MainHeader = () => {
               aria-label="모임 만들기"
             />
           </Link>
-          <Link href="/">
+          <Link href="/mypage">
             <Mypage
               width={24}
               height={24}

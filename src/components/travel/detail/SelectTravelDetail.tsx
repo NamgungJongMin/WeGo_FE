@@ -1,5 +1,9 @@
-import HeartIcon from '@/assets/heart.svg';
+// 'use client';
+
+import BookMarkIcon from '@/assets/bookmark.svg';
 import { Participant } from '@/@types/travel';
+import { useState } from 'react';
+import Link from 'next/link';
 import ButtonRounded from '../../common/button/ButtonRounded';
 import TravelTag from '../../common/tag/TravelTag';
 import UserIcon from '../../common/user/UserIcon';
@@ -15,6 +19,12 @@ const SelectTravelDetail = ({
   hashTags: string;
   description: string;
 }) => {
+  const [isBookmarked, setIsBookmarked] = useState(participant);
+
+  const onClickBookMark = () => {
+    setIsBookmarked((prev) => !prev);
+  };
+
   const hashTagList = hashTags
     .split('#')
     .filter((tag) => tag !== '')
@@ -35,10 +45,14 @@ const SelectTravelDetail = ({
 
         <div className="flex items-center gap-2.5">
           {organizer?.id !== userId && (
-            <HeartIcon fill={participant ? '#F87171' : 'white'} />
+            <button onClick={onClickBookMark} type="button" aria-label="북마크">
+              <BookMarkIcon fill={isBookmarked ? '#F87171' : 'white'} />
+            </button>
           )}
 
-          <ButtonRounded label="채팅방" />
+          <Link href="/">
+            <ButtonRounded label="채팅방" />
+          </Link>
         </div>
       </div>
       <div className="flex flex-col gap-2.5 rounded border px-4 py-5 shadow-custom">
