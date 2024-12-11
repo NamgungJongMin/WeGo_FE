@@ -49,6 +49,7 @@ const WeeklyUser = () => {
               profileImage={user.profileImage}
               openTravelCount={user.openTravelCount}
               reviewCount={user.reviewCount}
+              hashTags={user.hashTags}
             />
           ))}
       </main>

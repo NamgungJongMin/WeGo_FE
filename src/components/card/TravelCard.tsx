@@ -8,13 +8,14 @@ import DomesticTag from '../common/tag/DomesticTag';
 import ProgressBar from '../common/ProgressBar';
 
 const TravelCard = ({
-  // travelId,
+  travelId,
   isDomestic,
   travelName,
   travelLocation,
   maxParticipant,
   currentParticipant,
   formattedStartDate,
+  image,
 }: Travel) => {
   const progressRate = useMemo(
     () => Math.round((currentParticipant / maxParticipant) * 100),
@@ -24,10 +25,10 @@ const TravelCard = ({
     "flex items-center gap-0.5 after:ml-[6px] after:text-line-normal after:content-['|']";
 
   return (
-    <Link href="/" className="flex gap-4">
+    <Link href={`/travel/${travelId}`} className="flex gap-4">
       <div className="h-[120px] w-[100px] flex-shrink-0">
         <Image
-          src="/test2.png"
+          src={image}
           alt={`${travelName} - ${travelLocation} 여행 이미지`}
           width={100}
           height={120}

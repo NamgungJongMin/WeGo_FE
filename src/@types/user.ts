@@ -19,4 +19,5 @@ export interface UserList {
   nickname: string;
   openTravelCount: number;
   reviewCount: number;
+  hashTags: string;
 }

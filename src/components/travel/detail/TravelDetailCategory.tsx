@@ -2,10 +2,10 @@
 
 import { TravelDetail } from '@/@types/travel';
 import { useState } from 'react';
-import SelectTravelDetail from './SelectTravelDetail';
-import SelectTravelItinerary from './SelectTravelItinerary';
 import TravelButtons from './TravelButtons';
 import SelectTravelReviewContainer from './SelectTravelReviewContainer';
+import SelectTravelDetail from './category/SelectTravelDetail';
+import SelectTravelItinerary from './category/SelectTravelItinerary';
 
 type Props = Pick<
   TravelDetail,

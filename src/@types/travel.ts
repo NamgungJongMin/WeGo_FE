@@ -1,6 +1,7 @@
 export interface Travel {
   travelId: number;
   isDomestic: boolean;
+  image: string;
   travelName: string;
   travelLocation: string;
   maxParticipant: number;

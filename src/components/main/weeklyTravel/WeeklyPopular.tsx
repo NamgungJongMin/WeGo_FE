@@ -46,6 +46,7 @@ const WeeklyPopular = () => {
         <TravelCard
           key={travel.travelId}
           travelId={travel.travelId}
+          image={travel.image}
           isDomestic={travel.isDomestic}
           travelName={travel.travelName}
           travelLocation={travel.travelLocation}

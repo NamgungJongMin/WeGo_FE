@@ -1,12 +1,14 @@
 import { UserList } from '@/@types/user';
 import Link from 'next/link';
 import UserIcon from '../common/user/UserIcon';
+import UserTag from '../common/tag/UserTag';
 
 const UserCard = ({
   nickname,
   profileImage,
   openTravelCount,
   reviewCount,
+  hashTags,
 }: UserList) => {
   return (
     <Link
@@ -19,8 +21,13 @@ const UserCard = ({
       <p className="body-3-m whitespace-nowrap text-label-alternative">
         모임장 {openTravelCount}회 • 리뷰 {reviewCount}개
       </p>
-      <div className="caption-1-sb rounded-sm bg-label-normal px-1.5 py-[3px] text-primary-white">
-        상세해요
+      <div className="flex items-center justify-center gap-1.5">
+        {hashTags
+          .split('#')
+          .filter((str) => str.trim() !== '')
+          .map((str) => (
+            <UserTag label={str} key={str} />
+          ))}
       </div>
     </Link>
   );

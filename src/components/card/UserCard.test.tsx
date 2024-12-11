@@ -3,13 +3,6 @@ import mockUser from '@/mocks/data/user/userList.json';
 import { render, screen } from '@testing-library/react';
 import UserCard from './UserCard';
 
-// {
-//   "profileImage": "/user.jpg",
-//   "nickname": "녹차라떼",
-//   "openTravelCount": 11,
-//   "reviewCount": 25
-// },
-
 describe('UserCard', () => {
   const user = mockUser[0];
   it('사용자 프로필 정보를 렌더링합니다', async () => {
@@ -19,6 +12,7 @@ describe('UserCard', () => {
         profileImage={user.profileImage}
         openTravelCount={user.openTravelCount}
         reviewCount={user.reviewCount}
+        hashTags={user.hashTags}
       />,
     );
     // 1. 닉네임이 렌더링되는지 확인

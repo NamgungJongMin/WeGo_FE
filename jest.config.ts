@@ -16,9 +16,14 @@ const config: Config = {
   },
   moduleNameMapper: {
     '^.+\\.(svg)$': '<rootDir>/src/mocks/svg.js',
-    '^swiper$': '<rootDir>/src/mocks/swiperMock.js',
+
+    '^swiper/react$': '<rootDir>/src/mocks/swiperMock.jsx',
+    '^swiper$': '<rootDir>/src/mocks/swiperMock.jsx',
+    '^swiper/css$': '<rootDir>/src/mocks/styleMock.js',
+    '^swiper/modules$': '<rootDir>/src/mocks/swiperMock.jsx',
+    '^swiper/css/pagination$': '<rootDir>/src/mocks/styleMock.js',
   },
-  transformIgnorePatterns: ['/node_modules/(?!swiper|@swiper)/'],
+
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };

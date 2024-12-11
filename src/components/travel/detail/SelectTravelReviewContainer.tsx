@@ -1,5 +1,5 @@
 import { useTravelIdStore } from '@/store/useTravelIdStore';
-import SelectTravelReview from './SelectTravelReview';
+import SelectTravelReview from './category/SelectTravelReview';
 
 const SelectTravelReviewContainer = () => {
   const { id } = useTravelIdStore();

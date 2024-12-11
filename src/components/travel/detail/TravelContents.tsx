@@ -41,10 +41,9 @@ const TravelContents = ({
         <Image
           src={image}
           alt={`${name} 이미지`}
-          layout="responsive"
           height={250}
           width={375}
-          className="object-cover"
+          className="h-full w-full object-cover"
         />
         {now >= endDate && <DateOverTag endAt={endAt} />}
       </figure>
