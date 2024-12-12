@@ -2,12 +2,14 @@ import TextInput from '@/components/common/input/TextInput';
 import cn from '@/utils/cn';
 import { cva, VariantProps } from 'class-variance-authority';
 
-const LabelVariants = cva('text-label-normal w-fit cursor-pointer text-sm', {
+const LabelVariants = cva('text-label-normal w-fit cursor-pointer body-2-m', {
   variants: {
     state: {
       default: '',
       srOnly: 'sr-only',
       required: "after:text-status-infomative after:ml-0.5 after:content-['*']",
+      optional:
+        "after:text-label-alternative after:body-2-m after:ml-0.5 after:content-['(선택)']",
     },
   },
   defaultVariants: {
@@ -16,7 +18,7 @@ const LabelVariants = cva('text-label-normal w-fit cursor-pointer text-sm', {
 });
 interface Props extends VariantProps<typeof LabelVariants> {
   label: string;
-  state?: 'default' | 'srOnly' | 'required';
+  state?: 'default' | 'srOnly' | 'required' | 'optional';
   name: string;
   type: string;
   value: string;

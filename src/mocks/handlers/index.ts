@@ -9,6 +9,7 @@ import deleteAccount from './auth/deleteAccount';
 import editProfile from './user/editProfile';
 import travelDetail from './travel/travelDetail';
 import travelDetailReview from './review/travelDetailReview';
+import createTravel from './travel/createTravel';
 
 export const handlers = [
   // auth
@@ -26,4 +27,6 @@ export const handlers = [
   // 여행[id]
   ...travelDetail,
   ...travelDetailReview,
+  // 여행 등록
+  createTravel,
 ];

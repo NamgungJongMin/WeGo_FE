@@ -7,13 +7,14 @@ import { Dialog, DialogPanel, DialogBackdrop } from '@headlessui/react';
 import DatePickerHeader from './DatePickerHeader';
 import DatePickerDays from './DatePickerDays';
 
-interface DatePickerModalProps {
+interface Props {
   currentDate: Date;
   days: Day[];
   selectedStartDate: Date | null;
   selectedEndDate: Date | null;
   calendarEvents: CalendarEvents;
   isOpen: boolean;
+  isRangeSelectable: boolean;
   onYearMonthChange: (year: string, month: string) => void;
   onClose: () => void;
   onConfirm: () => void;
@@ -29,7 +30,8 @@ const DatePickerModal = ({
   onYearMonthChange,
   onClose,
   onConfirm,
-}: DatePickerModalProps) => {
+  isRangeSelectable,
+}: Props) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -56,6 +58,7 @@ const DatePickerModal = ({
             selectedStartDate={selectedStartDate}
             selectedEndDate={selectedEndDate}
             calendarEvents={calendarEvents}
+            isRangeSelectable={isRangeSelectable}
           />
           <Button
             handler={onConfirm}

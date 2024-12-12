@@ -7,19 +7,24 @@ import { formatDate } from '@/utils/calendarHelper';
 import Calendar from '@/assets/calendar.svg';
 import DatePickerModal from './DatePickerModal';
 
-const DatePicker = () => {
+interface Props {
+  value: { startDate: Date | null; endDate: Date | null };
+  onChange: (value: { startDate: Date | null; endDate: Date | null }) => void;
+  isRangeSelectable: boolean;
+  label: string;
+}
+
+const DatePicker = ({ value, onChange, isRangeSelectable, label }: Props) => {
   const {
-    inputStartDate,
-    inputEndDate,
     currentDate,
     selectedStartDate,
     selectedEndDate,
     days,
     calendarEvents,
     inputEvents,
-  } = useDatePicker();
+  } = useDatePicker(value, onChange, isRangeSelectable);
+  const { startDate, endDate } = value;
   const today = new Date();
-
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenCalendar = () => {
@@ -47,11 +52,11 @@ const DatePicker = () => {
   };
 
   const getFormattedDate = () => {
-    if (inputStartDate && inputEndDate) {
-      return `${formatDate(inputStartDate)} - ${formatDate(inputEndDate)}`;
+    if (startDate && endDate) {
+      return `${formatDate(startDate)} - ${formatDate(endDate)}`;
     }
-    if (inputStartDate) {
-      return formatDate(inputStartDate);
+    if (startDate) {
+      return formatDate(startDate);
     }
     return '';
   };
@@ -59,7 +64,7 @@ const DatePicker = () => {
   return (
     <div className="relative">
       <TextInputWithLabel
-        label="일정"
+        label={label}
         state="required"
         name="selectedDate"
         type="text"
@@ -82,6 +87,7 @@ const DatePicker = () => {
         onYearMonthChange={handleYearMonthChange}
         onClose={handleCloseCalendar}
         onConfirm={handleConfirmCalendar}
+        isRangeSelectable={isRangeSelectable}
       />
     </div>
   );

@@ -9,6 +9,10 @@ interface Props {
   labelHidden?: boolean;
   placeholder: string;
   id: string;
+  selectedHour: string;
+  selectedMinute: string;
+  inputClassNameCondition?: Record<string, boolean>;
+  onSelect: (firstTime: string, sencondTime: string) => void;
 }
 
 const TimePickerInput = ({
@@ -16,10 +20,12 @@ const TimePickerInput = ({
   labelHidden = false,
   placeholder,
   id,
+  selectedHour,
+  selectedMinute,
+  inputClassNameCondition,
+  onSelect,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedHour, setSelectedHour] = useState('');
-  const [selectedMinute, setSelectedMinute] = useState('');
   const inputValue =
     selectedHour === '' ? '' : `${selectedHour}:${selectedMinute}`;
 
@@ -32,11 +38,6 @@ const TimePickerInput = ({
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
-
-  const handleTimeSelect = (firstTime: string, sencondTime: string) => {
-    setSelectedHour(firstTime);
-    setSelectedMinute(sencondTime);
-  };
 
   const getLabelState = () => {
     if (date) return 'default';
@@ -58,6 +59,7 @@ const TimePickerInput = ({
         className={date && '!body-3-m -mb-[2px] text-label-alternative'}
         onClick={handleOpen}
         onChange={() => {}}
+        inputClassNameCondition={inputClassNameCondition}
       />
       <TimePicker
         firstPicker={{
@@ -72,7 +74,7 @@ const TimePickerInput = ({
         }}
         isOpen={isOpen}
         onClose={handleClose}
-        onSelect={handleTimeSelect}
+        onSelect={onSelect}
       />
     </div>
   );

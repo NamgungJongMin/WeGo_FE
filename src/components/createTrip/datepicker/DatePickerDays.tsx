@@ -31,6 +31,7 @@ interface Props extends VariantProps<typeof DayVariants> {
   selectedStartDate: Date | null;
   selectedEndDate: Date | null;
   calendarEvents: CalendarEvents;
+  isRangeSelectable: boolean; // 추가
 }
 
 const DatePickerDays = ({
@@ -38,6 +39,7 @@ const DatePickerDays = ({
   selectedStartDate,
   selectedEndDate,
   calendarEvents,
+  isRangeSelectable = true, // 기본값 추가
 }: Props) => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -48,7 +50,7 @@ const DatePickerDays = ({
       role="grid"
       aria-label="캘린더"
       tabIndex={0}
-      onMouseUp={calendarEvents.endDrag}
+      onMouseUp={() => isRangeSelectable && calendarEvents.endDrag()}
     >
       {days.map(({ date, currentMonth }) => {
         const isToday = date.getTime() === today.getTime();
@@ -94,8 +96,12 @@ const DatePickerDays = ({
           >
             <button
               type="button"
-              onMouseDown={() => calendarEvents.startDrag(date)}
-              onMouseEnter={() => calendarEvents.extendSelection(date)}
+              onMouseDown={() =>
+                isRangeSelectable && calendarEvents.startDrag(date)
+              }
+              onMouseEnter={() =>
+                isRangeSelectable && calendarEvents.extendSelection(date)
+              }
               onClick={() => calendarEvents.selectDate(date)}
               className={cn(DayVariants({ state }), {
                 'before:absolute before:inset-0 before:left-[-27.6px] before:z-[-10px] before:w-[27.6px] before:bg-slate-100':

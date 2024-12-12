@@ -44,7 +44,7 @@ const ScheduleAccordionItem = ({
       </header>
       <div
         id={`accordion-content-${title}`}
-        className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+        className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
           isOpen ? '[grid-template-rows:_1fr]' : '[grid-template-rows:_0fr]'
         }`}
       >

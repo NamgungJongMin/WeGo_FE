@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nickname": "Traveler01",
+    "role": "ORGANIZER",
+    "profileImage": "/user.jpg"
+  },
+  {
+    "id": 2,
+    "nickname": "Explorer02",
+    "role": "member",
+    "profileImage": "/user.jpg"
+  },
+  {
+    "id": 3,
+    "nickname": "Adventurer03",
+    "role": "member",
+    "profileImage": "/user.jpg"
+  },
+  {
+    "id": 4,
+    "nickname": "Nomad04",
+    "role": "member",
+    "profileImage": "/user.jpg"
+  },
+  {
+    "id": 5,
+    "nickname": "Wanderer05",
+    "role": "member",
+    "profileImage": "/user.jpg"
+  }
+]

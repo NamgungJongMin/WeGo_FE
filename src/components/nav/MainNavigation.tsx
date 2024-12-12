@@ -16,7 +16,8 @@ const MainNavigation = () => {
     pathname === '/login' ||
     pathname === '/signup' ||
     pathname === '/write' ||
-    (pathname.startsWith('/chat/') && pathname !== '/chat')
+    (pathname.startsWith('/chat/') && pathname !== '/chat') ||
+    pathname.startsWith('/travel/new')
   ) {
     return null;
   }

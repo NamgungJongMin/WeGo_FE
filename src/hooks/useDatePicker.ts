@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import { getDaysInMonth } from '@/utils/calendarHelper';
 
-const useDatePicker = () => {
+const useDatePicker = (
+  value: {
+    startDate: Date | null;
+    endDate: Date | null;
+  },
+  onChange: (value: { startDate: Date | null; endDate: Date | null }) => void,
+  isRangeSelectable: boolean = true,
+) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedStartDate, setSelectedStartDate] = useState<Date | null>(null);
   const [selectedEndDate, setSelectedEndDate] = useState<Date | null>(null);
-  const [inputStartDate, setInputStartDate] = useState<Date | null>(null);
-  const [inputEndDate, setInputEndDate] = useState<Date | null>(null);
   const [dragStart, setDragStart] = useState<Date | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+
+  const { startDate, endDate } = value;
 
   const today = new Date();
   const days = getDaysInMonth(
@@ -18,42 +25,49 @@ const useDatePicker = () => {
 
   const calendarEvents = {
     selectDate: (date: Date) => {
-      if (!selectedStartDate || (selectedEndDate && !isDragging)) {
+      if (isRangeSelectable) {
+        if (!selectedStartDate || (selectedEndDate && !isDragging)) {
+          setSelectedStartDate(date);
+          setSelectedEndDate(null);
+        } else if (selectedStartDate.getTime() === date.getTime()) {
+          setSelectedStartDate(null);
+        } else if (!selectedEndDate) {
+          setSelectedStartDate(
+            selectedStartDate.getTime() < date.getTime()
+              ? selectedStartDate
+              : date,
+          );
+          setSelectedEndDate(
+            selectedStartDate.getTime() < date.getTime()
+              ? date
+              : selectedStartDate,
+          );
+        }
+      } else {
         setSelectedStartDate(date);
         setSelectedEndDate(null);
-      } else if (selectedStartDate.getTime() === date.getTime()) {
-        setSelectedStartDate(null);
-      } else if (!selectedEndDate) {
-        const startDate =
-          selectedStartDate.getTime() < date.getTime()
-            ? selectedStartDate
-            : date;
-        const endDate =
-          selectedStartDate.getTime() < date.getTime()
-            ? date
-            : selectedStartDate;
-        setSelectedStartDate(startDate);
-        setSelectedEndDate(endDate);
       }
     },
 
     startDrag: (date: Date) => {
-      setIsDragging(true);
-      setDragStart(date);
+      if (isRangeSelectable) {
+        setIsDragging(true);
+        setDragStart(date);
+      }
     },
 
     extendSelection: (date: Date) => {
-      if (isDragging && dragStart) {
-        const startDate = dragStart < date ? dragStart : date;
-        const endDate = dragStart > date ? dragStart : date;
-        setSelectedStartDate(startDate);
-        setSelectedEndDate(endDate);
+      if (isRangeSelectable && isDragging && dragStart) {
+        setSelectedStartDate(dragStart < date ? dragStart : date);
+        setSelectedEndDate(dragStart > date ? dragStart : date);
       }
     },
 
     endDrag: () => {
-      setIsDragging(false);
-      setDragStart(null);
+      if (isRangeSelectable) {
+        setIsDragging(false);
+        setDragStart(null);
+      }
     },
 
     adjustMonth: (offset: number) => {
@@ -76,12 +90,12 @@ const useDatePicker = () => {
 
   const inputEvents = {
     openCalendar: () => {
-      if (inputStartDate) {
+      if (startDate) {
         setCurrentDate(
-          new Date(inputStartDate.getFullYear(), inputStartDate.getMonth(), 1),
+          new Date(startDate.getFullYear(), startDate.getMonth(), 1),
         );
-        setSelectedStartDate(inputStartDate);
-        setSelectedEndDate(inputEndDate);
+        setSelectedStartDate(startDate);
+        setSelectedEndDate(endDate);
       } else {
         setCurrentDate(new Date());
         setSelectedStartDate(null);
@@ -90,9 +104,7 @@ const useDatePicker = () => {
     },
 
     confirmSelection: () => {
-      setInputStartDate(selectedStartDate);
-      setInputEndDate(selectedEndDate);
-
+      onChange({ startDate: selectedStartDate, endDate: selectedEndDate });
       setSelectedStartDate(null);
       setSelectedEndDate(null);
     },
@@ -107,8 +119,6 @@ const useDatePicker = () => {
     currentDate,
     selectedStartDate,
     selectedEndDate,
-    inputStartDate,
-    inputEndDate,
     days,
     calendarEvents,
     inputEvents,

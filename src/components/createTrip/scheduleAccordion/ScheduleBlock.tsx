@@ -7,10 +7,12 @@ interface Props {
   dayIndex: number;
   destination: string;
   description: string;
+  destinationImage: File | null;
+
   onUpdateSchedule: (
     id: number,
     field: string,
-    value: string,
+    value: string | File | null,
     dayIndex: number,
   ) => void;
   onRemoveSchedule: (id: number, dayIndex: number) => void;
@@ -21,10 +23,11 @@ const ScheduleBlock = ({
   dayIndex,
   destination,
   description,
+  destinationImage,
   onUpdateSchedule,
   onRemoveSchedule,
 }: Props) => {
-  const handleChange = (field: string, value: string) => {
+  const handleChange = (field: string, value: string | File | null) => {
     onUpdateSchedule(id, field, value, dayIndex);
   };
 
@@ -59,7 +62,11 @@ const ScheduleBlock = ({
         onChange={(e) => handleChange('destination', e.target.value)}
         inputClassName="bg-background-alternative w-[295px]"
       />
-      <ImageUploader size="small" />
+      <ImageUploader
+        size="small"
+        image={destinationImage}
+        onChange={(imageUrl) => handleChange('destinationImage', imageUrl)}
+      />
       <TextareaWithLabel
         label="설명"
         state="required"

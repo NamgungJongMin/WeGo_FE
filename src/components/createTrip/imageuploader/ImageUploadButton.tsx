@@ -25,7 +25,7 @@ interface Props extends VariantProps<typeof uploadButtonVariants> {
   size?: 'default' | 'small';
   className?: string;
   classNameCondition?: Record<string, boolean>;
-  onImageChange: (imageUrl: string) => void;
+  onImageChange: (file: File) => void; // 파일 객체 전달
 }
 
 const ImageUploadButton = ({
@@ -45,8 +45,7 @@ const ImageUploadButton = ({
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      const imageUrl = URL.createObjectURL(event.target.files[0]);
-      onImageChange(imageUrl);
+      onImageChange(event.target.files[0]); // 선택된 파일 객체 전달
     }
   };
 

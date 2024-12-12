@@ -1,43 +1,57 @@
-import { useState, useEffect } from 'react';
-import { Schedule } from '@/@types/date';
+'use client';
 
-interface Props {
-  startDate: Date;
-  endDate: Date;
-}
+import { useEffect } from 'react';
+import { FormTravelPlan } from '@/@types/travelForm';
 
-const useTravelSchedules = ({ startDate, endDate }: Props) => {
-  const [schedules, setSchedules] = useState<Schedule[]>([]);
-
+const useTravelSchedules = (
+  startDate: Date,
+  endDate: Date,
+  schedules: FormTravelPlan[],
+  onChangeSchedule: (schedules: FormTravelPlan[]) => void,
+) => {
   const initDefaultSchedule = () => {
     const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
-    const differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+    const differenceInMilliseconds = endDate
+      ? endDate.getTime() - startDate.getTime()
+      : startDate.getTime() - startDate.getTime();
     const differenceInDays = Math.ceil(
       differenceInMilliseconds / oneDayInMilliseconds,
     );
 
-    const initialSchedules = Array.from(
-      { length: differenceInDays + 1 },
-      (_, i) => ({
-        id: 1,
-        destination: '',
-        description: '',
-        dayIndex: i,
-      }),
-    );
+    const days = Array.from({ length: differenceInDays + 1 }, (_, i) => i + 1);
 
-    setSchedules(initialSchedules);
+    const initializedSchedules = [...schedules];
+
+    days.forEach((day) => {
+      const daySchedules = initializedSchedules.filter(
+        (schedule) => schedule.tripDay === day,
+      );
+
+      if (daySchedules.length === 0) {
+        initializedSchedules.push({
+          tripOrderNumber: 1,
+          destination: '',
+          description: '',
+          tripDay: day,
+          destinationImage: null,
+        });
+      }
+    });
+
+    onChangeSchedule(initializedSchedules);
   };
 
   const addSchedule = (dayIndex: number) => {
-    setSchedules((prev) => [
-      ...prev,
+    onChangeSchedule([
+      ...schedules,
       {
-        id:
-          prev.filter((schedule) => schedule.dayIndex === dayIndex).length + 1,
+        tripOrderNumber:
+          schedules.filter((schedule) => schedule.tripDay === dayIndex).length +
+          1,
         destination: '',
         description: '',
-        dayIndex,
+        destinationImage: null,
+        tripDay: dayIndex,
       },
     ]);
   };
@@ -45,12 +59,12 @@ const useTravelSchedules = ({ startDate, endDate }: Props) => {
   const updateSchedule = (
     id: number,
     field: string,
-    value: string,
+    value: string | File | null,
     dayIndex: number,
   ) => {
-    setSchedules((prev) =>
-      prev.map((schedule) =>
-        schedule.dayIndex === dayIndex && schedule.id === id
+    onChangeSchedule(
+      schedules.map((schedule) =>
+        schedule.tripDay === dayIndex && schedule.tripOrderNumber === id
           ? { ...schedule, [field]: value }
           : schedule,
       ),
@@ -58,20 +72,21 @@ const useTravelSchedules = ({ startDate, endDate }: Props) => {
   };
 
   const removeSchedule = (id: number, dayIndex: number) => {
-    setSchedules((prev) => {
-      const updatedSchedules = prev.filter(
-        (schedule) => !(schedule.dayIndex === dayIndex && schedule.id === id),
-      );
+    const updatedSchedules = schedules.filter(
+      (schedule) =>
+        !(schedule.tripDay === dayIndex && schedule.tripOrderNumber === id),
+    );
 
-      return updatedSchedules.map((schedule, index, array) => {
-        if (schedule.dayIndex === dayIndex) {
+    onChangeSchedule(
+      updatedSchedules.map((schedule, index, array) => {
+        if (schedule.tripDay === dayIndex) {
           const newId =
-            array.filter((s) => s.dayIndex === dayIndex).indexOf(schedule) + 1;
-          return { ...schedule, id: newId };
+            array.filter((s) => s.tripDay === dayIndex).indexOf(schedule) + 1;
+          return { ...schedule, tripOrderNumber: newId };
         }
         return schedule;
-      });
-    });
+      }),
+    );
   };
 
   useEffect(() => {
@@ -79,7 +94,6 @@ const useTravelSchedules = ({ startDate, endDate }: Props) => {
   }, []);
 
   return {
-    schedules,
     addSchedule,
     updateSchedule,
     removeSchedule,

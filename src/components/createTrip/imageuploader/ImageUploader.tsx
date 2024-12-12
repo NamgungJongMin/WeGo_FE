@@ -1,23 +1,27 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import ImageUploadButton from './ImageUploadButton';
 import ImagePreview from './ImagePreview';
 
 interface Props {
   size?: 'default' | 'small';
+  image: File | null;
+  onChange: (file: File | null) => void;
 }
 
-const ImageUploader = ({ size }: Props) => {
-  const [image, setImage] = useState<string | null>(null);
+const ImageUploader = ({ size, image, onChange }: Props) => {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const objectUrlRef = useRef<string | null>(null);
 
-  const handleImageChange = (imageUrl: string) => {
+  const handleImageChange = (selectedFile: File) => {
     if (objectUrlRef.current) {
       URL.revokeObjectURL(objectUrlRef.current);
     }
-    objectUrlRef.current = imageUrl;
-    setImage(imageUrl);
+    const objectUrl = URL.createObjectURL(selectedFile);
+    objectUrlRef.current = objectUrl;
+    setImageUrl(objectUrl); // 새로운 URL 설정
+    onChange(selectedFile); // 부모 상태 업데이트
   };
 
   const handleRemoveImage = () => {
@@ -25,16 +29,27 @@ const ImageUploader = ({ size }: Props) => {
       URL.revokeObjectURL(objectUrlRef.current);
       objectUrlRef.current = null;
     }
-    setImage(null);
+    setImageUrl(null);
+    onChange(null);
   };
 
   useEffect(() => {
+    if (image) {
+      // 이미지가 있는 경우 새로운 URL 생성
+      const objectUrl = URL.createObjectURL(image);
+      objectUrlRef.current = objectUrl;
+      setImageUrl(objectUrl);
+    } else {
+      setImageUrl(null);
+    }
+
     return () => {
+      // 컴포넌트 언마운트 시 URL 해제
       if (objectUrlRef.current) {
         URL.revokeObjectURL(objectUrlRef.current);
       }
     };
-  }, []);
+  }, [image]);
 
   const id = 'image';
   return (
@@ -45,7 +60,7 @@ const ImageUploader = ({ size }: Props) => {
       >
         사진 추가하기
       </label>
-      {image ? (
+      {imageUrl ? (
         <>
           <span
             role="button"
@@ -59,7 +74,7 @@ const ImageUploader = ({ size }: Props) => {
           >
             편집
           </span>
-          <ImagePreview src={image} size={size} />
+          <ImagePreview src={imageUrl} size={size} />
         </>
       ) : (
         <ImageUploadButton

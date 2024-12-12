@@ -8,9 +8,10 @@ import cn from '@/utils/cn';
 interface Props {
   title: string;
   isConfigButton?: boolean;
+  onRoute?: () => void;
 }
 
-const FormHeader = ({ title, isConfigButton }: Props) => {
+const FormHeader = ({ title, isConfigButton, onRoute }: Props) => {
   const router = useRouter();
 
   return (
@@ -18,7 +19,11 @@ const FormHeader = ({ title, isConfigButton }: Props) => {
       <button
         type="button"
         onClick={() => {
-          router.back();
+          if (onRoute) {
+            onRoute();
+          } else {
+            router.back();
+          }
         }}
         aria-label="뒤로가기 버튼, 이전 페이지로 이동"
         className="z-10 m-0 cursor-pointer rounded border-none bg-transparent p-0 outline-none focus-visible:ring-2 focus-visible:ring-blue-500"

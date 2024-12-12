@@ -9,7 +9,7 @@ interface Props {
 const HashtagList = ({ hashtags, onRemove }: Props) => {
   return (
     <ul className="mt-2.5 flex flex-wrap gap-x-1.5 gap-y-2">
-      {hashtags.map((tag, index) => (
+      {hashtags?.map((tag, index) => (
         <HashtagItem
           key={uuidv4()}
           tag={tag}

@@ -1,20 +1,20 @@
-'use client';
-
-import { useState } from 'react';
 import HashtagInput from './HashtagInput';
 import HashtagList from './HashtagList';
 
-const HashtagCreator = () => {
-  const [hashtags, setHashtags] = useState<string[]>([]);
+interface Props {
+  hashtags: string[];
+  onChange: (updatedHashtags: string[]) => void;
+}
 
+const HashtagCreator = ({ hashtags, onChange }: Props) => {
   const addHashtag = (tag: string) => {
     if (!tag.trim() || hashtags.includes(tag)) return;
 
-    setHashtags((prev) => [...prev, tag]);
+    onChange([...hashtags, tag]); // 상태를 부모 컴포넌트로 전달
   };
 
   const removeHashtag = (index: number) => {
-    setHashtags((prev) => prev.filter((_, i) => i !== index));
+    onChange(hashtags.filter((_, i) => i !== index)); // 상태를 부모 컴포넌트로 전달
   };
 
   return (

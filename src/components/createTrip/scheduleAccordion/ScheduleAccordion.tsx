@@ -3,32 +3,31 @@
 import { useState } from 'react';
 import Add from '@/assets/add_Blue_18px.svg';
 import { formatDate } from '@/utils/calendarHelper';
-import { Schedule } from '@/@types/date';
+import { FormTravelPlan } from '@/@types/travelForm';
+import useTravelSchedules from '@/hooks/useTravelSchedules';
 import ScheduleAccordionItem from './ScheduleAccordionItem';
 import ScheduleBlock from './ScheduleBlock';
 
 interface Props {
   startDate: Date;
   endDate: Date;
-  schedules: Schedule[];
-  onAddSchedule: (dayIndex: number) => void;
-  onUpdateSchedule: (
-    id: number,
-    field: string,
-    value: string,
-    dayIndex: number,
-  ) => void;
-  onRemoveSchedule: (id: number, dayIndex: number) => void;
+  schedules: FormTravelPlan[];
+  onChangeSchedule: (schedules: FormTravelPlan[]) => void;
 }
 
 const ScheduleAccordion = ({
   startDate,
   endDate,
   schedules,
-  onAddSchedule,
-  onUpdateSchedule,
-  onRemoveSchedule,
+  onChangeSchedule,
 }: Props) => {
+  const { addSchedule, updateSchedule, removeSchedule } = useTravelSchedules(
+    startDate as Date,
+    endDate as Date,
+    schedules,
+    onChangeSchedule,
+  );
+
   const getDaysInRange = () => {
     const days: Date[] = [];
     const current = new Date(startDate);
@@ -41,11 +40,11 @@ const ScheduleAccordion = ({
     return days;
   };
 
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number>(0);
   const daysInRange = getDaysInRange();
 
   const handleToggle = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+    setOpenIndex((prev) => (prev === index ? -1 : index));
   };
 
   return (
@@ -61,24 +60,25 @@ const ScheduleAccordion = ({
           <>
             <ul className="flex flex-col items-center">
               {schedules
-                .filter((daySchedule) => daySchedule.dayIndex === index)
+                .filter((daySchedule) => daySchedule.tripDay === index + 1)
                 .map((schedule) => (
                   <ScheduleBlock
-                    key={schedule.id}
-                    id={schedule.id}
-                    dayIndex={schedule.dayIndex}
+                    key={schedule.tripOrderNumber}
+                    id={schedule.tripOrderNumber}
+                    dayIndex={schedule.tripDay}
                     destination={schedule.destination}
                     description={schedule.description}
-                    onUpdateSchedule={onUpdateSchedule}
-                    onRemoveSchedule={onRemoveSchedule}
+                    destinationImage={schedule.destinationImage}
+                    onUpdateSchedule={updateSchedule}
+                    onRemoveSchedule={removeSchedule}
                   />
                 ))}
             </ul>
             <button
               type="button"
-              onClick={() => onAddSchedule(index)}
+              onClick={() => addSchedule(index + 1)}
               aria-label={`Day ${index + 1} 일정 추가`}
-              className="body-2-sb flex h-[40px] w-[295px] items-center justify-center gap-1 rounded bg-blue-100 text-primary-normal"
+              className="body-2-sb flex h-[40px] w-[295px] items-center justify-center gap-1 rounded border border-blue-100 bg-blue-100 text-primary-normal transition duration-500 hover:border-primary-normal"
             >
               <Add />
               일정 추가
