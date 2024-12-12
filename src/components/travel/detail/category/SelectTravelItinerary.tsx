@@ -34,13 +34,17 @@ const SelectTravelItinerary = ({
             className={`flex justify-between gap-5 ${i !== 1 && 'pt-6'}`}
           >
             <div className="title-5-b flex flex-shrink-0 flex-col">
-              <div className="flex items-center gap-1">
+              <button
+                type="button"
+                className="flex items-center gap-1"
+                onClick={() => toggleDay(i)}
+              >
                 <span>Day {i}</span>
                 <ArrowDownIcon
                   className={`transform cursor-pointer transition-transform duration-200 ${isOppen.has(i) ? '' : 'scale-y-[-1]'}`}
-                  onClick={() => toggleDay(i)}
                 />
-              </div>
+              </button>
+
               <span className="body-2-m text-label-alternative">
                 {formatDateToShortWithDay(startAt, i - 1)}
               </span>

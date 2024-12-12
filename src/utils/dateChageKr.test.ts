@@ -1,4 +1,8 @@
-import { formatStartDate, getWeekNumber } from './dateChageKr';
+import {
+  formatDateToShortWithDay,
+  formatStartDate,
+  getWeekNumber,
+} from './dateChageKr';
 
 describe('formatStartDate', () => {
   it('지정일이 내일이면 "내일"을 반환해야 합니다.', () => {
@@ -40,5 +44,18 @@ describe('getWeekNumber', () => {
     const startOfMonth = new Date(2024, 11, 1);
     startOfMonth.setDate(1);
     expect(getWeekNumber(startOfMonth)).toBe(1);
+  });
+});
+
+describe('formatDateToShortWithDay', () => {
+  it('2024.12.03를 12.03(화)로 변환합니다', () => {
+    const dateString = '2024-12-03';
+    expect(formatDateToShortWithDay(dateString)).toBe('12.03(화)');
+  });
+
+  it('2024.12.03에 offsetDays(3)를 더하면 12.06(금)으로 변환합니다', () => {
+    const dateString = '2024-12-03';
+    const offsetDays = 3;
+    expect(formatDateToShortWithDay(dateString, offsetDays)).toBe('12.06(금)');
   });
 });

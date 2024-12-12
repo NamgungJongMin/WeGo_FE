@@ -12,7 +12,7 @@ const TravelPlanCard = ({
       <div className="flex h-[100px] items-center overflow-hidden">
         <Image
           src={image}
-          alt={destination}
+          alt={`${destination} 일정 이미지`}
           width={300}
           height={100}
           className="w-full object-cover"

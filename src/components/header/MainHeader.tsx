@@ -37,7 +37,7 @@ const MainHeader = () => {
             : '',
         )}
       >
-        <Link href="/">
+        <Link href="/" aria-label="WEGO 로고">
           {isScrolled ? (
             <LogoBlue
               width={80}
@@ -45,7 +45,6 @@ const MainHeader = () => {
               className={
                 isScrolled ? 'text-label-normal' : 'text-primary-white'
               }
-              aria-label="WEGO 로고"
             />
           ) : (
             <LogoWhite
@@ -54,29 +53,26 @@ const MainHeader = () => {
               className={
                 isScrolled ? 'text-label-normal' : 'text-primary-white'
               }
-              aria-label="WEGO 로고"
             />
           )}
         </Link>
         <div className="flex items-center gap-3">
-          <Link href="/">
+          <Link href="/" aria-label="모임 만들기">
             <Write
               width={24}
               height={24}
               className={
                 isScrolled ? 'text-label-normal' : 'text-primary-white'
               }
-              aria-label="모임 만들기"
             />
           </Link>
-          <Link href="/mypage">
+          <Link href="/mypage" aria-label="마이페이지로 가기">
             <Mypage
               width={24}
               height={24}
               className={
                 isScrolled ? 'text-label-normal' : 'text-primary-white'
               }
-              aria-label="마이페이지로 가기"
             />
           </Link>
         </div>

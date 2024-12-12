@@ -16,7 +16,11 @@ const UserIconList = ({ participant }: { participant: Participant[] }) => {
             zIndex: index,
           }}
         >
-          <UserIcon size="sm" profileImage={user.profileImage} />
+          <UserIcon
+            size="sm"
+            profileImage={user.profileImage}
+            nickname={user.nickname}
+          />
         </div>
       ))}
 

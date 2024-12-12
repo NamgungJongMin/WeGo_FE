@@ -3,7 +3,7 @@
 import { TravelDetail } from '@/@types/travel';
 import { useState } from 'react';
 import TravelButtons from './TravelButtons';
-import SelectTravelReviewContainer from './SelectTravelReviewContainer';
+import SelectTravelReviewContainer from './category/SelectTravelReviewContainer';
 import SelectTravelDetail from './category/SelectTravelDetail';
 import SelectTravelItinerary from './category/SelectTravelItinerary';
 
