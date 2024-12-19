@@ -1,15 +1,18 @@
 import SearchIcon from '@/assets/search.svg';
-import { useTravelStore } from '@/store/useTravelStore';
-import { useState } from 'react';
+import { useTravelListStore } from '@/store/useTravelListStore';
+import { useState, useTransition } from 'react';
 
 const FilterSearch = () => {
   const [localSearchText, setLocalSearchText] = useState<string>('');
-  const setFilters = useTravelStore((state) => state.setFilters);
+  const setFilters = useTravelListStore((state) => state.setFilters);
+  const [isPending, startTransition] = useTransition();
 
   const handleSearch = () => {
     const encodedSearchText = encodeURIComponent(localSearchText);
-    setFilters({
-      searchText: encodedSearchText,
+    startTransition(() => {
+      setFilters({
+        searchText: encodedSearchText,
+      });
     });
   };
 
@@ -27,7 +30,9 @@ const FilterSearch = () => {
         onKeyDown={handleKeyDown}
         placeholder="숙소/여행지/맛집 등을 입력해 주세요."
         aria-label="숙소/여행지/맛집 등 검색"
-        className="peer w-full bg-transparent text-label-normal focus:outline-none"
+        className={`peer w-full bg-transparent text-label-normal focus:outline-none ${
+          isPending ? 'opacity-50' : ''
+        }`}
       />
       <button
         type="button"

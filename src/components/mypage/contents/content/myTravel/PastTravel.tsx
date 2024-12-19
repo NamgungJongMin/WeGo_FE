@@ -1,6 +1,6 @@
 import TravelCard from '@/components/card/TravelCard';
 import Pagenation from '@/components/common/pagenation/Pagenation';
-import { formatStartDate } from '@/utils/dateChageKr';
+import { checkTomorrow } from '@/utils/dateChageKr';
 import { useState } from 'react';
 import { usePastTravel } from '@/queries/travel/useGetMyTravel';
 import { TravelList } from '@/@types/travel';
@@ -29,7 +29,7 @@ const PastTravel = () => {
             image={travel.image}
             startAt={travel.startAt}
             endAt={travel.endAt}
-            formattedStartDate={formatStartDate(travel.startAt)}
+            formattedStartDate={checkTomorrow(travel.startAt)}
             closed
           />
         ))

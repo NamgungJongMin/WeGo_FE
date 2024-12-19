@@ -41,7 +41,7 @@ const SelectTravelItinerary = ({
               >
                 <span>Day {i}</span>
                 <ArrowDownIcon
-                  className={`transform cursor-pointer transition-transform duration-200 ${isOppen.has(i) ? '' : 'scale-y-[-1]'}`}
+                  className={`transform cursor-pointer transition-transform duration-200 ${isOppen.has(i) ? 'scale-y-[-1]' : ''}`}
                 />
               </button>
 

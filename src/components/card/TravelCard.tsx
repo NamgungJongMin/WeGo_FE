@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import cn from '@/utils/cn';
 import useBookmarkTravel from '@/queries/travel/useBookmarkTravel';
+import { deleteTravelBookMark, postTravelBookMark } from '@/api/travelApi';
 import DomesticTag from '../common/tag/DomesticTag';
 import ProgressBar from '../common/ProgressBar';
 import ExpiredTag from '../common/tag/ExpiredTag';
@@ -49,8 +50,9 @@ const TravelCard = ({
 
     if (!isCheckedState) {
       bookmarkTravel(travelId);
+      postTravelBookMark(travelId);
     } else {
-      // unbookmarkTravel(travelId); api 추가 필요 명세 아직 없음
+      deleteTravelBookMark(travelId);
     }
 
     setIsCheckedState(!isCheckedState);

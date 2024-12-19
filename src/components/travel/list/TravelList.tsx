@@ -1,38 +1,33 @@
 'use client';
 
-import { getTravels } from '@/api/travelApi';
 import TravelCard from '@/components/card/TravelCard';
 import NoReault from '@/components/common/NoReault';
-import { useTravelStore } from '@/store/useTravelStore';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useTravelListStore } from '@/store/useTravelListStore';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import SpinnerIcon from '@/assets/spinner_round.svg';
-import { formatStartDate } from '@/utils/dateChageKr';
+import { checkTomorrow } from '@/utils/dateChageKr';
+import useGetTravelsList from '@/queries/travel/useGetTravelsList';
+import { InitialFilters } from '@/@types/travel';
 
 const TravelList = () => {
   const { ref, inView } = useInView();
-  const filters = useTravelStore((state) => state.filters);
+  const filters = useTravelListStore((state) => state.filters);
 
   const {
     data: travelListData,
     isLoading,
     isError,
+    error,
     hasNextPage,
     fetchNextPage,
-    fetchPreviousPage,
-  } = useInfiniteQuery({
-    queryKey: ['travels', filters],
-    queryFn: ({ pageParam }) => getTravels({ pageParam, ...filters }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage, pages) => {
-      return !lastPage.isLast ? pages.length + 1 : undefined;
-    },
-  });
+  } = useGetTravelsList();
 
   useEffect(() => {
-    if (filters.searchText) fetchPreviousPage();
-  }, [filters.searchText, fetchPreviousPage]);
+    if (filters !== InitialFilters) {
+      fetchNextPage();
+    }
+  }, [filters, fetchNextPage]);
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -46,25 +41,28 @@ const TravelList = () => {
     return undefined;
   }, [inView, hasNextPage, fetchNextPage]);
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <div className="flex w-full flex-col items-center justify-center gap-5 p-8">
         Loading...
         <SpinnerIcon className="animate-spin" />
       </div>
     );
-  if (isError) return <div>에러</div>;
+  }
+
+  if (isError) return <div>에러{error?.message}</div>;
 
   return (
-    <div className="h-full justify-center">
-      {travelListData &&
-        travelListData.pages.map((page) => (
-          <section
-            key={`page-${page.currentPage}`}
-            className="flex flex-col justify-center divide-y divide-line-normal border-b"
-          >
-            {page.travels.length === 0 ? (
-              <NoReault label="아직 등록된 여행이 없어요!" height="h-64" />
+    <>
+      <div className="flex h-full flex-col justify-center divide-y divide-line-normal">
+        {travelListData &&
+          travelListData.pages.map((page) =>
+            page.travels.length === 0 ? (
+              <NoReault
+                key="no-result"
+                label="아직 등록된 여행이 없어요!"
+                height="h-64"
+              />
             ) : (
               page.travels.map((travel) => (
                 <article key={travel.travelId} className="py-5">
@@ -78,15 +76,16 @@ const TravelList = () => {
                     currentTravelMateCount={travel.currentTravelMateCount}
                     startAt={travel.startAt}
                     endAt={travel.endAt}
-                    formattedStartDate={formatStartDate(travel.startAt)}
+                    formattedStartDate={checkTomorrow(travel.startAt)}
                     checkMark
                     isChecked
                   />
                 </article>
               ))
-            )}
-          </section>
-        ))}
+            ),
+          )}
+      </div>
+
       {hasNextPage ? (
         <div
           ref={ref}
@@ -98,7 +97,7 @@ const TravelList = () => {
       ) : (
         <div aria-label="마지막 페이지 입니다" />
       )}
-    </div>
+    </>
   );
 };
 

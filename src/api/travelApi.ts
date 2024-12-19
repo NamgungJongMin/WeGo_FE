@@ -39,10 +39,32 @@ export const getTravels = async ({
   pageParam,
   ...rest
 }: {
-  pageParam?: any;
+  pageParam?: number;
 } & Filters): Promise<TravelFilterResponse> => {
-  const page = `&page=${pageParam}` || '';
+  const page = pageParam && pageParam !== 1 ? `&page=${pageParam}` : '';
   const url = buildTravelUrl(rest) + page;
   const response = await fetch(url);
+  return handleResponse(response);
+};
+
+export const postTravelBookMark = async (id: number) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/travels/bookmark?id=${id}`,
+    {
+      method: 'POST',
+      credentials: 'include',
+    },
+  );
+  return handleResponse(response);
+};
+
+export const deleteTravelBookMark = async (id: number) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/travels/bookmark?id=${id}`,
+    {
+      method: 'DELETE',
+      credentials: 'include',
+    },
+  );
   return handleResponse(response);
 };

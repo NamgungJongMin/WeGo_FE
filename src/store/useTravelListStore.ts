@@ -1,12 +1,12 @@
 import { Filters } from '@/@types/travel';
 import { create } from 'zustand';
 
-interface TravelStore {
+interface TravelListStore {
   filters: Filters;
   setFilters: (filters: Partial<Filters>) => void;
 }
 
-export const useTravelStore = create<TravelStore>((set) => ({
+export const useTravelListStore = create<TravelListStore>((set) => ({
   filters: {
     startAt: '',
     endAt: '',

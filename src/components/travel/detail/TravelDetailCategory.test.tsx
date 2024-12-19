@@ -61,7 +61,7 @@ describe('TravelDetailCategory', () => {
   it('종료 날짜가 지난 경우 모임 리뷰 탭이 렌더링됩니다.', () => {
     renderComponent('2024-12-05'); // 종료 날짜가 지난 경우
 
-    fireEvent.click(screen.getByText('모임리뷰'));
+    expect(screen.getByText('모임리뷰')).toBeInTheDocument();
   });
 
   it('여행 상세 및 일정 탭에서 여행 버튼이 렌더링됩니다.', () => {
@@ -73,7 +73,7 @@ describe('TravelDetailCategory', () => {
   });
 
   it('종료 날짜가 지나지 않은 경우 모임 리뷰 탭이 표시되지 않습니다.', () => {
-    renderComponent();
+    renderComponent('2500-12-05');
 
     expect(screen.queryByText('모임리뷰')).not.toBeInTheDocument();
   });

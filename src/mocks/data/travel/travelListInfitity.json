@@ -1,8 +1,6 @@
 {
   "currentPage": 1,
-  "size": 5,
-  "isFirst": false,
-  "isLast": false,
+  "hasNext": false,
   "travels": [
     {
       "travelId": 1,
@@ -105,6 +103,116 @@
     },
     {
       "travelId": 10,
+      "travelName": "겨울에만 즐길 수 있는 고즈넉한 한옥 스테이",
+      "isDomestic": false,
+      "location": "북촌",
+      "image": "/test/travel/test5.jpg",
+      "startAt": "2024.12.24",
+      "endAt": "2024.12.26",
+      "maxTravelMateCount": 6,
+      "currentTravelMateCount": 5
+    },
+    {
+      "travelId": 11,
+      "travelName": "시골투어 같이 갈사람!",
+      "isDomestic": false,
+      "location": "강원도",
+      "image": "/test/travel/test1.jpg",
+      "startAt": "2024.12.11",
+      "endAt": "2024.12.13",
+      "maxTravelMateCount": 6,
+      "currentTravelMateCount": 5
+    },
+    {
+      "travelId": 12,
+      "travelName": "도쿄에서 즐기는 미식여행",
+      "isDomestic": true,
+      "location": "도쿄시",
+      "image": "/test/travel/test2.jpg",
+      "startAt": "2024.12.06",
+      "endAt": "2024.12.10",
+      "maxTravelMateCount": 12,
+      "currentTravelMateCount": 11
+    },
+    {
+      "travelId": 13,
+      "travelName": "당일치기 남산타워 보러가기",
+      "isDomestic": false,
+      "location": "용산구",
+      "image": "/test/travel/test3.jpg",
+      "startAt": "2025.01.03",
+      "endAt": "2025.01.03",
+      "maxTravelMateCount": 10,
+      "currentTravelMateCount": 10
+    },
+    {
+      "travelId": 14,
+      "travelName": "지하철로 떠나는 일본 도심 투어",
+      "isDomestic": true,
+      "location": "오사카",
+      "image": "/test/travel/test4.jpg",
+      "startAt": "2024.12.31",
+      "endAt": "2025.01.02",
+      "maxTravelMateCount": 6,
+      "currentTravelMateCount": 3
+    },
+    {
+      "travelId": 15,
+      "travelName": "겨울에만 즐길 수 있는 고즈넉한 한옥 스테이",
+      "isDomestic": false,
+      "location": "북촌",
+      "image": "/test/travel/test5.jpg",
+      "startAt": "2024.12.24",
+      "endAt": "2024.12.26",
+      "maxTravelMateCount": 6,
+      "currentTravelMateCount": 5
+    },
+    {
+      "travelId": 16,
+      "travelName": "시골투어",
+      "isDomestic": false,
+      "location": "원주",
+      "image": "/test/travel/test1.jpg",
+      "startAt": "2024.12.11",
+      "endAt": "2024.12.13",
+      "maxTravelMateCount": 6,
+      "currentTravelMateCount": 5
+    },
+    {
+      "travelId": 17,
+      "travelName": "도쿄에서 즐기는 미식여행",
+      "isDomestic": true,
+      "location": "도쿄시",
+      "image": "/test/travel/test2.jpg",
+      "startAt": "2024.12.06",
+      "endAt": "2024.12.10",
+      "maxTravelMateCount": 12,
+      "currentTravelMateCount": 11
+    },
+    {
+      "travelId": 18,
+      "travelName": "당일치기 남산타워 보러가기",
+      "isDomestic": false,
+      "location": "용산구",
+      "image": "/test/travel/test3.jpg",
+      "startAt": "2025.01.03",
+      "endAt": "2025.01.03",
+      "maxTravelMateCount": 10,
+      "currentTravelMateCount": 10
+    },
+    {
+      "travelId": 19,
+      "travelName": "지하철로 떠나는 일본 도심 투어",
+      "isDomestic": true,
+      "location": "오사카",
+      "image": "/test/travel/test4.jpg",
+      "startAt": "2024.12.31",
+      "endAt": "2025.01.02",
+      "maxTravelMateCount": 6,
+      "currentTravelMateCount": 3
+    },
+    {
+      "travelId": 20,
       "travelName": "겨울에만 즐길 수 있는 고즈넉한 한옥 스테이",
       "isDomestic": false,
       "location": "북촌",

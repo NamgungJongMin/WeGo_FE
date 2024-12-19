@@ -40,6 +40,7 @@ interface Props extends VariantProps<typeof TextareaVariants> {
   maxLength?: number;
   size?: 'default' | 'small';
   className?: string;
+  extraClassName?: string;
   classNameCondition?: Record<string, boolean>;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
@@ -51,6 +52,7 @@ const Textarea = ({
   maxLength = 100,
   size = 'default',
   className,
+  extraClassName,
   classNameCondition,
   onChange,
 }: Props) => {
@@ -62,9 +64,13 @@ const Textarea = ({
   };
   return (
     <div
-      className={cn(TextareaContainerVariants({ size }), {
-        'border-line-strong': !!value,
-      })}
+      className={cn(
+        TextareaContainerVariants({ size }),
+        {
+          'border-line-strong': !!value,
+        },
+        extraClassName,
+      )}
     >
       <textarea
         id={name}

@@ -3,16 +3,9 @@
 import TravelContents from '@/components/travel/detail/TravelContents';
 import { useQuery } from '@tanstack/react-query';
 import { getTravelDetail } from '@/api/travelApi';
-import { useTravelIdStore } from '@/store/useTravelIdStore';
-import { useEffect } from 'react';
 import TravelDetailCategory from './TravelDetailCategory';
 
 const TravelDetail = ({ id }: { id: string }) => {
-  const setId = useTravelIdStore((state) => state.setId);
-  useEffect(() => {
-    setId(id);
-  }, [id, setId]);
-
   const {
     data: travelDetail,
     isLoading,

@@ -73,9 +73,7 @@ export interface TravelParams {
 export interface TravelFilterResponse {
   travels: Travel[];
   currentPage: number;
-  size: number;
-  isFirst: boolean;
-  isLast: boolean;
+  hasNext: boolean;
 }
 export interface TravelList {
   travelId: number;

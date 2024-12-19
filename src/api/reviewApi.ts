@@ -48,7 +48,7 @@ export const fetchPopularReview = async (): Promise<Review[]> => {
 export const getTravelReview = async ({
   id,
 }: {
-  id: string;
+  id: any;
 }): Promise<Review[]> => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/reviews?id=${id}`,
@@ -84,14 +84,11 @@ export const getMyReview = async (
 };
 
 export const createReview = async (formData: FormData) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/reviews/create`,
-    {
-      method: 'POST',
-      credentials: 'include',
-      body: formData,
-    },
-  );
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/reviews`, {
+    method: 'POST',
+    credentials: 'include',
+    body: formData,
+  });
 
   if (!response.ok) {
     const error = new Error('Create review failed') as APIError;

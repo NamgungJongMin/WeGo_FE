@@ -37,7 +37,7 @@ const MainNavigation = () => {
       />
       <NavLink
         href="/chat"
-        icon={pathname === 'chat' ? <ChatWhite /> : <Chat />}
+        icon={pathname === '/chat' ? <ChatWhite /> : <Chat />}
         label="채팅"
         isActive={pathname === '/chat'}
       />

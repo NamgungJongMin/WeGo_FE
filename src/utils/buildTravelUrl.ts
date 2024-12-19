@@ -7,13 +7,7 @@ const buildTravelUrl = ({
   sortOrder,
   searchText,
 }: Filters): string => {
-  const params = new URLSearchParams({
-    startAt: startAt || '',
-    endAt: endAt || '',
-    isDomestic: isDomestic !== null ? String(isDomestic) : '',
-    sortOrder: sortOrder !== null ? String(sortOrder) : '',
-    query: searchText || '',
-  });
+  const params = new URLSearchParams();
 
   if (startAt) params.append('startAt', startAt);
   if (endAt) params.append('endAt', endAt);
@@ -21,7 +15,7 @@ const buildTravelUrl = ({
   if (sortOrder !== null) params.append('sortOrder', String(sortOrder));
   if (searchText) params.append('query', searchText);
 
-  return `${process.env.NEXT_PUBLIC_BASE_URL}/travels?${params.toString()}`;
+  return `${process.env.NEXT_PUBLIC_BASE_URL}/travels${params.toString() ? `?${params.toString()}` : ''}`;
 };
 
 export default buildTravelUrl;

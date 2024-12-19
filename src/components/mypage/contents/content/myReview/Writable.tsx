@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TravelCard from '@/components/card/TravelCard';
 import Pagenation from '@/components/common/pagenation/Pagenation';
-import { formatStartDate } from '@/utils/dateChageKr';
+import { checkTomorrow } from '@/utils/dateChageKr';
 import Link from 'next/link';
 import { TravelList } from '@/@types/travel';
 import { useWritableTravel } from '@/queries/travel/useGetMyTravel';
@@ -31,7 +31,7 @@ const Writable = () => {
               image={travel.image}
               startAt={travel.startAt}
               endAt={travel.endAt}
-              formattedStartDate={formatStartDate(travel.startAt)}
+              formattedStartDate={checkTomorrow(travel.startAt)}
               closed
             />
 

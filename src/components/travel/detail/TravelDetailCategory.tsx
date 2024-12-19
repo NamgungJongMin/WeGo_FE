@@ -1,11 +1,11 @@
 'use client';
 
 import { TravelDetail } from '@/@types/travel';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import TravelButtons from './TravelButtons';
-import SelectTravelReviewContainer from './category/SelectTravelReviewContainer';
 import SelectTravelDetail from './category/SelectTravelDetail';
 import SelectTravelItinerary from './category/SelectTravelItinerary';
+import SelectTravelReview from './category/SelectTravelReview';
 
 type Props = Pick<
   TravelDetail,
@@ -17,6 +17,7 @@ type Props = Pick<
   | 'startAt'
   | 'endAt'
 >;
+type Category = 'details' | 'itinerary' | 'review';
 
 const TravelDetailCategory = ({
   hashTags,
@@ -27,43 +28,44 @@ const TravelDetailCategory = ({
   startAt,
   endAt,
 }: Props) => {
-  const [category, setCategory] = useState(0);
-  const onClickCategory = (index: number) => {
-    setCategory(index);
+  const [category, setCategory] = useState<Category>('details');
+  const [isPending, startTransition] = useTransition();
+
+  const onClickCategory = (selectedCategory: Category) => {
+    startTransition(() => {
+      setCategory(selectedCategory);
+    });
   };
   const organizer = participant.find((part) => part.role === 'ORGANIZER');
   const now = new Date();
   const endDate = new Date(endAt);
   const selectCss = 'border-b-[3px] border-label-normal text-label-normal';
+
+  const categories = [
+    { label: '여행상세', value: 'details' },
+    { label: '여행일정', value: 'itinerary' },
+    { label: '모임리뷰', value: 'review', disabled: now <= endDate },
+  ];
+
   return (
     <section className="pb-20">
-      <div className="heading-1-b flex items-start gap-5 border-b px-5 text-label-alternative">
-        <button
-          type="button"
-          onClick={() => onClickCategory(0)}
-          className={`cursor-pointer pb-2.5 ${category === 0 ? selectCss : ''}`}
-        >
-          여행상세
-        </button>
-        <button
-          type="button"
-          onClick={() => onClickCategory(1)}
-          className={`cursor-pointer pb-2.5 ${category === 1 ? selectCss : ''}`}
-        >
-          여행일정
-        </button>
-        {now > endDate && (
-          <button
-            type="button"
-            onClick={() => onClickCategory(2)}
-            className={`cursor-pointer pb-2.5 ${category === 2 ? selectCss : ''}`}
-          >
-            모임리뷰
-          </button>
+      <header className="heading-1-b flex items-start gap-5 border-b px-5 text-label-alternative">
+        {categories.map(
+          ({ label, value, disabled }) =>
+            !disabled && (
+              <button
+                key={value}
+                type="button"
+                onClick={() => !disabled && onClickCategory(value as Category)}
+                className={`cursor-pointer pb-2.5 ${category === value || isPending ? selectCss : ''}`}
+              >
+                {label}
+              </button>
+            ),
         )}
-      </div>
+      </header>
       <div className="px-5 pb-10 pt-6">
-        {category === 0 && (
+        {category === 'details' && (
           <SelectTravelDetail
             participant={false}
             organizer={organizer}
@@ -71,17 +73,21 @@ const TravelDetailCategory = ({
             description={description}
           />
         )}
-        {category === 1 && (
+        {category === 'itinerary' && (
           <SelectTravelItinerary
             tripDuration={tripDuration}
             travelPlan={travelPlan}
             startAt={startAt}
           />
         )}
-        {category === 2 && <SelectTravelReviewContainer />}
-        {(category === 1 || category === 0) && now < endDate && (
-          <TravelButtons organizer={organizer?.id} participant={participant} />
-        )}
+        {category === 'review' && <SelectTravelReview />}
+        {(category === 'itinerary' || category === 'details') &&
+          now < endDate && (
+            <TravelButtons
+              organizer={organizer?.id}
+              participant={participant}
+            />
+          )}
       </div>
     </section>
   );

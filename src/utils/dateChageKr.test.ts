@@ -1,19 +1,17 @@
 import {
   formatDateToShortWithDay,
-  formatStartDate,
+  checkTomorrow,
   getWeekNumber,
 } from './dateChageKr';
 
-describe('formatStartDate', () => {
-  // it('지정일이 내일이면 "내일"을 반환해야 합니다.', () => {
-  //   const today = new Date();
-  //   const tomorrow = new Date(today);
-  //   tomorrow.setDate(today.getDate() + 1);
-
-  //   const tomorrowDate = `${tomorrow.getFullYear()}.${tomorrow.getMonth() + 1}.${tomorrow.getDate()}`;
-
-  //   expect(formatStartDate(tomorrowDate)).toBe('내일');
-  // });
+describe('checkTomorrow', () => {
+  it('지정일이 내일이면 "내일"을 반환해야 합니다.', () => {
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+    const tomorrowString = tomorrow.toISOString().split('T')[0];
+    expect(checkTomorrow(tomorrowString)).toBe('내일');
+  });
 
   it('지정일이 내일이 아니면 지정된 날짜를 반환해야 합니다.', () => {
     const today = new Date();
@@ -21,7 +19,7 @@ describe('formatStartDate', () => {
     dayAfterTomorrow.setDate(today.getDate() + 2);
     const dayAfterTomorrowDate = `${dayAfterTomorrow.getFullYear() + 1}.${dayAfterTomorrow.getMonth() + 1}.${dayAfterTomorrow.getDate()}`;
 
-    expect(formatStartDate(dayAfterTomorrowDate)).toBe(dayAfterTomorrowDate);
+    expect(checkTomorrow(dayAfterTomorrowDate)).toBe(dayAfterTomorrowDate);
   });
 });
 

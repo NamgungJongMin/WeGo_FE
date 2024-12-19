@@ -5,6 +5,7 @@ import { Travel } from '@/@types/travel';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import cn from '@/utils/cn';
+import { deleteTravelBookMark, postTravelBookMark } from '@/api/travelApi';
 import useBookmarkTravel from '@/queries/travel/useBookmarkTravel';
 import { formatDateToShortWithDay } from '@/utils/dateChageKr';
 import DomesticTag from '../common/tag/DomesticTag';
@@ -49,8 +50,9 @@ const TravelCardBig = ({
 
     if (!isCheckedState) {
       bookmarkTravel(travelId);
+      postTravelBookMark(travelId);
     } else {
-      // unbookmarkTravel(travelId); api 추가 필요 명세 아직 없음
+      deleteTravelBookMark(travelId);
     }
 
     setIsCheckedState(!isCheckedState);

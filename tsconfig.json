@@ -29,10 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/mocks/styleMock.js",
-    "src/mocks/swiperMock.jsx",
-    "src/mocks/svg.js",
-    "src/mocks/headlessUIMock.jsx"
+    "src/mocks/librarymocks/*"
   ],
   "exclude": ["node_modules"]
 }

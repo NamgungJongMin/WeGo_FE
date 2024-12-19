@@ -1,23 +1,27 @@
 // 현재 날짜를 기준으로 '내일'을 계산
-export const formatStartDate = (startDate: string): string => {
+export const checkTomorrow = (checkDate: string): string => {
+  const inputDate = new Date(checkDate);
   const today = new Date();
-  const tomorrow = new Date(today);
+
+  const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
 
-  const [month, day] = startDate.split('.');
-  const startDateObj = new Date(
-    today.getFullYear(),
-    parseInt(month, 10) - 1,
-    parseInt(day, 10),
-  );
+  const inputYear = inputDate.getFullYear();
+  const inputMonth = inputDate.getMonth();
+  const inputDay = inputDate.getDate();
+  const tomorrowYear = tomorrow.getFullYear();
+  const tomorrowMonth = tomorrow.getMonth();
+  const tomorrowDay = tomorrow.getDate();
 
-  const startDateISO = new Date(startDateObj.setHours(0, 0, 0, 0));
-  const tomorrowISO = new Date(tomorrow.setHours(0, 0, 0, 0));
-
-  if (startDateISO.toISOString() === tomorrowISO.toISOString()) {
+  if (
+    inputYear === tomorrowYear &&
+    inputMonth === tomorrowMonth &&
+    inputDay === tomorrowDay
+  ) {
     return '내일';
   }
-  return startDate;
+
+  return checkDate;
 };
 
 // 현재 날짜를 기준으로 'n주차' 계산

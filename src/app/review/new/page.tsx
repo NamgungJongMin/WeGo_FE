@@ -1,15 +1,14 @@
 'use client';
 
 import CreateReviewHeader from '@/components/review/new/CreateReviewHeader';
-import { Textarea } from '@headlessui/react';
 import BlueStart from '@/assets/star_24px.svg';
 import InputImage from '@/components/review/new/InputImage';
 import CreateReviewButtons from '@/components/review/new/CreateReviewButtons';
 import useCreateReviewStore from '@/store/useCreateReview';
+import ReviewComment from '@/components/review/new/ReviewComment';
 
 const CreateReviewPage = () => {
-  const { countStar, textValue, setCountStar, setTextValue } =
-    useCreateReviewStore();
+  const { countStar, setCountStar } = useCreateReviewStore();
 
   const handleClick = (index: number) => {
     setCountStar(index + 1);
@@ -39,19 +38,7 @@ const CreateReviewPage = () => {
           ))}
         </main>
       </section>
-      <section className={`pb-6 ${sectionCss}`}>
-        <header>여행에 대한 후기를 남겨주세요!</header>
-
-        <Textarea
-          name="여행후기"
-          value={textValue}
-          aria-label="여행 후기를 작성해주세요"
-          placeholder="여행에 대한 다양한 후기를 공유 해 주세요!"
-          onChange={(e) => setTextValue(e.target.value)}
-          className="body-2-r h-[90px] w-full resize-none border-none bg-background-alternative px-4 py-3 text-label-normal placeholder:text-interaction-inactive focus:outline-label-alternative"
-          maxLength={100}
-        />
-      </section>
+      <ReviewComment />
       <section className={`pb-10 ${sectionCss}`}>
         <header>여행의 순간을 함께 보여주세요.</header>
         <main aria-label="여행 후기 이미지를 등록해주세요">

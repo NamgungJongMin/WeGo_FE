@@ -7,7 +7,7 @@ interface ReviewSendRequestBody {
 }
 
 export const createReview = http.post<ReviewSendRequestBody, PathParams>(
-  `${process.env.NEXT_PUBLIC_BASE_URL}/reviews/create`,
+  `${process.env.NEXT_PUBLIC_BASE_URL}/reviews`,
   async ({ request }) => {
     const formData = await request.formData();
 
