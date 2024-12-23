@@ -19,7 +19,11 @@ const ReviewFilter = () => {
             'body-2-sb text-label-normal': sortOrder === 'createdAt',
           })}
         >
-          <button type="button" onClick={() => handleSortOrder('createdAt')}>
+          <button
+            type="button"
+            disabled={sortOrder === 'createdAt'}
+            onClick={() => handleSortOrder('createdAt')}
+          >
             최근
           </button>
         </li>
@@ -28,7 +32,11 @@ const ReviewFilter = () => {
             'body-2-sb text-label-normal': sortOrder === 'popular',
           })}
         >
-          <button type="button" onClick={() => handleSortOrder('popular')}>
+          <button
+            type="button"
+            disabled={sortOrder === 'popular'}
+            onClick={() => handleSortOrder('popular')}
+          >
             인기
           </button>
         </li>

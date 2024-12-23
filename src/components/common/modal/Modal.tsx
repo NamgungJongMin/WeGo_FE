@@ -38,8 +38,6 @@ const Modal = () => {
     onCancel,
   } = modal;
 
-  if (!isOpen) return null;
-
   const handleConfirm = () => {
     if (onConfirm) onConfirm();
     closeModal();
@@ -49,6 +47,8 @@ const Modal = () => {
     if (onCancel) onCancel();
     closeModal();
   };
+
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex animate-fade-in items-center justify-center bg-black/40 px-5">

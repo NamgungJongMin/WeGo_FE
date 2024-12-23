@@ -31,21 +31,24 @@ const ReviewContents = () => {
   if (isError) return <div>에러</div>;
 
   return (
-    <div className="mt-3 h-full justify-center">
+    <div className="mt-3 h-full justify-between">
       {reviewsData && (
-        <div className="flex flex-wrap justify-stretch gap-4">
+        <div className="flex flex-wrap justify-between gap-4">
           {reviewsData.pages.map((page) =>
             page.reviews
               ? page.reviews.map((review) => (
                   <ReviewCard
                     key={`${filters.sortOrder}-${review.reviewId}`}
                     reviewId={review.reviewId}
+                    nickname={review.nickname}
+                    profileImage={review.profileImage}
                     image={review.reviewImage}
                     title={review.title}
                     content={review.content}
                     score={review.score}
                     travelLocation={review.travelLocation}
                     createdAt={review.createdAt}
+                    isLiked={review.isLiked ?? false}
                   />
                 ))
               : null,

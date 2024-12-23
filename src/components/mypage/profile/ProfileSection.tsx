@@ -26,7 +26,7 @@ const ProfileSection = () => {
               height={80}
             />
           ) : (
-            <DefaultProfile />
+            <DefaultProfile aria-label="기본 프로필 이미지" />
           )}
         </div>
 

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import LocationIcon from '@/assets/icon/location_18px.svg';
 import StarIcon from '@/assets/icon/star_20px.svg';
 import UserIcon from '@/components/common/user/UserIcon';
+import ReviewHeart from './ReviewHeart';
 
 interface Props {
   reviewId: number;
@@ -14,9 +15,10 @@ interface Props {
   score: number;
   travelLocation: string;
   createdAt: string;
+  isLiked?: boolean;
 }
 
-const MyReviewCard = ({
+const ReviewCard = ({
   reviewId,
   nickname,
   profileImage,
@@ -26,18 +28,21 @@ const MyReviewCard = ({
   score,
   travelLocation,
   createdAt,
+  isLiked,
 }: Props) => {
   return (
-    <Link href={`/review/${reviewId}`} className="flex-1">
-      <div className="group relative h-[242px] w-[160px]">
+    <Link href={`/review/${reviewId}`} className="min-w-[160px] flex-1">
+      <div className="group relative h-[242px] w-full">
         <div className="relative">
           <Image
             src={image}
             alt={title}
             width={160}
             height={210}
-            className="h-[210px] w-[160px] rounded object-cover"
+            className="h-[210px] w-full rounded object-cover"
           />
+
+          {isLiked !== undefined && <ReviewHeart isLiked={isLiked} />}
 
           <div className="absolute bottom-0 z-10 flex h-[80px] w-full flex-col justify-end gap-0.5 bg-gradient-to-b from-black/0 to-black/80 px-3 pb-3 text-primary-white transition-all duration-200 group-hover:h-full group-hover:bg-black/50">
             <p className="body-3-m line-clamp-1 group-hover:opacity-0">
@@ -75,4 +80,4 @@ const MyReviewCard = ({
   );
 };
 
-export default MyReviewCard;
+export default ReviewCard;

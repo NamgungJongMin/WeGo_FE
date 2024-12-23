@@ -11,7 +11,17 @@ import NavLink from './NavigationLink';
 
 const MainNavigation = () => {
   const pathname = usePathname();
-  const includedPaths = ['/', '/travel', '/mypage', '/review', '/chat'];
+  const includedPaths = [
+    '/',
+    '/travel',
+    '/mypage',
+    '/review',
+    '/chat',
+    '/editProfile',
+    '/userSetting',
+    '/resetPassword/userPassword',
+    '/deleteAccount',
+  ];
 
   const isPathIncluded =
     includedPaths.includes(pathname) ||

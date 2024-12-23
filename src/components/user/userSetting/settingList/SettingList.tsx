@@ -2,9 +2,9 @@ import SettingItem from '../settingItem/SettingItem';
 
 const SettingList = () => {
   return (
-    <div className="mt-5 w-full divide-y px-5">
+    <ul className="mt-5 w-full divide-y px-5" aria-label="설정 목록">
       <SettingItem
-        destination="#"
+        destination="/preparing"
         title="문의하기"
         description="궁금한 내용이 있으신가요?"
       />
@@ -20,7 +20,7 @@ const SettingList = () => {
         title="계정 탈퇴"
         description="이제 WE'GO를 사용할 수 없어요."
       />
-    </div>
+    </ul>
   );
 };
 

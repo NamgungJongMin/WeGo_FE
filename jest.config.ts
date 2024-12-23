@@ -28,6 +28,7 @@ const config: Config = {
 
     '@/utils/compressImage$':
       '<rootDir>/src/mocks/librarymocks/compressImage.ts',
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
 
   setupFilesAfterEnv: ['<rootDir>/src/mocks/zustand.ts'],

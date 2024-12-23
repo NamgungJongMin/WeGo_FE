@@ -23,7 +23,7 @@ export const login = http.post<LoginRequestBody, PathParams>(
       {
         status: 200,
         headers: {
-          'Set-Cookie': 'access-token=msw-access, refresh-token=msw-refresh',
+          'Set-Cookie': 'accessToken=msw-access, refreshToken=msw-refresh',
         },
       },
     );

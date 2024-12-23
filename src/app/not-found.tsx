@@ -1,8 +1,9 @@
 import ErrorIcon from '@/assets/error_triangle.svg';
 import Link from 'next/link';
 
-const Custom404 = () => {
+const Custom404 = async () => {
   const textCss = 'text-label-neutral body-2-r';
+
   return (
     <section className="flex h-screen flex-col items-center justify-between">
       <main className="flex h-screen flex-col items-center justify-center gap-6">

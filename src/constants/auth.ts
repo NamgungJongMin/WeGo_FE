@@ -56,10 +56,30 @@ const AUTH_SUCCESS_MESSAGE = {
   signup: '회원가입이 완료되었습니다.',
 } as const;
 
+const NEED_LOGIN_PATH = {
+  mypage: '/mypage',
+  editProfile: '/editProfile',
+  userSetting: '/user/setting',
+  resetPassword: '/resetPassword/userPassword',
+  deleteAccount: '/deleteAccount',
+  travelNew: '/travel/new',
+  reviewNew: '/review/new',
+  chat: '/chat',
+} as const;
+
+const NEED_LOGOUT_PATH = {
+  login: '/login',
+  signup: '/signup',
+  resetPassword: '/resetPassword/authPassword',
+  findPassword: '/findPassword',
+} as const;
+
 export {
   AUTH_LABEL,
   AUTH_ERROR_MESSAGE,
   REGEX,
   AUTH_PLACEHOLDER,
   AUTH_SUCCESS_MESSAGE,
+  NEED_LOGIN_PATH,
+  NEED_LOGOUT_PATH,
 };

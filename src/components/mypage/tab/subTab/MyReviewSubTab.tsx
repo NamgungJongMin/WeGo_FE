@@ -9,7 +9,7 @@ interface Props {
 
 const MyReviewSubTab = ({ selectedSubTab, setSelectedSubTab }: Props) => {
   return (
-    <div className="relative mx-auto mb-4">
+    <div className="relative mx-auto mb-4" data-testid="myReviewSubTab">
       <ul className="body-2-r flex w-[335px] divide-x text-label-alternative">
         {['writable', 'written'].map((subTab) => (
           <li
@@ -22,6 +22,7 @@ const MyReviewSubTab = ({ selectedSubTab, setSelectedSubTab }: Props) => {
           >
             <button
               type="button"
+              disabled={selectedSubTab === subTab}
               onClick={() => setSelectedSubTab(subTab as SubTabType)}
             >
               {MY_PAGE_TABS_NAME[subTab as SubTabType]}

@@ -1,13 +1,15 @@
 export interface Review {
   reviewId: number;
   title: string;
-  nickname: string;
+  nickname?: string;
+  profileImage?: string;
   reviewImage: string;
   content: string;
   score: number;
   travelLocation: string;
   createdAt: string;
   isLast: boolean;
+  isLiked?: boolean;
 }
 
 export interface ReviewResponse {

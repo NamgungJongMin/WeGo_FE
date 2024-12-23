@@ -5,7 +5,7 @@ import { Button } from '@/components/common/button/Button';
 import { useRouter } from 'next/navigation';
 import useEditProfile from '@/queries/user/useEditProfile';
 import Nickname from './input/Nickname';
-import ProfileImage from './input/ProfileEmage';
+import ProfileImage from './input/ProfileImage';
 import IntroductionInput from './input/Introduction';
 
 interface ProfileFormData {
@@ -64,7 +64,7 @@ const EditForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-5">
+    <form onSubmit={handleSubmit} className="p-5" aria-label="프로필 수정 폼">
       <ProfileImage
         previewImage={previewImage}
         handleImageChange={handleImageChange}

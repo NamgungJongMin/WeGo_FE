@@ -1,4 +1,4 @@
-import Pagenation from '@/components/common/pagenation/Pagenation';
+import Pagination from '@/components/common/pagination/Pagination';
 import { useState } from 'react';
 import ReviewCard from '@/components/card/Review/ReviewCard';
 import useMyReview from '@/queries/review/useMyReview';
@@ -13,7 +13,7 @@ const Written = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <section className="mx-auto w-[335px] pb-10">
+    <section className="mx-auto w-[335px] pb-10" data-testid="written-reviews">
       <div className="grid grid-cols-2 gap-4 pb-4">
         {reviews &&
           reviews.reviews.map((review) => (
@@ -34,7 +34,7 @@ const Written = () => {
       )}
 
       {totalPages > 1 && (
-        <Pagenation
+        <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
           paginate={paginate}

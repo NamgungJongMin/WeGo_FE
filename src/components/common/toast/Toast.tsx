@@ -9,7 +9,7 @@ const Toast = () => {
   const { toasts } = useToastStore();
 
   return (
-    <div className="fixed left-1/2 top-0 z-50 flex -translate-x-1/2 flex-col gap-2">
+    <div className="fixed left-1/2 top-8 z-50 flex -translate-x-1/2 flex-col gap-2">
       {toasts.map((toast) => (
         <div
           key={toast.id}

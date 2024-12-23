@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import TravelCard from '@/components/card/TravelCard';
-import Pagenation from '@/components/common/pagenation/Pagenation';
 import { checkTomorrow } from '@/utils/dateChageKr';
 import Link from 'next/link';
 import { TravelList } from '@/@types/travel';
 import { useWritableTravel } from '@/queries/travel/useGetMyTravel';
+import Pagination from '@/components/common/pagination/Pagination';
 import NoTravel from '../myTravel/NoTravel';
 
 const Writable = () => {
@@ -16,7 +16,10 @@ const Writable = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <section className="mx-auto flex w-[335px] flex-col justify-center gap-6 pb-10">
+    <section
+      className="mx-auto flex w-[335px] flex-col justify-center gap-6 pb-10"
+      data-testid="writable-travels"
+    >
       {travels && travels.total > 0 ? (
         travels.travels.map((travel: TravelList) => (
           <div key={travel.travelId} className="relative">
@@ -50,7 +53,7 @@ const Writable = () => {
       )}
 
       {totalPages > 1 && (
-        <Pagenation
+        <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
           paginate={paginate}

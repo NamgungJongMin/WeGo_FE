@@ -37,7 +37,7 @@ export const resetPassword = [
   http.put<ResetAuthSignupRequestBody, PathParams>(
     `${process.env.NEXT_PUBLIC_BASE_URL}/users/password`,
     async ({ request, cookies }) => {
-      const token = cookies['access-token'];
+      const token = cookies.accessToken;
       const { currentPassword, newPassword } = await request.json();
 
       if (token && newPassword && currentPassword === FAKE_USER_PASSWORD) {

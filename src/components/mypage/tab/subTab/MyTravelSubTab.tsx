@@ -9,7 +9,7 @@ interface Props {
 
 const MyTravelSubTab = ({ selectedSubTab, setSelectedSubTab }: Props) => {
   return (
-    <div className="relative mx-auto mb-4">
+    <div className="relative mx-auto mb-4" data-testid="myTravelSubTab">
       <ul className="body-2-r flex w-[335px] divide-x text-label-alternative">
         {['upcomming', 'pastTravel', 'checkedTravel'].map((subTab) => {
           return (
@@ -24,6 +24,7 @@ const MyTravelSubTab = ({ selectedSubTab, setSelectedSubTab }: Props) => {
             >
               <button
                 type="button"
+                disabled={selectedSubTab === subTab}
                 onClick={() => setSelectedSubTab(subTab as SubTabType)}
               >
                 {MY_PAGE_TABS_NAME[subTab as SubTabType]}

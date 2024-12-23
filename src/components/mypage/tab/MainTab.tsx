@@ -13,11 +13,12 @@ interface Props {
 
 const MainTab = ({ selectedTab, setSelectedTab, setSelectedSubTab }: Props) => {
   return (
-    <div className="relative mx-auto">
+    <div className="relative mx-auto" data-testid="mainTab">
       <ul className="heading-1-sb flex w-[335px] gap-5 text-label-alternative">
         {['myTravel', 'myReview', 'mySelfTravel'].map((tab) => (
           <li
             key={tab}
+            aria-label={`${tab} 탭`}
             className={cn({
               'heading-1-b text-label-normal': selectedTab === tab,
             })}
