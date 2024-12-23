@@ -1,7 +1,7 @@
 'use client';
 
 import TravelCard from '@/components/card/TravelCard';
-import NoReault from '@/components/common/NoReault';
+import NoResult from '@/components/common/NoResult';
 import { useTravelListStore } from '@/store/useTravelListStore';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -58,7 +58,7 @@ const TravelList = () => {
         {travelListData &&
           travelListData.pages.map((page) =>
             page.travels.length === 0 ? (
-              <NoReault
+              <NoResult
                 key="no-result"
                 label="아직 등록된 여행이 없어요!"
                 height="h-64"

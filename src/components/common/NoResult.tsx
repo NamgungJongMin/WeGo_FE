@@ -1,6 +1,6 @@
 import BlankIcon from '@/assets/blank.svg';
 
-const NoReault = ({ label, height }: { label: string; height?: string }) => {
+const NoResult = ({ label, height }: { label: string; height?: string }) => {
   return (
     <div
       className={`heading-1-sb flex flex-col items-center justify-center gap-4 text-label-alternative ${height}`}
@@ -11,4 +11,4 @@ const NoReault = ({ label, height }: { label: string; height?: string }) => {
   );
 };
 
-export default NoReault;
+export default NoResult;

@@ -4,7 +4,7 @@ import { getTravelReview } from '@/api/reviewApi';
 import ReviewCardAddText from '@/components/card/ReviewCardAddText';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
-import NoReault from '@/components/common/NoReault';
+import NoResult from '@/components/common/NoResult';
 import ScoreBox from './ScoreBox';
 
 const SelectTravelReview = () => {
@@ -30,7 +30,7 @@ const SelectTravelReview = () => {
   }
 
   if (reviewList && reviewList.length === 0) {
-    return <NoReault label="아직 작성된 리뷰가 없어요!" height="h-64" />;
+    return <NoResult label="아직 작성된 리뷰가 없어요!" height="h-64" />;
   }
 
   const totalScore =
