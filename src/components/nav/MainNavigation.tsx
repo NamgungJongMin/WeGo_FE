@@ -9,7 +9,11 @@ import ChatWhite from '@/assets/chat_white.svg';
 import { usePathname } from 'next/navigation';
 import NavLink from './NavigationLink';
 
-const MainNavigation = () => {
+interface Props {
+  isActive?: boolean;
+}
+
+const MainNavigation = ({ isActive = false }: Props) => {
   const pathname = usePathname();
   const includedPaths = [
     '/',
@@ -26,7 +30,8 @@ const MainNavigation = () => {
   const isPathIncluded =
     includedPaths.includes(pathname) ||
     (pathname.startsWith('/travel') && pathname !== '/travel/new') ||
-    pathname.startsWith('/review');
+    pathname.startsWith('/review') ||
+    isActive;
 
   if (!isPathIncluded) {
     return null;

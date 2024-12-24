@@ -1,0 +1,904 @@
+{
+  "chatRoomList": [
+    {
+      "id": "11",
+      "title": "도심 속 자연 여행",
+      "host": "닉네임C",
+      "membersCount": 4,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-14T01:28:12.660109"
+    },
+    {
+      "id": "12",
+      "title": "남산 투어",
+      "host": "닉네임D",
+      "membersCount": 6,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T22:05:12.660123"
+    },
+    {
+      "id": "13",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임D",
+      "membersCount": 3,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T18:34:12.660137"
+    },
+    {
+      "id": "14",
+      "title": "남산 투어",
+      "host": "닉네임C",
+      "membersCount": 10,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-09T05:07:12.660151"
+    },
+    {
+      "id": "15",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임D",
+      "membersCount": 8,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T05:53:12.660166"
+    },
+    {
+      "id": "16",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임A",
+      "membersCount": 2,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-12T14:54:12.660181"
+    },
+    {
+      "id": "17",
+      "title": "전주 한옥마을 투어",
+      "host": "닉네임C",
+      "membersCount": 1,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-14T10:08:12.660194"
+    },
+    {
+      "id": "18",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임B",
+      "membersCount": 4,
+      "date": "24.12.10",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-10T19:55:12.660208"
+    },
+    {
+      "id": "19",
+      "title": "남산 투어",
+      "host": "닉네임D",
+      "membersCount": 9,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-08T22:58:12.660221"
+    },
+    {
+      "id": "20",
+      "title": "행복한 부산 여행",
+      "host": "닉네임A",
+      "membersCount": 9,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-09T08:56:12.660243"
+    },
+    {
+      "id": "21",
+      "title": "제주에서의 하루",
+      "host": "닉네임B",
+      "membersCount": 2,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T15:46:12.660257"
+    },
+    {
+      "id": "22",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임A",
+      "membersCount": 10,
+      "date": "24.12.10",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-10T15:15:12.660270"
+    },
+    {
+      "id": "23",
+      "title": "충주호 리프레시",
+      "host": "닉네임D",
+      "membersCount": 8,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T07:35:12.660284"
+    },
+    {
+      "id": "24",
+      "title": "제주에서의 하루",
+      "host": "닉네임D",
+      "membersCount": 10,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-08T08:13:12.660297"
+    },
+    {
+      "id": "25",
+      "title": "행복한 부산 여행",
+      "host": "닉네임A",
+      "membersCount": 2,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-09T14:35:12.660311"
+    },
+    {
+      "id": "26",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임D",
+      "membersCount": 1,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-08T22:07:12.660325"
+    },
+    {
+      "id": "27",
+      "title": "제주에서의 하루",
+      "host": "닉네임A",
+      "membersCount": 4,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-08T09:46:12.660341"
+    },
+    {
+      "id": "28",
+      "title": "제주에서의 하루",
+      "host": "닉네임B",
+      "membersCount": 8,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-11T14:46:12.660356"
+    },
+    {
+      "id": "29",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임C",
+      "membersCount": 4,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T00:47:12.660369"
+    },
+    {
+      "id": "30",
+      "title": "남산 투어",
+      "host": "닉네임B",
+      "membersCount": 9,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T01:05:12.660383"
+    },
+    {
+      "id": "31",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임C",
+      "membersCount": 5,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T05:34:12.660403"
+    },
+    {
+      "id": "32",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임C",
+      "membersCount": 6,
+      "date": "24.12.07",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-07T18:32:12.660417"
+    },
+    {
+      "id": "33",
+      "title": "충주호 리프레시",
+      "host": "닉네임D",
+      "membersCount": 4,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-12T13:42:12.660430"
+    },
+    {
+      "id": "34",
+      "title": "제주에서의 하루",
+      "host": "닉네임B",
+      "membersCount": 10,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T14:45:12.660444"
+    },
+    {
+      "id": "35",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임A",
+      "membersCount": 1,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T07:17:12.660458"
+    },
+    {
+      "id": "36",
+      "title": "제주에서의 하루",
+      "host": "닉네임B",
+      "membersCount": 1,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-12T11:25:12.660473"
+    },
+    {
+      "id": "37",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임C",
+      "membersCount": 9,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-12T22:13:12.660486"
+    },
+    {
+      "id": "38",
+      "title": "제주에서의 하루",
+      "host": "닉네임B",
+      "membersCount": 5,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-09T00:27:12.660503"
+    },
+    {
+      "id": "39",
+      "title": "충주호 리프레시",
+      "host": "닉네임B",
+      "membersCount": 8,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-12T03:24:12.660516"
+    },
+    {
+      "id": "40",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임C",
+      "membersCount": 10,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-12T21:30:12.660531"
+    },
+    {
+      "id": "41",
+      "title": "전주 한옥마을 투어",
+      "host": "닉네임B",
+      "membersCount": 6,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T18:35:12.660545"
+    },
+    {
+      "id": "42",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임B",
+      "membersCount": 10,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-11T18:49:12.660559"
+    },
+    {
+      "id": "43",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임D",
+      "membersCount": 7,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-08T06:47:12.660573"
+    },
+    {
+      "id": "44",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임D",
+      "membersCount": 3,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-11T16:02:12.660586"
+    },
+    {
+      "id": "45",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임B",
+      "membersCount": 7,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-09T15:21:12.660600"
+    },
+    {
+      "id": "46",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임B",
+      "membersCount": 8,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-08T13:52:12.660614"
+    },
+    {
+      "id": "47",
+      "title": "제주에서의 하루",
+      "host": "닉네임B",
+      "membersCount": 5,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-09T09:31:12.660628"
+    },
+    {
+      "id": "48",
+      "title": "충주호 리프레시",
+      "host": "닉네임A",
+      "membersCount": 10,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-12T00:13:12.660642"
+    },
+    {
+      "id": "49",
+      "title": "행복한 부산 여행",
+      "host": "닉네임A",
+      "membersCount": 10,
+      "date": "24.12.10",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-10T02:02:12.660655"
+    },
+    {
+      "id": "50",
+      "title": "제주에서의 하루",
+      "host": "닉네임C",
+      "membersCount": 6,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 0,
+      "lastMessageTime": "2024-12-13T05:29:12.660669"
+    },
+    {
+      "id": "51",
+      "title": "제주에서의 하루",
+      "host": "닉네임C",
+      "membersCount": 5,
+      "date": "24.12.07",
+      "image": "/user.jpg",
+      "messageCount": 145,
+      "lastMessageTime": "2024-12-07T19:47:12.660682"
+    },
+    {
+      "id": "52",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임D",
+      "membersCount": 4,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 63,
+      "lastMessageTime": "2024-12-11T12:48:12.660696"
+    },
+    {
+      "id": "53",
+      "title": "남산 투어",
+      "host": "닉네임A",
+      "membersCount": 7,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 85,
+      "lastMessageTime": "2024-12-11T00:22:12.660711"
+    },
+    {
+      "id": "54",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임A",
+      "membersCount": 10,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 188,
+      "lastMessageTime": "2024-12-12T09:11:12.660725"
+    },
+    {
+      "id": "55",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임B",
+      "membersCount": 9,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 227,
+      "lastMessageTime": "2024-12-08T23:50:12.660738"
+    },
+    {
+      "id": "56",
+      "title": "행복한 부산 여행",
+      "host": "닉네임B",
+      "membersCount": 1,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 217,
+      "lastMessageTime": "2024-12-14T02:18:12.660751"
+    },
+    {
+      "id": "57",
+      "title": "제주에서의 하루",
+      "host": "닉네임C",
+      "membersCount": 1,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 112,
+      "lastMessageTime": "2024-12-13T22:26:12.660766"
+    },
+    {
+      "id": "58",
+      "title": "도심 속 자연 여행",
+      "host": "닉네임D",
+      "membersCount": 9,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 259,
+      "lastMessageTime": "2024-12-08T16:41:12.660779"
+    },
+    {
+      "id": "59",
+      "title": "충주호 리프레시",
+      "host": "닉네임C",
+      "membersCount": 8,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 278,
+      "lastMessageTime": "2024-12-12T15:19:12.660792"
+    },
+    {
+      "id": "60",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임D",
+      "membersCount": 3,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 151,
+      "lastMessageTime": "2024-12-08T17:14:12.660806"
+    },
+    {
+      "id": "61",
+      "title": "충주호 리프레시",
+      "host": "닉네임B",
+      "membersCount": 4,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 285,
+      "lastMessageTime": "2024-12-12T23:48:12.660819"
+    },
+    {
+      "id": "62",
+      "title": "남산 투어",
+      "host": "닉네임C",
+      "membersCount": 7,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 248,
+      "lastMessageTime": "2024-12-14T15:56:12.660832"
+    },
+    {
+      "id": "63",
+      "title": "제주에서의 하루",
+      "host": "닉네임A",
+      "membersCount": 8,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 143,
+      "lastMessageTime": "2024-12-14T05:55:12.660845"
+    },
+    {
+      "id": "64",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임B",
+      "membersCount": 7,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 227,
+      "lastMessageTime": "2024-12-08T21:14:12.660859"
+    },
+    {
+      "id": "65",
+      "title": "전주 한옥마을 투어",
+      "host": "닉네임B",
+      "membersCount": 8,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 212,
+      "lastMessageTime": "2024-12-13T00:54:12.660872"
+    },
+    {
+      "id": "66",
+      "title": "충주호 리프레시",
+      "host": "닉네임C",
+      "membersCount": 10,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 59,
+      "lastMessageTime": "2024-12-11T11:26:12.660887"
+    },
+    {
+      "id": "67",
+      "title": "충주호 리프레시",
+      "host": "닉네임A",
+      "membersCount": 9,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 68,
+      "lastMessageTime": "2024-12-13T12:06:12.660901"
+    },
+    {
+      "id": "68",
+      "title": "행복한 부산 여행",
+      "host": "닉네임B",
+      "membersCount": 5,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 31,
+      "lastMessageTime": "2024-12-09T01:12:12.660914"
+    },
+    {
+      "id": "69",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임D",
+      "membersCount": 6,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 270,
+      "lastMessageTime": "2024-12-11T02:50:12.660928"
+    },
+    {
+      "id": "70",
+      "title": "남산 투어",
+      "host": "닉네임D",
+      "membersCount": 3,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 48,
+      "lastMessageTime": "2024-12-13T22:02:12.660942"
+    },
+    {
+      "id": "71",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임D",
+      "membersCount": 7,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 174,
+      "lastMessageTime": "2024-12-14T06:27:12.660956"
+    },
+    {
+      "id": "72",
+      "title": "충주호 리프레시",
+      "host": "닉네임B",
+      "membersCount": 9,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 148,
+      "lastMessageTime": "2024-12-12T12:34:12.660969"
+    },
+    {
+      "id": "73",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임D",
+      "membersCount": 3,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 187,
+      "lastMessageTime": "2024-12-14T10:39:12.660983"
+    },
+    {
+      "id": "74",
+      "title": "남산 투어",
+      "host": "닉네임C",
+      "membersCount": 1,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 126,
+      "lastMessageTime": "2024-12-13T05:29:12.660997"
+    },
+    {
+      "id": "75",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임D",
+      "membersCount": 8,
+      "date": "24.12.07",
+      "image": "/user.jpg",
+      "messageCount": 7,
+      "lastMessageTime": "2024-12-07T23:25:12.661009"
+    },
+    {
+      "id": "76",
+      "title": "전주 한옥마을 투어",
+      "host": "닉네임D",
+      "membersCount": 10,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 28,
+      "lastMessageTime": "2024-12-12T12:39:12.661023"
+    },
+    {
+      "id": "77",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임C",
+      "membersCount": 8,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 33,
+      "lastMessageTime": "2024-12-09T11:22:12.661036"
+    },
+    {
+      "id": "78",
+      "title": "부여로 떠나는 다함께 시골투어",
+      "host": "닉네임D",
+      "membersCount": 4,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 71,
+      "lastMessageTime": "2024-12-12T18:51:12.661049"
+    },
+    {
+      "id": "79",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임D",
+      "membersCount": 10,
+      "date": "24.12.09",
+      "image": "/user.jpg",
+      "messageCount": 263,
+      "lastMessageTime": "2024-12-09T15:38:12.661062"
+    },
+    {
+      "id": "80",
+      "title": "충주호 리프레시",
+      "host": "닉네임D",
+      "membersCount": 1,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 288,
+      "lastMessageTime": "2024-12-08T11:44:12.661079"
+    },
+    {
+      "id": "81",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임A",
+      "membersCount": 10,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 175,
+      "lastMessageTime": "2024-12-11T08:04:12.661092"
+    },
+    {
+      "id": "82",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임A",
+      "membersCount": 7,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 32,
+      "lastMessageTime": "2024-12-14T15:32:12.661105"
+    },
+    {
+      "id": "83",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임A",
+      "membersCount": 7,
+      "date": "24.12.10",
+      "image": "/user.jpg",
+      "messageCount": 265,
+      "lastMessageTime": "2024-12-10T08:58:12.661119"
+    },
+    {
+      "id": "84",
+      "title": "남산 투어",
+      "host": "닉네임C",
+      "membersCount": 7,
+      "date": "24.12.13",
+      "image": "/user.jpg",
+      "messageCount": 35,
+      "lastMessageTime": "2024-12-13T14:07:12.661133"
+    },
+    {
+      "id": "85",
+      "title": "전주 한옥마을 투어",
+      "host": "닉네임D",
+      "membersCount": 9,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 270,
+      "lastMessageTime": "2024-12-12T18:58:12.661147"
+    },
+    {
+      "id": "86",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임A",
+      "membersCount": 7,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 289,
+      "lastMessageTime": "2024-12-12T01:09:12.661160"
+    },
+    {
+      "id": "87",
+      "title": "도심 속 자연 여행",
+      "host": "닉네임B",
+      "membersCount": 3,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 228,
+      "lastMessageTime": "2024-12-08T17:16:12.661174"
+    },
+    {
+      "id": "88",
+      "title": "도심 속 자연 여행",
+      "host": "닉네임D",
+      "membersCount": 8,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 160,
+      "lastMessageTime": "2024-12-12T13:07:12.661188"
+    },
+    {
+      "id": "89",
+      "title": "도심 속 자연 여행",
+      "host": "닉네임B",
+      "membersCount": 7,
+      "date": "24.12.10",
+      "image": "/user.jpg",
+      "messageCount": 70,
+      "lastMessageTime": "2024-12-10T22:33:12.661201"
+    },
+    {
+      "id": "90",
+      "title": "남산 투어",
+      "host": "닉네임B",
+      "membersCount": 3,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 86,
+      "lastMessageTime": "2024-12-14T06:40:12.661215"
+    },
+    {
+      "id": "91",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임C",
+      "membersCount": 1,
+      "date": "24.12.07",
+      "image": "/user.jpg",
+      "messageCount": 292,
+      "lastMessageTime": "2024-12-07T22:18:12.661228"
+    },
+    {
+      "id": "92",
+      "title": "서울에서 1박2일 즐겨보아요 :)",
+      "host": "닉네임C",
+      "membersCount": 5,
+      "date": "24.12.12",
+      "image": "/user.jpg",
+      "messageCount": 157,
+      "lastMessageTime": "2024-12-12T21:05:12.661243"
+    },
+    {
+      "id": "93",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임B",
+      "membersCount": 7,
+      "date": "24.12.07",
+      "image": "/user.jpg",
+      "messageCount": 215,
+      "lastMessageTime": "2024-12-07T22:14:12.661257"
+    },
+    {
+      "id": "94",
+      "title": "전주 한옥마을 투어",
+      "host": "닉네임D",
+      "membersCount": 7,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 54,
+      "lastMessageTime": "2024-12-11T11:19:12.661271"
+    },
+    {
+      "id": "95",
+      "title": "강원도로 떠나는 여행",
+      "host": "닉네임D",
+      "membersCount": 4,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 112,
+      "lastMessageTime": "2024-12-11T19:00:12.661285"
+    },
+    {
+      "id": "96",
+      "title": "힐링 캠핑 이야기",
+      "host": "닉네임B",
+      "membersCount": 2,
+      "date": "24.12.11",
+      "image": "/user.jpg",
+      "messageCount": 100,
+      "lastMessageTime": "2024-12-11T22:12:12.661298"
+    },
+    {
+      "id": "97",
+      "title": "행복한 부산 여행",
+      "host": "닉네임D",
+      "membersCount": 5,
+      "date": "24.12.10",
+      "image": "/user.jpg",
+      "messageCount": 73,
+      "lastMessageTime": "2024-12-10T19:18:12.661312"
+    },
+    {
+      "id": "98",
+      "title": "제주에서의 하루",
+      "host": "닉네임D",
+      "membersCount": 6,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 138,
+      "lastMessageTime": "2024-12-14T04:56:12.661326"
+    },
+    {
+      "id": "99",
+      "title": "충주호 리프레시",
+      "host": "닉네임A",
+      "membersCount": 10,
+      "date": "24.12.14",
+      "image": "/user.jpg",
+      "messageCount": 42,
+      "lastMessageTime": "2024-12-14T04:26:12.661341"
+    },
+    {
+      "id": "100",
+      "title": "충주호 리프레시",
+      "host": "닉네임D",
+      "membersCount": 1,
+      "date": "24.12.08",
+      "image": "/user.jpg",
+      "messageCount": 144,
+      "lastMessageTime": "2024-12-08T14:22:12.661356"
+    }
+  ]
+}

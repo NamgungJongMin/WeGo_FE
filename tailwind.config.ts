@@ -117,6 +117,11 @@ export default {
           lineHeight: '32px',
           fontWeight: '800',
         },
+        '.title-3-b': {
+          fontSize: '24px',
+          lineHeight: '32px',
+          fontWeight: '700',
+        },
         '.title-4-b': {
           fontSize: '20px',
           lineHeight: '28px',
@@ -207,6 +212,27 @@ export default {
           fontSize: '10px',
           lineHeight: '16px',
           fontWeight: '600',
+        },
+      });
+    }),
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        '.custom-scrollbar::-webkit-scrollbar': {
+          width: '6px',
+          height: '6px',
+        },
+        '.custom-scrollbar::-webkit-scrollbar-track': {
+          background: 'transparent',
+        },
+        '.custom-scrollbar::-webkit-scrollbar-thumb': {
+          background: '#C2C4C7',
+          borderRadius: '5px',
+        },
+        '.custom-scrollbar::-webkit-scrollbar-thumb:hover': {
+          background: '#aaa',
+        },
+        '.custom-scrollbar::-webkit-scrollbar-button': {
+          display: 'none',
         },
       });
     }),

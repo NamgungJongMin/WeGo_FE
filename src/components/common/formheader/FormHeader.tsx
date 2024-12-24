@@ -4,18 +4,20 @@ import { useRouter } from 'next/navigation';
 import Back from '@/assets/back.svg';
 import Setting from '@/assets/icon/setting_32px.svg';
 import cn from '@/utils/cn';
+import React from 'react';
 
 interface Props {
-  title: string;
+  title: string | React.ReactNode;
   isConfigButton?: boolean;
   onRoute?: () => void;
+  children?: React.ReactNode;
 }
 
-const FormHeader = ({ title, isConfigButton, onRoute }: Props) => {
+const FormHeader = ({ title, isConfigButton, onRoute, children }: Props) => {
   const router = useRouter();
 
   return (
-    <header className="z-100 flex h-[60px] items-center border-b border-[#DADDE1] px-5 py-3.5">
+    <header className="relative flex h-[60px] items-center border-b border-[#DADDE1] px-5 py-3.5">
       <button
         type="button"
         onClick={() => {
@@ -26,16 +28,12 @@ const FormHeader = ({ title, isConfigButton, onRoute }: Props) => {
           }
         }}
         aria-label="뒤로가기 버튼, 이전 페이지로 이동"
-        className="z-10 m-0 cursor-pointer rounded border-none bg-transparent p-0 outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+        className="absolute"
       >
         <Back width={32} height={32} aria-hidden="true" />
       </button>
 
-      <h1
-        className={cn('flex-1 text-center text-lg font-semibold', {
-          '-ml-8': !isConfigButton,
-        })}
-      >
+      <h1 className={cn('title-5-sb mx-10 flex-1 truncate text-center')}>
         {title}
       </h1>
 
@@ -45,11 +43,12 @@ const FormHeader = ({ title, isConfigButton, onRoute }: Props) => {
           onClick={() => {
             router.push('/userSetting');
           }}
-          className="text-sm text-gray-500"
+          className="absolute right-0 mr-5 h-8 text-sm text-gray-500"
         >
           <Setting width={32} height={32} aria-hidden="true" />
         </button>
       )}
+      <div className="absolute right-0 mr-5 h-8">{children}</div>
     </header>
   );
 };
