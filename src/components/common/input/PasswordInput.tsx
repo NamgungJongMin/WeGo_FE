@@ -61,6 +61,7 @@ const PasswordInput = ({
         type="button"
         className="absolute right-[13px] top-[19px]"
         onClick={clickButton}
+        tabIndex={-1}
       >
         {isOpen ? (
           <PwOpen width={20} height={20} />
